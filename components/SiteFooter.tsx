@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { STRANDS, grades } from "@/content/index.ts";
+import { REGION, STRANDS, grades } from "@/content/index.ts";
 
 export default function SiteFooter() {
   return (
@@ -51,6 +51,7 @@ export default function SiteFooter() {
               <Link href="/guide">사용법 · 교육과정 근거</Link>
             </li>
             <li>2026학년도 기준 · 초1~중2·고1 2022 개정, 중3 2015 개정</li>
+            <li>기준 지역 {REGION.name}</li>
             <li>학교와 출판사에 따라 단원 순서가 다를 수 있습니다.</li>
           </ul>
         </div>

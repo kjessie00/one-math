@@ -138,6 +138,75 @@ export type Strand = {
   description: string;
 };
 
+/**
+ * 이 지도가 먼저 맞춰 둔 지역.
+ *
+ * 교육과정 자체는 전국이 같지만, 2022 개정부터 초3~초6 수학이 검정 교과서라
+ * **단원 순서와 이름은 학교가 채택한 발행사에 따라 다르다.**
+ * 그래서 "어느 지역 학교를 기준으로 맞췄는지"를 밝혀 두어야 교사가 자기 교과서와 대조할 수 있다.
+ */
+export const REGION = {
+  name: "전북특별자치도 김제시",
+  short: "김제",
+  /** 2024년 전라북도에서 이름이 바뀌었다. 옛 이름으로 찾는 사람을 위해 남긴다. */
+  formerName: "전라북도 김제시",
+  note: "초·중학교와 고등학교 1학년을 기준으로 맞췄습니다.",
+} as const;
+
+/** 기준 지역 학교가 실제로 채택한 수학 교과서. 공개 공고에서 확인한 것만 적는다. */
+export type RegionTextbook = {
+  school: string;
+  /** 어느 학년·과목인지 */
+  scope: string;
+  publisher: string;
+  /** 학교 공고에서 확인한 날짜 */
+  checked: string;
+  source: string;
+  note?: string;
+};
+
+/**
+ * 2026-08-13에 전북교육청 학교 누리집(school.jbedu.kr) 공개 공고를 직접 열어 확인한 것.
+ * 학교가 공개한 문서에 적힌 대로만 적는다. 추측으로 채우지 않는다.
+ */
+export const REGION_TEXTBOOKS: RegionTextbook[] = [
+  {
+    school: "김제중학교",
+    scope: "중1 수학",
+    publisher: "동아출판",
+    checked: "2026-08-13",
+    source: "https://school.jbedu.kr/gimje/M010301/view/6852923",
+  },
+  {
+    school: "김제중학교",
+    scope: "중2 수학",
+    publisher: "동아출판",
+    checked: "2026-08-13",
+    source: "https://school.jbedu.kr/gimje/M010301/view/6852923",
+    note: "학교 공고 표에는 ‘동아칠판’으로 적혀 있습니다. 같은 표의 다른 과목 표기로 보아 ‘동아출판’의 오타로 보입니다.",
+  },
+  {
+    school: "김제중학교",
+    scope: "중3 수학",
+    publisher: "교학사",
+    checked: "2026-08-13",
+    source: "https://school.jbedu.kr/gimje/M010301/view/6852923",
+    note: "중3은 2026학년도에 2015 개정 교육과정을 적용합니다.",
+  },
+  {
+    school: "김제고등학교",
+    scope: "고1 공통수학1·공통수학2",
+    publisher: "㈜천재교과서(전)",
+    checked: "2026-08-13",
+    source: "https://school.jbedu.kr/gimje-h/M010301/view/6117884",
+    note: "선정 목록의 1순위입니다. 2순위 ㈜미래엔(황), 3순위 ㈜비상교육(김).",
+  },
+];
+
+/** 찾아봤지만 공개 자료로 확인되지 않은 것. 무엇을 어디까지 봤는지 남긴다. */
+export const REGION_UNKNOWN =
+  "초등학교 수학 발행사는 확인하지 못했습니다. 김제초등학교가 2025년 10월 학교운영위원회에서 2026학년도 5~6학년 검인정 교과용도서 9개 과목(수학·수학익힘 포함) 선정을 원안가결한 것까지는 공개 문서로 확인했지만, 공개된 심의 결과에는 발행사 이름이 적혀 있지 않습니다. 초등 교과서는 학교에 직접 물어보셔야 합니다.";
+
 export const TERM_LABEL: Record<TermId, string> = {
   s1: "1학기",
   s2: "2학기",

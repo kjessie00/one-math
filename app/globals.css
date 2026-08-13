@@ -1269,6 +1269,14 @@ details.reveal[open] > summary::before {
   justify-content: flex-end;
 }
 
+code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875em;
+  background: var(--rule-soft);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+
 /* 안내 문구 */
 .note {
   border: 1px solid var(--rule);

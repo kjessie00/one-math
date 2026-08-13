@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import FlowMap, { type MapGrade, type MapStrand, type MapUnit } from "@/components/FlowMap";
-import { STRANDS, allUnits, grades, stats, unitLocation } from "@/content/index.ts";
+import { REGION, STRANDS, allUnits, grades, stats, unitLocation } from "@/content/index.ts";
 
 const mapStrands: MapStrand[] = STRANDS.map(({ id, name, short }) => ({ id, name, short }));
 
@@ -148,7 +148,8 @@ export default function Home() {
         <p className="note">
           <b>2026학년도 기준.</b> 초1~초6·중1·중2·고1은 2022 개정 교육과정, 중3은 2015 개정 교육과정을
           적용합니다. 국가 교육과정은 학년군 성취기준 중심이라 학기별 단원 배열은 교과서·EBS 공개 목차를
-          대조한 실무 기준입니다. 학교와 출판사에 따라 순서가 다를 수 있습니다.{" "}
+          대조한 실무 기준이며, {REGION.name} 학교를 먼저 맞췄습니다. 갈리는 지점에는 어느 교과서가 어떻게
+          다른지 적어 두었습니다.{" "}
           <Link href="/guide">근거와 사용법 보기</Link>
         </p>
       </section>

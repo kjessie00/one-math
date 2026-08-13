@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { grades, stats } from "@/content/index.ts";
+import { REGION, REGION_TEXTBOOKS, REGION_UNKNOWN, grades, stats } from "@/content/index.ts";
 
 export const metadata: Metadata = {
   title: "사용법과 교육과정 근거",
@@ -136,6 +136,79 @@ export default function GuidePage() {
             </p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">기준 지역</p>
+            <h2>{REGION.name} 학교를 먼저 맞췄습니다</h2>
+          </div>
+          <p>
+            교육과정은 전국이 같지만, 실제 단원 순서는 학교가 고른 교과서를 따릅니다. 그래서 어느 지역을
+            기준으로 맞췄는지 밝혀 둡니다.
+          </p>
+        </div>
+
+        <div className="detail-grid">
+          <div className="detail-block">
+            <h3>왜 지역을 밝히나</h3>
+            <p>
+              2022 개정부터 초등 3~6학년 수학이 검정 교과서로 바뀌었습니다. 발행사마다 단원 순서와 이름이
+              달라서, &ldquo;몇 학기 몇 단원&rdquo;은 전국 공통 사실이 아닙니다. 이 지도는{" "}
+              {REGION.short} 학교를 기준으로 삼되, 다른 지역에서도 그대로 쓸 수 있게 갈리는 지점마다{" "}
+              <span className="mark mark--publisher">교과서별</span> 표시로 무엇이 어떻게 다른지 적어
+              두었습니다.
+            </p>
+          </div>
+          <div className="detail-block">
+            <h3>우리 학교 교과서 확인하는 법</h3>
+            <p>
+              전북 학교는 학교 누리집 공지사항에 교과용도서 선정 결과를 올립니다. 주소는{" "}
+              <code>school.jbedu.kr/학교코드</code> 형태이고, 공지사항에서 &lsquo;교과용도서 선정&rsquo;
+              으로 찾으면 됩니다. 학교운영위원회 심의를 거친 공식 목록이라 가장 정확합니다.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ marginTop: "1.5rem" }}>
+          <p className="label">공개 공고에서 확인한 채택 교과서</p>
+          <div className="unit-rows" style={{ marginTop: "0.5rem" }}>
+            {REGION_TEXTBOOKS.map((item) => (
+              <a
+                key={`${item.school}-${item.scope}`}
+                className="unit-row"
+                href={item.source}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <span className="unit-row__seq">{item.scope.slice(0, 3)}</span>
+                <span>
+                  <span className="unit-row__title">
+                    {item.scope} · {item.publisher}
+                  </span>
+                  <br />
+                  <span className="unit-row__goal">
+                    {item.school} 공고 ({item.checked} 확인)
+                    {item.note ? ` — ${item.note}` : ""}
+                  </span>
+                </span>
+                <span className="unit-row__go" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
+          <p className="note" style={{ marginTop: "1rem" }}>
+            <b>아직 확인하지 못한 것.</b> {REGION_UNKNOWN}
+          </p>
+        </div>
+
+        <p className="note" style={{ marginTop: "1rem" }}>
+          <b>{REGION.note}</b> 고등학교는 1학년 공통수학1·공통수학2까지만 다룹니다. 2·3학년 선택 과목(대수,
+          미적분Ⅰ, 확률과 통계, 기하 등)은 이 지도에 없습니다. {REGION.formerName}으로 찾으시는 분을 위해
+          덧붙이면, 2024년에 {REGION.name}으로 이름이 바뀌었습니다.
+        </p>
       </section>
 
       <section>
