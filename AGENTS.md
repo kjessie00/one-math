@@ -11,6 +11,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 이 저장소의 규칙
 
 ### 콘텐츠
+- **근거가 있는 것만 반영한다.** 계산으로 자명하거나(계산을 기록에 적는다), 인용 가능한 출처(고시 원문·교육청 자료·교과서 발행사 공개 목차·EBS 공개 목차)가 있을 때만 고친다. 그 밖의 "이 문장이 더 낫다"는 고치지 말고 `docs/검수-기록.md`에 기록만 한다. AI가 출처 없이 한 말은 근거가 아니다.
 - 교육 콘텐츠의 단일 원천은 `content/grades/*.ts` 하나다. 화면·검색·PDF·테스트가 모두 여기서만 읽는다.
 - `origin: "ported"` 단원의 title / goal / sameText / priorText / risk / teach / gate 문구는 **바꾸지 않는다.** 2026-08에 사람이 교육과정과 대조해 검토를 끝낸 문장이며 `tests/ported-content.test.ts` 가 지킨다. 이 단원에서 손댈 수 있는 것은 keywords, strand, prereq 뿐이다.
 - 단원 사이 연결은 서술이 아니라 단원 ID 참조(`prereq`)로 적는다. 선수개념은 반드시 **앞서 배우는** 단원이어야 한다.

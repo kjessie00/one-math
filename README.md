@@ -68,6 +68,8 @@ prereq: [
 
 ## 콘텐츠를 고칠 때
 
+**근거가 있는 것만 고칩니다.** 계산으로 자명하거나, 인용할 수 있는 출처가 있을 때만입니다. 그 밖의 제안은 [`docs/검수-기록.md`](docs/검수-기록.md)에 기록만 남깁니다. 무엇을 무슨 근거로 고쳤고 무엇을 왜 안 고쳤는지가 그 문서에 다 있습니다.
+
 1. `content/grades/<학년>.ts` 만 고칩니다.
 2. `npm run validate` 로 확인합니다. 한 학년만 볼 때는 `node --experimental-strip-types scripts/validate-content.ts --grade=e3`.
 3. `npm test` 로 이식 원문이 그대로인지 확인합니다.
