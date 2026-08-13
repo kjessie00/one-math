@@ -42,3 +42,4 @@ next-env.d.ts
 
 # 로컬 도구 산출물
 /.memsearch/
+.gstack/

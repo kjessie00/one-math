@@ -52,9 +52,30 @@ const CORRECTED: Record<string, { value: string; why: string }> = {
     value: "5이면 가로와 세로를 곱하지 않고 더했습니다.",
     why: "원문은 '5이면 둘레 계산과 혼동합니다.'였다. 가로 2·세로 3인 직사각형의 둘레는 2×(2+3)=10이라 5를 둘레로 설명할 수 없다. 5는 가로와 세로를 더한 값이다. 2026-08-13 독립 검토에서 발견해 고쳤다.",
   },
+  "e4.units.e4-s2-04.goal": {
+    value: "수직·평행을 이용해 여러 가지 사각형을 분류하고 성질을 탐구합니다.",
+    why: "원문은 '수직·평행을 이용해 여러 사각형의 포함 관계를 이해합니다.'였다. 교육부 고시 제2022-33호 [별책 8] 초3~4학년군 성취기준 적용 시 고려 사항이 '여러 가지 사각형의 성질은 구체적인 조작 활동을 통하여 간단한 것만 다루고, 여러 가지 사각형 사이의 관계는 다루지 않는다.'라고 명시적으로 배제한다. 포함 관계는 중2 [9수03-11]에서 다룬다. 2026-08-13 고시 원문(HWP) 대조로 확인해 성취기준 문구에 맞게 고쳤다.",
+  },
   "m2.units.m2-s2-05.gate.signal": {
     value: "12.5이면 넓이를 반으로 나눠 한 변을 구했습니다.",
     why: "원문은 '12.5이면 넓이와 둘레를 혼동합니다.'였다. 12.5는 25÷2이고, 둘레가 25라면 한 변은 6.25라서 둘레 혼동으로 설명할 수 없다. 같은 유형인 m3-s1-01 관문은 이 오답을 '넓이를 반으로 나눴다'로 바르게 설명한다. 2026-08-13 독립 검토에서 발견해 고쳤다.",
+  },
+};
+
+/**
+ * 문구는 그대로 두고 **붙어 있던 단원만 바꾼** 경우.
+ *
+ * 이식 원문의 문장을 고치는 것보다 훨씬 보수적인 수정이다. 한 글자도 다시 쓰지 않고,
+ * 어느 단원의 내용인지만 바로잡는다. 키는 "얼려 둔 스냅샷의 단원 ID", 값은 "지금 그 내용을 담고 있는 단원 ID".
+ */
+const RELOCATED: Record<string, { to: string; why: string }> = {
+  "e1-s2-04": {
+    to: "e1-s2-06",
+    why: "2022 개정 초1-2 교과서에서 4단원 ‘덧셈과 뺄셈(2)’는 받아올림·받아내림이 있는 (몇)+(몇)=(십몇)이고, 받아올림 없는 두 자리 수 계산은 6단원 ‘덧셈과 뺄셈(3)’이다. 이식본은 두 단원의 내용이 서로 바뀌어 있었다. EBS 만점왕 수학 1-2 공식 강좌 목차(2022개정)와 매쓰포올·학제소 차시 구성으로 확인했다. 초1~2 수학은 2022 개정에서도 국정이라 발행사별 차이는 없다. 2026-08-13 조사·반증 검토에서 발견해 문장은 그대로 두고 자리만 맞바꿨다.",
+  },
+  "e1-s2-06": {
+    to: "e1-s2-04",
+    why: "위 교환의 반대쪽이다. 이식본에서 6단원에 붙어 있던 '10 만들기로 받아올림·받아내림이 있는 계산'은 실제로는 4단원 내용이므로 4단원 자리로 옮겼다. 두 단원의 prereq와, 초2 '덧셈과 뺄셈'이 이 둘을 가리키던 이유 문장도 함께 맞바꿔 앞뒤가 어긋나지 않게 했다.",
   },
 };
 
@@ -74,11 +95,23 @@ test("이식한 2학기 단원 문구가 한 글자도 바뀌지 않았다", () 
     assert.ok(grade, `${gradeId} 학년이 사라졌습니다.`);
 
     for (const expectedUnit of expected.s2Units) {
-      const unit: Unit | undefined = grade.units.find((item) => item.id === expectedUnit.id);
+      // 자리를 옮긴 내용은 옮겨 간 단원에서 찾아 대조한다.
+      const relocation = RELOCATED[expectedUnit.id];
+      const liveId = relocation?.to ?? expectedUnit.id;
+      if (relocation) used.add(`relocated:${expectedUnit.id}`);
+
+      const unit: Unit | undefined = grade.units.find((item) => item.id === liveId);
       assert.ok(unit, `${expectedUnit.id}(${expectedUnit.title}) 단원이 사라졌습니다.`);
       assert.equal(unit.origin, "ported", `${unit.id}: origin이 ported가 아닙니다.`);
-      assert.equal(unit.title, expectedUnit.title, `${unit.id}: 단원명이 바뀌었습니다.`);
-      assert.equal(unit.goal, expectedUnit.goal, `${unit.id}: 목표 문장이 바뀌었습니다.`);
+      // 단원명은 자리(순번)에 붙어 있으므로 옮긴 경우에는 대조하지 않는다.
+      if (!relocation) {
+        assert.equal(unit.title, expectedUnit.title, `${unit.id}: 단원명이 바뀌었습니다.`);
+      }
+      assert.equal(
+        unit.goal,
+        expectedValue(`${gradeId}.units.${expectedUnit.id}.goal`, expectedUnit.goal),
+        `${unit.id}: 목표 문장이 바뀌었습니다.`,
+      );
       assert.equal(unit.sameText, expectedUnit.sameText, `${unit.id}: 같은 학년 선수개념 서술이 바뀌었습니다.`);
       assert.equal(unit.priorText, expectedUnit.priorText, `${unit.id}: 전 학년 선수개념 서술이 바뀌었습니다.`);
       assert.equal(unit.risk, expectedUnit.risk, `${unit.id}: 오답 신호 문장이 바뀌었습니다.`);
@@ -119,6 +152,11 @@ test("이식한 2학기 학기 계획이 그대로다", () => {
 test("기록해 둔 이식 원문 수정이 모두 실제로 쓰이고 있다", () => {
   const stale = Object.keys(CORRECTED).filter((key) => !used.has(key));
   assert.deepEqual(stale, [], "더 이상 적용되지 않는 수정 기록이 남아 있습니다.");
+  const staleMoves = Object.keys(RELOCATED).filter((key) => !used.has(`relocated:${key}`));
+  assert.deepEqual(staleMoves, [], "더 이상 적용되지 않는 이동 기록이 남아 있습니다.");
+  for (const [key, move] of Object.entries(RELOCATED)) {
+    assert.ok(move.why.length > 20, `${key}: 옮긴 이유가 너무 짧습니다.`);
+  }
   for (const [key, correction] of Object.entries(CORRECTED)) {
     assert.ok(correction.why.length > 20, `${key}: 수정 이유가 너무 짧습니다.`);
   }
