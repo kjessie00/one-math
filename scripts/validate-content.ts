@@ -169,12 +169,30 @@ for (const unit of skipLinks ? [] : allUnits) {
 }
 
 // 6. 흐름이 끊긴 단원 — 아무 데로도 이어지지 않는 중간 단원
+//
+// 아래는 초1~고1 범위 안에서 정말로 마지막인 자리다. 2026-08-13 연결 구조 검토에서
+// 하나씩 판정했고, 이어질 곳이 고2 이후에 있거나(삼각비 → 삼각함수) 이 범위에서
+// 후속 단원이 없다(행렬, 통계). 새로 늘어난 끊김만 눈에 띄게 하려고 여기서 뺀다.
+const TERMINAL_OK: Record<string, string> = {
+  "e6-s2-03": "공간과 입체는 초등 도형 감각의 마무리다. 중학 입체도형은 성질·계산으로 갈래가 갈린다.",
+  "m2-s2-04": "평행선 사이 선분 길이의 비는 닮음 활용의 마무리다.",
+  "m3-s2-01": "삼각비는 고2 삼각함수로 이어진다. 이 범위에는 후속이 없다.",
+  "m3-s2-03": "중3 통계는 고2 확률과 통계로 이어진다.",
+  "h1-s1-05": "경우의 수와 순열·조합은 고2 확률과 통계로 이어진다.",
+  "h1-s1-06": "행렬은 2022 개정에서 공통수학1이 마지막이다.",
+};
+
 const lastGradeStart = unitOrder(makeUnitId("h1", "s2", 1));
 for (const unit of skipLinks ? [] : allUnits) {
   if (unitOrder(unit.id) >= lastGradeStart) continue;
-  if (!linkedFrom.has(unit.id)) {
-    warn(`${unit.id}(${unit.title}): 이후 어떤 단원도 이 단원을 선수개념으로 쓰지 않습니다.`);
+  if (linkedFrom.has(unit.id)) {
+    if (TERMINAL_OK[unit.id]) {
+      warn(`${unit.id}(${unit.title}): 끝나는 자리로 적어 뒀는데 이제 뒤에서 씁니다. TERMINAL_OK에서 빼세요.`);
+    }
+    continue;
   }
+  if (TERMINAL_OK[unit.id]) continue;
+  warn(`${unit.id}(${unit.title}): 이후 어떤 단원도 이 단원을 선수개념으로 쓰지 않습니다.`);
 }
 
 // 7. 범위 회귀 검사 — 과거에 실제로 났던 오류를 다시 막는다

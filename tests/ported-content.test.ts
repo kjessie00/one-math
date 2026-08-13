@@ -48,6 +48,14 @@ const CORRECTED: Record<string, { value: string; why: string }> = {
     value: "14이면 두 직각변을 그대로 더했습니다.",
     why: "원문은 '14이면 세 변을 단순히 더했습니다.'였다. 6+8=14는 두 직각변의 합이고 세 변의 합은 24라서 설명이 맞지 않았다. 2026-08-13 독립 검토에서 발견해 고쳤다.",
   },
+  "m1.units.m1-s2-04.gate.signal": {
+    value: "5이면 가로와 세로를 곱하지 않고 더했습니다.",
+    why: "원문은 '5이면 둘레 계산과 혼동합니다.'였다. 가로 2·세로 3인 직사각형의 둘레는 2×(2+3)=10이라 5를 둘레로 설명할 수 없다. 5는 가로와 세로를 더한 값이다. 2026-08-13 독립 검토에서 발견해 고쳤다.",
+  },
+  "m2.units.m2-s2-05.gate.signal": {
+    value: "12.5이면 넓이를 반으로 나눠 한 변을 구했습니다.",
+    why: "원문은 '12.5이면 넓이와 둘레를 혼동합니다.'였다. 12.5는 25÷2이고, 둘레가 25라면 한 변은 6.25라서 둘레 혼동으로 설명할 수 없다. 같은 유형인 m3-s1-01 관문은 이 오답을 '넓이를 반으로 나눴다'로 바르게 설명한다. 2026-08-13 독립 검토에서 발견해 고쳤다.",
+  },
 };
 
 const used = new Set<string>();
@@ -75,7 +83,17 @@ test("이식한 2학기 단원 문구가 한 글자도 바뀌지 않았다", () 
       assert.equal(unit.priorText, expectedUnit.priorText, `${unit.id}: 전 학년 선수개념 서술이 바뀌었습니다.`);
       assert.equal(unit.risk, expectedUnit.risk, `${unit.id}: 오답 신호 문장이 바뀌었습니다.`);
       assert.equal(unit.teach, expectedUnit.teach, `${unit.id}: 교수법 문장이 바뀌었습니다.`);
-      assert.deepEqual(unit.gate, expectedUnit.gate, `${unit.id}: 관문 진단이 바뀌었습니다.`);
+      assert.deepEqual(
+        unit.gate,
+        {
+          ...expectedUnit.gate,
+          signal: expectedValue(
+            `${gradeId}.units.${expectedUnit.id}.gate.signal`,
+            expectedUnit.gate.signal,
+          ),
+        },
+        `${unit.id}: 관문 진단이 바뀌었습니다.`,
+      );
     }
   }
 });

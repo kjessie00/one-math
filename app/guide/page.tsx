@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const SOURCES = [
   {
     label: "2022 개정 교육과정 적용 일정",
-    href: "https://ncic.re.kr/bbs/eduNotice2022/view/543.do",
+    href: "https://ncic.go.kr/bbs/eduNotice2022/view/543.do",
     supports: "학년별 적용 연도. 2026학년도에 중3만 2015 개정이 남는 근거입니다.",
   },
   {
