@@ -7,7 +7,7 @@
  *
  * 실행: node --experimental-strip-types scripts/port-legacy-content.ts
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const LEGACY =
@@ -43,6 +43,22 @@ type LegacyGrade = {
   diagnostics: LegacyDiagnostic[];
   decision: string;
 };
+
+/**
+ * 안전장치. 이 스크립트는 2026-08-13에 한 번 돌리고 끝난 기록이다.
+ * 지금 다시 돌리면 1학기 단원과 선수개념 연결을 통째로 날린다.
+ */
+const alreadyExtended = existsSync(path.join(ROOT, "content/grades/e1.ts"))
+  ? readFileSync(path.join(ROOT, "content/grades/e1.ts"), "utf8").includes('origin: "new"')
+  : false;
+
+if (alreadyExtended && !process.argv.includes("--force")) {
+  console.error(
+    "content/grades 에 이미 새로 쓴 단원이 있습니다. 이 스크립트를 다시 돌리면 1학기 내용과 선수개념 연결이 사라집니다.\n" +
+      "정말 처음 상태로 되돌리려면 --force 를 붙이세요.",
+  );
+  process.exit(1);
+}
 
 const { grades } = (await import(LEGACY)) as { grades: LegacyGrade[] };
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="한 수학 지도">
+  <rect width="32" height="32" rx="7" fill="#151c2b"/>
+  <!-- 다섯 갈래가 학년을 가로지르는 레일. 지도의 축약형이다. -->
+  <g stroke-linecap="round" opacity="0.55">
+    <path d="M6 9h20" stroke="#79aeff" stroke-width="2"/>
+    <path d="M6 23h20" stroke="#f0a35c" stroke-width="2"/>
+  </g>
+  <path d="M6 16h20" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>
