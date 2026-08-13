@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "validate": "node --experimental-strip-types scripts/validate-content.ts",
+    "roster": "node --experimental-strip-types scripts/roster/build.ts",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "verify": "npm run lint && npm run typecheck && npm run validate && npm run build && npm test"
   },
