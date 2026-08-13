@@ -311,7 +311,7 @@ const grade: Grade = {
       gate: {
         question: "4:6=2:x일 때 x는?",
         answer: "3",
-        signal: "12이면 4×6을 먼저 계산하고 남은 2로 나누지 않았습니다.",
+        signal: "12이면 6×2까지만 계산하고 4로 나누지 않았습니다.",
         fix: "초6 비례식",
       },
       origin: "ported",

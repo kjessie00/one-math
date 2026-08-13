@@ -240,12 +240,26 @@ function gap(s){
   const a=GORDER.indexOf(u.grade), b=GORDER.indexOf(s.grade);
   return (a<0||b<0)?null:a-b;
 }
+/**
+ * 후행 보충. 제 학년 단원을 하면서 아래 학년 단원도 같이 잡고 있는 상태.
+ * frontier(가장 앞선 지점)만 보면 가려지는데, 실제로는 이쪽이 더 흔하다.
+ */
+function backfill(s){
+  const b=GORDER.indexOf(s.grade);
+  const gs=by(R.progress,s.id).filter(p=>p.state==='진행'||p.state==='완료')
+    .map(p=>GORDER.indexOf(UBY[p.unitId]?.grade)).filter(i=>i>=0);
+  if(!gs.length) return null;
+  const lo=Math.min(...gs);
+  return lo<b?b-lo:null;
+}
 function gapPill(s){
   const g=gap(s);
   if(g==null) return '<span class="gap mut">진도 미기록</span>';
+  const bf=backfill(s);
+  const extra=bf?`<span class="gap behind">${bf}학년 보충</span>`:'';
   if(g<0) return `<span class="gap behind">${-g}학년 후행</span>`;
-  if(g>0) return `<span class="gap ahead">${g}학년 선행</span>`;
-  return `<span class="gap on">제 학년</span>`;
+  if(g>0) return `<span class="gap ahead">${g}학년 선행</span>${extra}`;
+  return `<span class="gap on">제 학년</span>${extra}`;
 }
 function rate(rows,ok){return rows.length?Math.round(rows.filter(ok).length/rows.length*100):null}
 function gateRate(id){const g=by(R.gates,id);return rate(g,x=>x.pass)}
@@ -270,6 +284,7 @@ function renderKpis(){
   const L=live();
   const behind=L.filter(s=>{const g=gap(s);return g!=null&&g<0}).length;
   const ahead=L.filter(s=>{const g=gap(s);return g!=null&&g>0}).length;
+  const bfill=L.filter(s=>backfill(s)!=null).length;
   const inf=R.progress.filter(p=>p.inferred).length;
   const noProg=L.filter(s=>frontier(s.id)==null).length;
   const gr=rate(R.gates,x=>x.pass), hr=rate(R.sessions.filter(x=>x.homework!=='없음'),x=>x.homework==='완료');
@@ -277,6 +292,7 @@ function renderKpis(){
     ['재원 학생',L.length+'명',''],
     ['후행 진도',behind+'명','제 학년보다 아래 단원'],
     ['선행 진도',ahead+'명','제 학년보다 위 단원'],
+    ['후행 보충 중',bfill+'명','아래 학년 단원 병행'],
     ['진도 미기록',noProg+'명','단원 연결 필요'],
     ['확인 대기 추정',inf+'건','자동 매칭된 진도'],
     ['관문 통과율',gr==null?'—':gr+'%',`기록 ${R.gates.length}건`],
@@ -326,7 +342,7 @@ function paneOverview(s){
   const as=by(R.assessments,s.id).slice().sort((a,b)=>a.at.localeCompare(b.at));
   document.getElementById('pane').innerHTML=`
     <div class="kpis" style="margin-bottom:14px">
-      <div class="kpi"><div class="n">${g==null?'—':g===0?'제 학년':(g<0?-g+'학년 후행':g+'학년 선행')}</div><div class="l">진도 학년 ${fu?'· '+esc(fu.gradeLabel):''}</div></div>
+      <div class="kpi"><div class="n">${g==null?'—':g===0?'제 학년':(g<0?-g+'학년 후행':g+'학년 선행')}</div><div class="l">진도 학년 ${fu?'· '+esc(fu.gradeLabel):''}${backfill(s)?' · '+backfill(s)+'학년 보충 병행':''}</div></div>
       <div class="kpi"><div class="n">${gr==null?'—':gr+'%'}</div><div class="l">관문 통과율 · ${by(R.gates,s.id).length}건</div></div>
       <div class="kpi"><div class="n">${hr==null?'—':hr+'%'}</div><div class="l">숙제 수행률 · ${by(R.sessions,s.id).length}회</div></div>
       <div class="kpi"><div class="n">${sa==null?'—':sa+'%'}</div><div class="l">평가 평균 · ${as.length}회</div></div>
@@ -451,7 +467,7 @@ function paneGate(s){
   const failed=[...new Set(gs.filter(g=>!g.pass).map(g=>g.unitId))];
   const chainOf=id=>{
     const out=[]; let cur=[id]; const seen=new Set([id]);
-    for(let d=1;d<=3;d++){
+    for(let d=1;d<=2;d++){
       const next=cur.flatMap(x=>(UBY[x]?.prereq||[]).map(p=>p.id)).filter(x=>UBY[x]&&!seen.has(x));
       if(!next.length)break; next.forEach(x=>seen.add(x)); out.push(next); cur=next;
     }
@@ -462,7 +478,8 @@ function paneGate(s){
       ${failed.map(f=>`<div style="margin-bottom:12px">
         <span class="pill no">${esc(UBY[f]?.title||f)}</span>
         <div class="chain">${chainOf(f).map((lv,i)=>`<div class="lv"><span class="d">${i+1}단계 뒤</span>
-          ${lv.map(x=>`<span class="u">${esc(UBY[x].title)}</span>`).join('')}</div>`).join('')||'<p class="sub mut">등록된 선수개념이 없습니다.</p>'}</div>
+          ${lv.slice(0,10).map(x=>`<span class="u">${esc(UBY[x].title)} <span class="mut">${esc(UBY[x].gradeLabel)}</span></span>`).join('')}
+          ${lv.length>10?`<span class="mut" style="font-size:.78rem">외 ${lv.length-10}개</span>`:''}</div>`).join('')||'<p class="sub mut">등록된 선수개념이 없습니다.</p>'}</div>
       </div>`).join('')}`:''}
     <div class="tbl"><table><thead><tr><th class="n">날짜</th><th>단원</th><th>결과</th><th>메모</th><th></th></tr></thead>
     <tbody>${gs.map(g=>`<tr><td class="n">${esc(g.at)}</td>
