@@ -113,9 +113,29 @@ export default function GuidePage() {
         <p className="note" style={{ marginTop: "1rem" }}>
           <b>학기 배열은 실무 기준입니다.</b> 국가 교육과정은 학년군 성취기준 중심이라 &ldquo;몇 학기에 어떤
           단원&rdquo;이 문서에 그대로 적혀 있지 않습니다. 이 지도의 학기 배열은 교과서와 EBS 공개 목차를
-          대조해 정리한 것이며, 학교와 출판사에 따라 순서가 달라질 수 있습니다. 단원에 &lsquo;확인&rsquo;
-          표시가 붙어 있으면 아직 근거가 확정되지 않은 항목입니다.
+          대조해 정리한 것입니다.
         </p>
+        <div className="detail-grid" style={{ marginTop: "1rem" }}>
+          <div className="detail-block">
+            <h3>
+              <span className="mark mark--publisher">교과서별</span> 교과서에 따라 다릅니다
+            </h3>
+            <p>
+              사실이 하나가 아니라는 뜻입니다. 2022 개정부터 초3~초6 수학이 검정 교과서로 바뀌어 단원 순서와
+              이름이 발행사마다 갈립니다. 무엇이 어떻게 다른지 학년·단원 화면에 적어 두었으니, 쓰시는 교과서
+              목차와 대조해 보세요.
+            </p>
+          </div>
+          <div className="detail-block">
+            <h3>
+              <span className="mark mark--check">확인</span> 아직 확정하지 못했습니다
+            </h3>
+            <p>
+              1차 자료로 근거를 확인하지 못한 항목입니다. 추측으로 메우지 않고 확인이 안 됐다고 표시해
+              둡니다. 근거를 찾으면 표시를 지웁니다.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section>

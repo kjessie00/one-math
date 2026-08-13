@@ -80,6 +80,9 @@ function checkTerm(grade: Grade, term: TermId) {
   }
   if (plan.focus.some((item) => !item.trim())) fail(`${where}: 빈 최우선 선수개념이 있습니다.`);
   if (plan.decision.trim().length < 10) fail(`${where}: 판정 메모가 비었습니다.`);
+  if (plan.publisherNote && plan.publisherNote.trim().length < 20) {
+    fail(`${where}: 발행사 안내가 너무 짧습니다.`);
+  }
 
   const kinds = new Set(plan.diagnostics.map((item) => item.kind));
   for (const kind of ["기초", "연결", "설명"] as const) {
@@ -138,6 +141,9 @@ for (const unit of scopedUnits) {
   }
   if (unit.keywords.length < 2) fail(`${at}: 검색 핵심어가 ${unit.keywords.length}개입니다. 2개 이상 필요합니다.`);
   if (unit.needsCheck) warn(`${at}: 확인 필요 — ${unit.needsCheck}`);
+  if (unit.publisherNote && unit.publisherNote.trim().length < 20) {
+    fail(`${at}: 발행사 안내가 너무 짧습니다. 무엇이 어떻게 다른지 구체적으로 적어야 합니다.`);
+  }
 }
 
 // 5. 연결(그래프) 검사 — 이 프로젝트의 핵심
@@ -228,8 +234,15 @@ const counts = {
   학년: scopedGrades.length,
   단원: scopedUnits.length,
   연결: scopedUnits.reduce((sum: number, unit: Unit) => sum + unit.prereq.length, 0),
+  확인필요: scopedUnits.filter((unit: Unit) => unit.needsCheck).length,
+  발행사안내:
+    scopedUnits.filter((unit: Unit) => unit.publisherNote).length +
+    scopedGrades.flatMap((grade) => TERMS.map((term) => grade.terms[term])).filter(
+      (plan) => plan.publisherNote,
+    ).length,
 };
 console.log(`검사 대상 — 학년 ${counts.학년}개 · 단원 ${counts.단원}개 · 연결 ${counts.연결}개`);
+console.log(`확인 필요 ${counts.확인필요}건 · 발행사 안내 ${counts.발행사안내}건`);
 
 if (warnings.length) {
   console.log(`\n주의 ${warnings.length}건`);

@@ -44,6 +44,12 @@ function TermBlock({ grade, term, plan }: { grade: Grade; term: TermId; plan: Te
 
       <p className="prose">{plan.summary}</p>
 
+      {plan.publisherNote ? (
+        <p className="note note--publisher" style={{ marginTop: "1rem" }}>
+          <b>교과서에 따라 다릅니다.</b> {plan.publisherNote}
+        </p>
+      ) : null}
+
       <div className="detail-grid" style={{ marginTop: "1.25rem" }}>
         <div className="detail-block">
           <h3>시작 전 최우선 3개</h3>
@@ -76,8 +82,12 @@ function TermBlock({ grade, term, plan }: { grade: Grade; term: TermId; plan: Te
               <br />
               <span className="unit-row__goal">{unit.goal}</span>
             </span>
-            <span className="strand-badge" style={strandStyle(unit.strand)}>
-              {STRAND_BY_ID[unit.strand].short}
+            <span className="unit-row__marks">
+              {unit.publisherNote ? <span className="mark mark--publisher">교과서별</span> : null}
+              {unit.needsCheck ? <span className="mark mark--check">확인</span> : null}
+              <span className="strand-badge" style={strandStyle(unit.strand)}>
+                {STRAND_BY_ID[unit.strand].short}
+              </span>
             </span>
           </Link>
         ))}

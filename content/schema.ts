@@ -83,8 +83,17 @@ export type Unit = {
   gate: Gate;
   /** ported = 2026-08 검토 완료본에서 문구 그대로 이식, new = 이번에 새로 작성 */
   origin: "ported" | "new";
-  /** 교육과정 근거가 확정되지 않은 항목에만 사유를 적는다. */
+  /**
+   * 교육과정 근거를 **아직 확정하지 못한** 항목에만 사유를 적는다.
+   * 조사로 답이 나오면 지운다. 화면에는 '확인' 배지로 나간다.
+   */
   needsCheck?: string;
+  /**
+   * 발행사에 따라 실제로 다른 것이 **확정된** 경우의 안내.
+   * 불확실해서가 아니라 사실이 하나가 아니어서 적는 것이므로 needsCheck 와 섞지 않는다.
+   * 무엇이 어떻게 다른지 구체적으로 쓴다. (예: 단원명이 '직육면체'와 '직육면체와 정육면체'로 갈린다)
+   */
+  publisherNote?: string;
 };
 
 export type TermPlan = {
@@ -99,6 +108,11 @@ export type TermPlan = {
   diagnostics: Diagnostic[];
   /** 바로 진도 / 짧은 보충 / 집중 보충 판정 메모 */
   decision: string;
+  /**
+   * 이 학기 전체에 걸리는 발행사별 차이. 검정 교과서라 단원 순서가 갈리는 경우가 여기 온다.
+   * 단원마다 같은 말을 반복하지 않고 학기에 한 번만 적는다.
+   */
+  publisherNote?: string;
 };
 
 export type Grade = {

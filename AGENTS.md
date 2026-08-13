@@ -15,6 +15,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - `origin: "ported"` 단원의 title / goal / sameText / priorText / risk / teach / gate 문구는 **바꾸지 않는다.** 2026-08에 사람이 교육과정과 대조해 검토를 끝낸 문장이며 `tests/ported-content.test.ts` 가 지킨다. 이 단원에서 손댈 수 있는 것은 keywords, strand, prereq 뿐이다.
 - 단원 사이 연결은 서술이 아니라 단원 ID 참조(`prereq`)로 적는다. 선수개념은 반드시 **앞서 배우는** 단원이어야 한다.
 - 콘텐츠를 고쳤으면 `npm run validate` 를 돌린다. 한 학년만 볼 때는 `--grade=e3`.
+- 불확실한 것과 원래 여러 가지인 것을 섞지 않는다.
+  - `needsCheck`: 근거를 **아직 못 찾았다.** 화면에 '확인'으로 나간다. 조사로 답이 나오면 지운다.
+  - `publisherNote`: 발행사마다 다른 것이 **확정됐다.** 화면에 '교과서별'로 나간다. 무엇이 어떻게 다른지 구체적으로 쓴다. 학기 전체에 걸리면 TermPlan 에, 그 단원만이면 Unit 에 단다.
+  - 둘 다 추측으로 채우지 않는다. 근거 없이 표시를 지우는 것이 가장 나쁘다.
 
 ### 교육과정 사실 (2026학년도)
 - 초1~초6·중1·중2·고1은 2022 개정, **중3만 2015 개정**.

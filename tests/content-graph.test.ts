@@ -136,6 +136,45 @@ test("제외하기로 한 고정 수업 운영안이 다시 들어오지 않았�
   }
 });
 
+test("‘확인 필요’와 ‘교과서에 따라 다름’이 섞이지 않는다", () => {
+  for (const unit of allUnits) {
+    if (unit.publisherNote) {
+      assert.ok(
+        unit.publisherNote.trim().length >= 20,
+        `${unit.id}: 발행사 안내가 무엇이 어떻게 다른지 말해 주지 않습니다.`,
+      );
+      assert.ok(
+        !unit.publisherNote.includes("확인 필요"),
+        `${unit.id}: 발행사 안내에 '확인 필요'가 섞여 있습니다. 둘은 다른 뜻입니다.`,
+      );
+    }
+    if (unit.needsCheck) {
+      assert.ok(
+        unit.needsCheck.trim().length >= 20,
+        `${unit.id}: 확인 필요 사유가 너무 짧습니다.`,
+      );
+    }
+  }
+  for (const grade of grades) {
+    for (const term of ["s1", "s2"] as const) {
+      const note = grade.terms[term].publisherNote;
+      if (note) assert.ok(note.trim().length >= 20, `${grade.label} ${term}: 발행사 안내가 짧습니다.`);
+    }
+  }
+});
+
+test("검정 교과서 학년에는 발행사 안내가 있다", () => {
+  // 2022 개정부터 초3~초6은 검정 교과서라 발행사별 차이를 반드시 알려야 한다.
+  const noted = new Set<string>();
+  for (const grade of grades) {
+    for (const term of ["s1", "s2"] as const) {
+      if (grade.terms[term].publisherNote) noted.add(grade.id);
+    }
+  }
+  for (const unit of allUnits) if (unit.publisherNote) noted.add(unit.grade);
+  assert.ok(noted.has("e3"), "초3에 발행사별 안내가 없습니다.");
+});
+
 test("모든 영역에 단원이 하나 이상 있다", () => {
   for (const strand of STRANDS) {
     const count = allUnits.filter((unit) => unit.strand === strand.id).length;

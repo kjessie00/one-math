@@ -45,6 +45,16 @@ test("첫 화면 HTML에 지도와 학년이 실제로 들어 있다", { skip: !
   }
 });
 
+test("발행사별 안내가 화면에 실제로 나온다", { skip: !built && "빌드 결과물 없음" }, () => {
+  const html = readFileSync(page("grade", "e3"), "utf8");
+  assert.ok(html.includes("교과서에 따라 다릅니다"), "초3 학년 화면에 발행사 안내가 없습니다.");
+  assert.ok(html.includes("검정 교과서 10종"), "무엇이 다른지 설명이 없습니다.");
+
+  const guide = readFileSync(page("guide"), "utf8");
+  assert.ok(guide.includes("교과서별"), "안내 페이지에 '교과서별' 표시 설명이 없습니다.");
+  assert.ok(guide.includes("아직 확정하지 못했습니다"), "안내 페이지에 '확인' 표시 설명이 없습니다.");
+});
+
 test("단원 페이지에 목표·교수법·관문이 서버에서 이미 그려져 있다", { skip: !built && "빌드 결과물 없음" }, () => {
   const unit = allUnits[allUnits.length - 1];
   const html = readFileSync(page("unit", unit.id), "utf8");

@@ -59,6 +59,11 @@ export default async function UnitPage({ params }: Params) {
         <p className="eyebrow mono">{unit.id}</p>
         <h1>{unit.title}</h1>
         <p className="unit-head__goal">{unit.goal}</p>
+        {unit.publisherNote ? (
+          <p className="note note--publisher" style={{ marginTop: "1rem" }}>
+            <b>교과서에 따라 다릅니다.</b> {unit.publisherNote}
+          </p>
+        ) : null}
         {unit.needsCheck ? (
           <p className="note" style={{ marginTop: "1rem" }}>
             <b>확인 필요.</b> {unit.needsCheck}

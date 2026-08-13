@@ -16,6 +16,7 @@ export type MapUnit = {
   location: string;
   /** 선수개념 단원 ID만 넘긴다. 이유 문장은 단원 상세에서 읽는다. */
   prereq: string[];
+  /** 근거를 아직 확정하지 못한 단원에만 붙는다. 지도에서 '확인' 표시로 나간다. */
   needsCheck?: string;
 };
 
