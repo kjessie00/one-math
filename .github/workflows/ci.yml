@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      # 단계별로 나눠 두어야 실패한 자리가 바로 보인다.
+      - name: 린트
+        run: npm run lint
+
+      - name: 타입 검사
+        run: npm run typecheck
+
+      - name: 콘텐츠 무결성 검사
+        run: npm run validate
+
+      - name: 정적 사이트 빌드
+        run: npm run build
+
+      - name: 테스트
+        run: npm test

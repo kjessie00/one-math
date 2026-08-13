@@ -1,0 +1,33 @@
+{
+  "name": "one-math",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "validate": "node --experimental-strip-types scripts/validate-content.ts",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "verify": "npm run lint && npm run typecheck && npm run validate && npm run build && npm test"
+  },
+  "dependencies": {
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.0",
+    "typescript": "^5"
+  },
+  "type": "module",
+  "description": "초1~고1 수학 전체 흐름을 한 장으로 보는 연결 지도",
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

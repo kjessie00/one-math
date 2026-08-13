@@ -1,0 +1,196 @@
+/**
+ * 한 수학 지도(one-math) 콘텐츠 스키마
+ *
+ * 설계 원칙
+ * 1. 모든 교육 콘텐츠는 이 파일의 타입을 따르는 단일 원천(content/grades/*.ts)에서만 나온다.
+ * 2. 단원 사이의 연결은 자유 서술이 아니라 단원 ID 참조(`prereq`)로 표현한다.
+ *    → 끊어진 연결을 테스트로 잡을 수 있고, 화면에서 흐름을 자동으로 그릴 수 있다.
+ * 3. 기존에 검토가 끝난 2학기 콘텐츠는 문구를 바꾸지 않고 그대로 옮긴다.
+ */
+
+/** 내용 영역. 초·중은 2022 개정 4개 영역을 따르고, 고1 집합·명제 계열을 위해 `log`를 더한다. */
+export type StrandId = "num" | "rel" | "geo" | "dat" | "log";
+
+export type GradeId =
+  | "e1"
+  | "e2"
+  | "e3"
+  | "e4"
+  | "e5"
+  | "e6"
+  | "m1"
+  | "m2"
+  | "m3"
+  | "h1";
+
+export type TermId = "s1" | "s2";
+
+export type School = "초등" | "중등" | "고등";
+
+/** 30초 관문 진단: 이 단원을 시작해도 되는지 한 문제로 확인한다. */
+export type Gate = {
+  question: string;
+  answer: string;
+  /** 대표 오답과 그 오답이 뜻하는 것 */
+  signal: string;
+  /** 틀렸을 때 돌아갈 곳 (사람이 읽는 문장) */
+  fix: string;
+};
+
+/** 학기 단위 미니 진단(20~30분) 문항 */
+export type Diagnostic = {
+  kind: "기초" | "연결" | "설명";
+  question: string;
+  answer: string;
+  signal: string;
+  fix: string;
+};
+
+/**
+ * 선수개념 연결.
+ * `id`는 반드시 실제 존재하는 단원 ID여야 한다(테스트로 강제).
+ * `why`는 "왜 이게 먼저 필요한가"를 한 문장으로 설명한다.
+ */
+export type PrereqLink = {
+  id: UnitId;
+  why: string;
+};
+
+export type UnitId = string;
+
+export type Unit = {
+  /** `{gradeId}-{termId}-{2자리 순번}` 예: "e1-s2-01", "h1-s2-03" */
+  id: UnitId;
+  grade: GradeId;
+  term: TermId;
+  seq: number;
+  strand: StrandId;
+  title: string;
+  /** 이 단원에서 학생이 할 수 있게 되는 것, 한 문장 */
+  goal: string;
+  /** 검색과 연결 확인용 핵심어 */
+  keywords: string[];
+  /** 구조적 연결: 먼저 서 있어야 하는 단원들 */
+  prereq: PrereqLink[];
+  /** 같은 학년 앞 학기 선수개념 서술(이식 원문 보존용) */
+  sameText?: string;
+  /** 전 학년 선수개념 서술(이식 원문 보존용) */
+  priorText?: string;
+  /** 막혔을 때 겉으로 보이는 신호 */
+  risk: string;
+  /** 구체물·그림 → 학생의 말 → 식·기호 순서의 교수법 */
+  teach: string;
+  gate: Gate;
+  /** ported = 2026-08 검토 완료본에서 문구 그대로 이식, new = 이번에 새로 작성 */
+  origin: "ported" | "new";
+  /** 교육과정 근거가 확정되지 않은 항목에만 사유를 적는다. */
+  needsCheck?: string;
+};
+
+export type TermPlan = {
+  grade: GradeId;
+  term: TermId;
+  /** 고1처럼 학기별 과목명이 있는 경우 (예: "공통수학1") */
+  book?: string;
+  /** 이 학기 수학의 핵심 한 문장 */
+  summary: string;
+  /** 학기를 시작하기 전 최우선 선수개념 3개 */
+  focus: string[];
+  diagnostics: Diagnostic[];
+  /** 바로 진도 / 짧은 보충 / 집중 보충 판정 메모 */
+  decision: string;
+};
+
+export type Grade = {
+  id: GradeId;
+  school: School;
+  /** 화면에 쓰는 짧은 이름 예: "초1" */
+  label: string;
+  /** 읽기용 전체 이름 예: "초등학교 1학년" */
+  fullLabel: string;
+  /** 2026학년도 기준 적용 교육과정 */
+  curriculum: string;
+  terms: Record<TermId, TermPlan>;
+  units: Unit[];
+};
+
+export type Strand = {
+  id: StrandId;
+  /** 교육과정 영역명 */
+  name: string;
+  /** 좁은 화면·지도 축에서 쓰는 2~3글자 */
+  short: string;
+  /** 이 축이 초1에서 고1까지 무엇을 키우는지 */
+  description: string;
+};
+
+export const TERM_LABEL: Record<TermId, string> = {
+  s1: "1학기",
+  s2: "2학기",
+};
+
+export const GRADE_ORDER: GradeId[] = [
+  "e1",
+  "e2",
+  "e3",
+  "e4",
+  "e5",
+  "e6",
+  "m1",
+  "m2",
+  "m3",
+  "h1",
+];
+
+export const STRANDS: Strand[] = [
+  {
+    id: "num",
+    name: "수와 연산",
+    short: "수",
+    description:
+      "묶어 세기에서 자릿값, 분수와 소수, 음수와 무리수, 다항식까지 '수를 다루는 방법'이 넓어지는 축입니다.",
+  },
+  {
+    id: "rel",
+    name: "변화와 관계",
+    short: "관계",
+    description:
+      "규칙 찾기에서 비와 비율, 문자와 식, 방정식, 함수와 그래프까지 '두 양이 함께 변하는 방식'을 다루는 축입니다.",
+  },
+  {
+    id: "geo",
+    name: "도형과 측정",
+    short: "도형",
+    description:
+      "모양 알아보기에서 길이·넓이·부피, 합동과 닮음, 좌표를 쓴 도형의 방정식까지 '공간을 재고 설명하는 방법'의 축입니다.",
+  },
+  {
+    id: "dat",
+    name: "자료와 가능성",
+    short: "자료",
+    description:
+      "분류하기와 표에서 그래프, 평균, 가능성과 확률, 경우의 수까지 '자료를 읽고 불확실한 것을 다루는 방법'의 축입니다.",
+  },
+  {
+    id: "log",
+    name: "논리와 집합",
+    short: "논리",
+    description:
+      "같은 것끼리 모으기와 성질 설명하기에서 증명, 집합과 명제까지 '왜 그런지 밝히는 말하기 방식'의 축입니다.",
+  },
+];
+
+export const STRAND_BY_ID: Record<StrandId, Strand> = Object.fromEntries(
+  STRANDS.map((strand) => [strand.id, strand]),
+) as Record<StrandId, Strand>;
+
+/** 단원 ID를 만드는 유일한 통로. 형식이 흔들리지 않게 여기서만 조립한다. */
+export function makeUnitId(grade: GradeId, term: TermId, seq: number): UnitId {
+  return `${grade}-${term}-${String(seq).padStart(2, "0")}`;
+}
+
+const UNIT_ID_PATTERN = /^(e[1-6]|m[1-3]|h1)-(s1|s2)-\d{2}$/;
+
+export function isUnitId(value: string): boolean {
+  return UNIT_ID_PATTERN.test(value);
+}
