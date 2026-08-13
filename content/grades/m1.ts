@@ -62,7 +62,7 @@ const grade: Grade = {
         kind: "기초",
         question: "2x+3=11을 푸세요.",
         answer: "x=4",
-        signal: "x=7이면 3을 옮긴 뒤 2로 나누지 않았습니다.",
+        signal: "x=7이면 3을 옮기며 부호를 바꾸지 않아 2x=14로 보았습니다.",
         fix: "1학기 일차방정식",
       },
       {
