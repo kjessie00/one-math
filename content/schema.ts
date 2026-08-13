@@ -176,6 +176,7 @@ export const REGION_TEXTBOOKS: RegionTextbook[] = [
     publisher: "동아출판",
     checked: "2026-08-13",
     source: "https://school.jbedu.kr/gimje/M010301/view/6852923",
+    note: "2026년 7월 14일자 ‘2026학년도 전 학년 교과용 도서 출판사 안내’ 공고입니다.",
   },
   {
     school: "김제중학교",
@@ -199,7 +200,7 @@ export const REGION_TEXTBOOKS: RegionTextbook[] = [
     publisher: "㈜천재교과서(전)",
     checked: "2026-08-13",
     source: "https://school.jbedu.kr/gimje-h/M010301/view/6117884",
-    note: "선정 목록의 1순위입니다. 2순위 ㈜미래엔(황), 3순위 ㈜비상교육(김).",
+    note: "2024년 10월 15일자 ‘2022개정교육과정 교과용도서 선정 결과’ 공고이며 2025학년도부터 적용된 선정입니다. 선정 목록의 1순위이고, 2순위 ㈜미래엔(황), 3순위 ㈜비상교육(김)입니다.",
   },
 ];
 

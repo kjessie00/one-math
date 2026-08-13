@@ -16,7 +16,8 @@
   --ink: #151c2b;
   --ink-strong: #0b1120;
   --ink-muted: #5a6479;
-  --ink-faint: #8b93a5;
+  /* 10~12px 라벨에 쓰이므로 흰 카드·모눈 배경·연한 칩 어디에서도 4.5:1을 넘겨야 한다. */
+  --ink-faint: #636975;
 
   --focus: #0b5fff;
 
@@ -59,7 +60,7 @@
     --ink: #e6e9f0;
     --ink-strong: #f6f8fb;
     --ink-muted: #9aa4b8;
-    --ink-faint: #6f7a8d;
+    --ink-faint: #8891a1;
 
     --focus: #6ea3ff;
 
@@ -595,10 +596,12 @@ button {
 }
 
 /* 학년을 가로지르는 레일. 칸이 비어도 줄기는 끊기지 않는다. */
+/* 왼쪽으로만 1px 물려 칸 사이 경계를 잇는다.
+   오른쪽까지 물리면 마지막 칸에서 격자 폭을 1px 넘겨 유령 스크롤바가 생긴다. */
 .map__cell::before {
   content: "";
   position: absolute;
-  inset-inline: -1px;
+  inset-inline: -1px 0;
   top: 1.6rem;
   height: 2px;
   background: color-mix(in srgb, var(--lane-color) 22%, transparent);
