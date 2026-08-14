@@ -9,7 +9,9 @@
  * 1. **목차는 실제로 긁은 그대로 적는다.** 요약하거나 다듬지 않는다. 출처 URL을 반드시 남긴다.
  * 2. 단원 연결(`unitId`)은 제목이 맞아떨어질 때만 건다. 억지로 맞추지 않는다.
  *    맞는 단원이 없으면 `null`로 두고 "이 교재에만 있는 장"으로 보여 준다.
- * 3. 교재의 구성·특징은 **출판사가 스스로 밝힌 설명**만 쓴다. 커뮤니티 후기는 쓰지 않는다.
+ * 3. 교재의 구성·특징(`structure`·`publisherNote`)은 **출판사가 스스로 밝힌 설명**만 쓴다.
+ * 4. 쓰는 사람들의 평(`readerNote`)은 출판사 말과 **칸을 나눠** 적고, 화면에도 나눠 보여 준다.
+ *    여러 곳에서 되풀이되는 말만, 몇 곳에서 봤는지와 함께 남긴다.
  *    (`docs/검수-기록.md`의 근거 기준을 그대로 따른다.)
  */
 import type { GradeId, TermId, UnitId } from "./schema.ts";
@@ -33,6 +35,24 @@ export type Book = {
   publisherNote?: string;
   /** 이 교재를 어떤 학생에게 권할 수 있는지. 출판사 설명 범위 안에서만 적는다. */
   fitFor?: string;
+  /**
+   * **쓰는 사람들이 되풀이해 하는 말.** 출판사 말이 아니다.
+   *
+   * 출판사는 자기 책을 나쁘게 말하지 않으므로, 이것만으로는 "나에게 맞는 책인가"에
+   * 답할 수 없다. 그래서 학습 커뮤니티·후기에서 **여러 곳이 같은 말을 할 때만** 옮긴다.
+   * 화면에서도 출판사 설명과 칸을 나눠 보여 준다. 섞으면 둘 다 못 믿게 된다.
+   */
+  readerNote?: ReaderNote;
+};
+
+/** 쓰는 사람들의 평. 한 곳의 후기는 근거가 아니다. */
+export type ReaderNote = {
+  /** 되풀이되는 말. 한두 문장. */
+  says: string;
+  /** 갈리는 평이 있으면 그대로 적는다. 억지로 하나로 만들지 않는다. */
+  disputed?: string;
+  /** 같은 말을 본 곳의 수. 셋 미만이면 싣지 않는다. */
+  sources: number;
 };
 
 /** 교재 한 권(학기 단위)의 목차 한 줄. */
@@ -68,6 +88,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "A·B·C 3단계 난이도, B단계는 하·중·상으로 세분",
     publisherNote: "전국 중학교 학교 시험 기출을 유형별로 총정리했다고 소개합니다.",
+    readerNote: {
+      says: "중등 유형서의 기준점. 사람들이 '쎈 수준'이라고 하면 보통 B단계를 말합니다. 유형이 거의 다 들어 있다는 칭찬과, 문제 수가 많고 B에서 C로 난이도 점프가 크다는 불만이 함께 나옵니다.",
+      disputed: "C를 심화 입문으로 보는 쪽과, 건너뛰고 심화서로 가라는 쪽이 갈립니다.",
+      sources: 5,
+    },
   },
   {
     id: "ssen-high",
@@ -77,6 +102,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "A·B·C 3단계 난이도",
     publisherNote: "학교 시험 출제 유형을 유형별로 정리한 문제 기본서로 소개합니다.",
+    readerNote: {
+      says: "고등 유형서의 기준점. A는 교과서 수준, B가 핵심, C는 학평 준킬러급으로 크게 뜁니다. 중등 쎈을 생각하고 사면 놀란다는 말이 반복됩니다.",
+      disputed: "C를 꼭 풀어야 하는지에서 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "rpm-mid",
@@ -85,6 +115,11 @@ export const BOOKS: Book[] = [
     level: "중등",
     role: "유형",
     structure: "유형별 문제 구성",
+    readerNote: {
+      says: "쎈과 같은 자리의 유형서입니다. 다음 단계가 아니라 경쟁작이라, 둘 다 하지 말고 하나만 여러 번 풀라는 말이 반복됩니다. 개념원리와 페이지가 이어져 짝으로 쓰기 좋다고 합니다.",
+      disputed: "중등에서 쎈과 거의 같다고 보는 쪽과, 체감 정답률은 쎈이 더 낮다고 보는 쪽이 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "rpm-high",
@@ -93,6 +128,11 @@ export const BOOKS: Book[] = [
     level: "고등",
     role: "유형",
     structure: "유형별 문제 구성",
+    readerNote: {
+      says: "라이트쎈과 쎈 사이. 개념원리와 짝으로 많이 씁니다. 유형 가이드가 본문에 있어 기본기를 빠르게 쌓기 좋다는 칭찬과, 심화·킬러가 부족하다는 불만이 함께 나옵니다.",
+      disputed: "쎈과 어느 쪽이 나은지는 취향 차이라는 말이 많습니다.",
+      sources: 4,
+    },
   },
   {
     id: "gnw-mid",
@@ -102,6 +142,11 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "개념 설명과 예제 중심",
     publisherNote: "개념의 원리를 설명하는 기본서로 소개합니다.",
+    readerNote: {
+      says: "개념서. 학원·과외에서 오래 쓴 책이고 RPM과 짝으로 많이 씁니다. 연습문제만으로는 양이 부족해 유형서를 따로 산다는 말이 반복됩니다.",
+      disputed: "혼자 읽어서 개념이 잡히느냐에서 갈립니다. 학원용으로 강하다는 데는 이견이 적습니다.",
+      sources: 4,
+    },
   },
   {
     id: "gnw-high",
@@ -110,6 +155,11 @@ export const BOOKS: Book[] = [
     level: "고등",
     role: "개념",
     structure: "개념 설명과 예제 중심",
+    readerNote: {
+      says: "고등 첫 개념서로 학원·과외에서 많이 씁니다. 정석보다 쉽다는 말과, 설명이 짧아 혼자 읽기에는 불친절하다는 말이 함께 나옵니다. 다음은 보통 RPM입니다.",
+      disputed: "짧은 설명을 군더더기 없다고 보는 쪽과 혼자서는 이해가 안 된다고 보는 쪽이 갈립니다.",
+      sources: 3,
+    },
   },
   {
     id: "didim-basic",
@@ -119,6 +169,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "교과 개념과 기본 유형",
     publisherNote: "교과서 개념을 익히고 기본 문제로 다지는 구성으로 소개합니다.",
+    readerNote: {
+      says: "교과서·수학 익힘책 수준. 개념 설명 비중이 커서 처음 잡을 때 좋지만, 수업을 잘 따라가는 아이에게는 이것만으로 부족해 기본+응용으로 가라는 말이 많습니다.",
+      sources: 5,
+    },
   },
   {
     id: "choisangwi",
@@ -128,6 +182,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "심화 유형과 최상위 문제",
     publisherNote: "상위권을 위한 심화 학습서로 소개합니다.",
+    readerNote: {
+      says: "초등 교과 심화의 대표. 마지막 High Level(경시 기출)에서 막히고 설명 없이는 혼자 넘기 어렵다는 말이 반복됩니다. 기본이 안 잡힌 채 넣으면 수학을 싫어하게 된다는 경고가 함께 나옵니다.",
+      disputed: "학원은 최상위를, 홈스쿨은 최상위S를 더 권하는 경향이 있습니다.",
+      sources: 4,
+    },
   },
   {
     id: "checkcheck",
@@ -137,6 +196,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "진도 교재 + 개념 드릴 + 정답과 해설",
     publisherNote: "개념과 반복 학습 시스템으로 기본기를 확실하게 다지는 중학 수학 기본서라고 소개합니다.",
+    readerNote: {
+      says: "교과서와 비슷하거나 조금 위인 개념서. 개념을 짧게 끊고 바로 문제를 붙여서, 이해가 느린 학생에게 편하다는 말이 반복됩니다.",
+      sources: 4,
+    },
   },
   {
     id: "ilpum",
@@ -146,6 +209,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "심화 유형 중심",
     publisherNote: "상위권을 위한 심화 문제서로 소개합니다.",
+    readerNote: {
+      says: "쎈 다음의 준심화. 심화서 중에서는 쉬운 편이라 첫 심화서로 많이 씁니다. 최고난도 문항 수가 적다는 아쉬움이 함께 나옵니다.",
+      disputed: "진짜 심화로 보는 쪽과 준심화 워밍업으로 보는 쪽이 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "baekbal",
@@ -164,6 +232,11 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "교과서 개념과 예제 중심",
     publisherNote: "교과서 개념을 자세히 풀어 설명하는 구성으로 소개합니다.",
+    readerNote: {
+      says: "기본 개념서가 아니라 심화 개념서로 봅니다. 개념과 해설이 매우 자세하다는 칭찬과, 분량이 너무 많아 진도가 오래 걸린다는 불만이 함께 나옵니다. 고등 첫 개념서로는 보통 권하지 않습니다.",
+      disputed: "수능형 문제가 장점인지, 첫 권으로 쓰면 치이는 함정인지 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "didim-principle",
@@ -173,6 +246,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "진도책(교과서 개념 → 기본기 강화 문제 → 단원 평가)",
     publisherNote: "교과서 핵심 개념을 한눈에 이해하고 쉬운 유형을 반복 연습해 기본기를 강화한다고 소개합니다.",
+    readerNote: {
+      says: "디딤돌 교과 라인에서 가장 아래. 수학을 어려워하는 아이가 기초를 다시 쌓거나, 부담 없이 가볍게 선행할 때 쓴다고 합니다.",
+      sources: 4,
+    },
   },
   {
     id: "didim-applied",
@@ -182,6 +259,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "진도책(교과서 개념 → 기본에서 응용으로 → 응용에서 최상위로 → 단원 평가 1·2회) + 응용탄탄북(서술형·단원 평가)",
     publisherNote: "기본개념부터 심화유형까지 다잡는 심화응용 기본서. 교과통합 문제와 응용탄탄북으로 심화 서술형·수시 평가에 대비한다고 소개합니다.",
+    readerNote: {
+      says: "기본·기본+응용보다 응용 비중이 높고 뒤쪽에 최상위급 문제가 섞입니다. 개념 설명이 짧아 개념을 아직 익혀야 하는 아이에게는 어렵다는 말이 반복됩니다. 초3부터 나옵니다.",
+      disputed: "앞부분을 교과서 수준으로 보는 쪽과 책 전체를 심화로 보는 쪽이 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "woodeungsaeng",
@@ -200,6 +282,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "BOOK1 개념책 + BOOK2 실전책 + BOOK3 풀이책",
     publisherNote: "예습·복습·숙제까지 한 번에 해결되는 교과서 완전 학습서. 개념책에는 학습 개념, 실전책에는 단원별 핵심정리와 확인 문제가 있고, 전 단원 무료 강의를 제공한다고 소개합니다.",
+    readerNote: {
+      says: "교과서와 거의 같거나 조금 위. EBS 무료 강의가 있어 혼자 진도 맞춰 공부하기 좋다는 칭찬과, 너무 쉬워서 이것만 풀다 디딤돌로 가면 난이도 차이에 놀란다는 말이 함께 나옵니다.",
+      sources: 5,
+    },
   },
   {
     id: "gaenyeom-light-elem",
@@ -227,6 +313,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "Basic Concept → 최상위 [S] → Math Master + 특별부록 복습책(본문 대표 유형·Math Master 1:1 복습)",
     publisherNote: "교과서 개념뿐 아니라 심화·이후 학년 연계 개념까지 짚고, 문장+이미지로 심화 핵심을 이해시킨 뒤 경시 수준까지 풀어 상위 3%에 도전한다고 소개한다.",
+    readerNote: {
+      says: "최상위보다 쉬운 준심화. 이름 때문에 더 어려운 줄 아는 사람이 많아 비교 글마다 이것을 먼저 바로잡습니다. 그림 풀이와 복습책이 있어 혼자 하기 좋다고 합니다.",
+      disputed: "전체 난이도는 최상위보다 아래지만, 중간의 Math Master를 더 어렵게 느끼는 학생도 있습니다.",
+      sources: 4,
+    },
   },
   {
     id: "suryeok",
@@ -236,6 +327,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "개념 이해 문제 + 개념 체크 문제 → 기초 유형 연산(유형별 세분) → 단원 마무리 평가",
     publisherNote: "쉬운 예시와 그림으로 개념·원리를 이해하고, 빈칸 채우기·단계별 완성하기 문제로 개념을 익힌다. 연산 문제를 유형별로 세분해 연산력을 키우고, 학교 시험에 적용하는 단원 마무리 평가를 수록했다.",
+    readerNote: {
+      says: "이름과 달리 개념서가 아니라 연산·기초 훈련서로 봅니다. 중학 연산이 흔들리는 학생이 고등 개념서에 들어가기 전 워밍업으로 쓴다는 말이 반복됩니다.",
+      sources: 4,
+    },
   },
   {
     id: "gaenyeom-high",
@@ -245,6 +340,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "[개념편] 한 번에 볼 분량의 개념 정리·부가 설명·확인 문제·유사 문제 / [유형편] 출제율 높은 문제를 유형별로 모아 유형 팁과 함께 제시",
     publisherNote: "개념편과 유형편으로 이루어진 고등수학 내신 기본서. 수능·평가원·교육청 문제를 수록했다.",
+    readerNote: {
+      says: "고등 첫 권이나 선행용으로 쓰는 쉬운 기본서. 개념과 유형을 한 권에서 도는 구성입니다.",
+      sources: 3,
+    },
   },
   {
     id: "gojaengi",
@@ -254,6 +353,11 @@ export const BOOKS: Book[] = [
     role: "내신",
     structure: "개념 정리 → STEP 1 핵심 유형(중하) → STEP 2 심화 유형(중상, 대표문항 스키마) → STEP 3 최고난도 유형",
     publisherNote: "최근 10년 고등학교 중간·기말고사 시험지 2,000여 개를 분석한 유형서+심화서 형태의 중상위권 교재. 교과서 수준 기본 문항부터 고난도까지 수록하고, 내신·평가원·교육청 기출을 분석했다고 한다.",
+    readerNote: {
+      says: "쎈 다음의 준심화. 2단계의 양과 질이 좋다는 칭찬과, 3단계가 너무 어려워 독학이 쉽지 않다는 말이 함께 나옵니다. 일품과 거의 같은 자리로 봅니다.",
+      disputed: "일품과 어느 쪽이 더 센지 갈립니다. 고쟁이 3단계가 조금 더 세다는 쪽이 많습니다.",
+      sources: 4,
+    },
   },
   {
     id: "ilpum-high",
@@ -263,6 +367,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "[개념&핵심 기출] → [1등급을 위한 고난도 문제] → [1등급을 결정하는 사고력 통합 문제] → [1등급을 굳히는 실전 마무리 문제]",
     publisherNote: "1등급에 도전하는 최고 수준 문제해결서. 내신 출제 가능성이 높은 최신 기출을 엄선하고, 사고력 통합 문제와 최고난도 문제를 수록했다.",
+    readerNote: {
+      says: "신사고 라인에서 가장 위. 쎈을 소화한 학생의 심화 입문으로 씁니다. 계산이 깔끔하고 해설이 좋다는 칭찬과, 최고난도 문항 수가 적다는 아쉬움이 함께 나옵니다.",
+      disputed: "진짜 심화인지 준심화 워밍업인지 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "lightssen-high",
@@ -272,6 +381,10 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "A단계(기본 문제) → B단계(B−·B0·B+, 유형별 문제) → 중단원 마무리",
     publisherNote: "학습 부담을 줄인 문제기본서. 기본-유형-마무리의 3단계 학습시스템. 전국 최신 내신 기출을 수록해 빈출·신유형에 대비한다고 한다.",
+    readerNote: {
+      says: "쎈보다 한 단계 아래. 쎈이 버거운 학생이나 중학생 선행에 씁니다. 얇고 부담이 적어 입문에 좋지만, 이것만으로 상위권·심화는 부족하다는 말이 함께 나옵니다.",
+      sources: 4,
+    },
   },
   {
     id: "jeongseok-basic",
@@ -288,6 +401,11 @@ export const BOOKS: Book[] = [
     level: "고등",
     role: "심화",
     structure: "이론 + 문제. 연습문제 수록",
+    readerNote: {
+      says: "유형서가 아니라 심화 개념서입니다. 기본 정석과 짝입니다. 개념과 증명이 깊다는 칭찬과, 요즘 내신·수능 유형과 거리가 있고 예제에서 연습문제로 넘어가는 폭이 크다는 말이 함께 나옵니다.",
+      disputed: "개념의 기준이라는 평과 지금 시험과 동떨어진 옛 교재라는 평이 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "mapl-synergy",
@@ -297,6 +415,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "유형별·단원별 문제 구성",
     publisherNote: "강력한 개념이 끝나면 문제 풀이라고 하며, 학교 교과서를 유형별·단원별로 정리한 학교 내신 대비서라고 소개합니다.",
+    readerNote: {
+      says: "유형서 중 가장 두껍고 어려운 축. 유형을 거의 다 담아 다른 유형서가 필요 없다는 칭찬과, 문제 수가 너무 많아 시험 전에 한 번도 못 끝낸다는 불만이 함께 나옵니다.",
+      disputed: "양 때문에 피하는 쪽과 내신 대비용으로 극찬하는 쪽으로 호불호가 큽니다.",
+      sources: 4,
+    },
   },
   {
     id: "jeoldae",
@@ -306,6 +429,11 @@ export const BOOKS: Book[] = [
     role: "내신",
     structure: "시험에 꼭 나오는 문제(1분컷) → 1등급 도전 문제(3분컷) → 절대등급 완성 문제(7분컷)",
     publisherNote: "내신 1등급 문제서. 출제율 높은 학교 시험 문제를 세 단계로 내고, 제한 시간 안에 푸는 연습으로 준킬러까지 해결할 수 있다고 소개합니다.",
+    readerNote: {
+      says: "유형서를 끝낸 중상위가 씁니다. 얇고 단계가 분명하다는 평이 있습니다. 다만 다른 교재만큼 후기가 쌓여 있지 않습니다.",
+      disputed: "기출·변형이 많아 자이스토리를 먼저 풀었다면 겹친다는 말이 있습니다.",
+      sources: 3,
+    },
   },
   {
     id: "bible",
@@ -324,6 +452,10 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "핵심개념+100점 노트 → 시험에 꼭 나오는 문제 → A등급을 위한 문제 → 종합 사고력 도전 문제",
     publisherNote: "변별력이 높아지는 내신시험에서 A등급을 달성하도록 돕는 단계별 명품 수학. 기존 상위권 문제집의 비율을 뒤집은 다이아몬드식 문항 구성으로 상·최상 난도 문제를 많이 실었고, 자사고·강남8학군 교사가 집필·검토했다.",
+    readerNote: {
+      says: "중등 심화의 대표. 일품보다 고난도 비율이 높다는 말이 반복됩니다.",
+      sources: 4,
+    },
   },
   {
     id: "blacklabel-high",
@@ -342,6 +474,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "개념+개념 확인 → 촘촘한 유형(난이도순) → 서술형·단원 모의고사. 고난도는 1·2등급 킬러로 구분",
     publisherNote: "학교시험과 학력평가 만점 대비를 위한 유형 완벽 훈련서. 최신 학평 기출과 내신 기출 변형을 세밀히 유형 분류하고, 해결 단서·단계 풀이·입체 첨삭 해설을 단다.",
+    readerNote: {
+      says: "유형서가 아니라 학평 기출집입니다. 유형서를 한 권 돌린 뒤 실전으로 씁니다. 기출 정답률과 출처가 적혀 있고 해설이 자세하다는 칭찬이 반복됩니다.",
+      disputed: "순수 내신서는 아니지만, 학교 시험이 학평 변형인 곳에서는 내신에도 많이 씁니다.",
+      sources: 4,
+    },
   },
   {
     id: "xistory-mid",
@@ -360,6 +497,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "교과서 개념이해 → 기본기 다지기 → 응용력 기르기 → 단원 평가 (별도 실력 보강 자료집)",
     publisherNote: "개념을 수학적 관점에서 이해할 수 있는 문제와 수학적 사고력을 기를 수 있는 문제를 담았고, 새 교육과정의 신경향 문제 유형을 반영했다고 소개합니다.",
+    readerNote: {
+      says: "디딤돌에서 가장 많이 푸는 중간 단계. 한 권으로 개념부터 응용까지 간다는 칭찬과, 문제 수가 많아 시간이 오래 걸린다는 불만이 함께 나옵니다. 이 다음이 최상위입니다.",
+      disputed: "만점왕보다 확실히 어렵다는 쪽과, 기본편과 전체 난이도 차이는 크지 않다는 쪽이 갈립니다.",
+      sources: 5,
+    },
   },
   {
     id: "gaenyeom-basic-elem",
@@ -427,7 +569,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅲ. 입체도형", title: "07 다면체", unitId: "m1-s2-04" },
       { part: "Ⅲ. 입체도형", title: "08 회전체", unitId: "m1-s2-04" },
       { part: "Ⅲ. 입체도형", title: "09 입체도형의 겉넓이와 부피", unitId: "m1-s2-04" },
-      { part: "Ⅳ. 통계", title: "10 도수분포표", unitId: null },
+      { part: "Ⅳ. 통계", title: "10 도수분포표", unitId: "m1-s2-05" },
       { part: "Ⅳ. 통계", title: "11 상대도수", unitId: "m1-s2-05" },
     ],
   },
@@ -1346,7 +1488,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅱ. 평면도형", title: "05. 원과 부채꼴", unitId: "m1-s2-03" },
       { part: "Ⅲ. 입체도형", title: "06. 다면체와 회전체", unitId: "m1-s2-04" },
       { part: "Ⅲ. 입체도형", title: "07. 입체도형의 겉넓이와 부피", unitId: "m1-s2-04" },
-      { part: "Ⅳ. 통계", title: "08 도수분포표", unitId: null },
+      { part: "Ⅳ. 통계", title: "08 도수분포표", unitId: "m1-s2-05" },
       { part: "Ⅳ. 통계", title: "09 상대도수", unitId: "m1-s2-05" },
     ],
   },
@@ -1381,7 +1523,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅰ. 도형의 성질", title: "02. 평행사변형의 성질", unitId: "m2-s2-02" },
       { part: "Ⅰ. 도형의 성질", title: "03. 여러 가지 사각형의 성질", unitId: "m2-s2-02" },
       { part: "Ⅱ. 도형의 닮음", title: "04. 도형의 닮음", unitId: "m2-s2-03" },
-      { part: "Ⅱ. 도형의 닮음", title: "05. 평행선 사이의 선분의 길이의 비", unitId: "m2-s2-03" },
+      { part: "Ⅱ. 도형의 닮음", title: "05. 평행선 사이의 선분의 길이의 비", unitId: "m2-s2-04" },
       { part: "Ⅱ. 도형의 닮음", title: "06. 닮음의 활용", unitId: "m2-s2-03" },
       { part: "Ⅲ. 피타고라스 정리", title: "07. 피타고라스 정리", unitId: "m2-s2-05" },
       { part: "Ⅳ. 확률", title: "08. 경우의 수", unitId: "m2-s2-06" },
@@ -2083,15 +2225,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/160215000",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
       { title: "3. 나눗셈", unitId: "e3-s1-03" },
       { title: "4. 곱셈", unitId: "e3-s1-04" },
       { title: "5. 길이와 시간", unitId: "e3-s1-05" },
       { title: "6. 분수와 소수", unitId: "e3-s1-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2102,15 +2241,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/189401279",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
       { title: "3. 원", unitId: "e3-s2-03" },
       { title: "4. 분수", unitId: "e3-s2-04" },
       { title: "5. 들이와 무게", unitId: "e3-s2-05" },
       { title: "6. 그림그래프", unitId: "e3-s2-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2121,15 +2257,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/160215736",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
       { title: "3. 곱셈과 나눗셈", unitId: "e4-s1-03" },
       { title: "4. 평면도형의 이동", unitId: "e4-s1-04" },
       { title: "5. 막대그래프", unitId: "e4-s1-05" },
       { title: "6. 규칙 찾기", unitId: "e4-s1-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2140,15 +2273,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/189401281",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
       { title: "3. 소수의 덧셈과 뺄셈", unitId: "e4-s2-03" },
       { title: "4. 사각형", unitId: "e4-s2-04" },
       { title: "5. 꺾은선그래프", unitId: "e4-s2-05" },
       { title: "6. 다각형", unitId: "e4-s2-06" },
-      { title: "BOOK1 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2159,15 +2289,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/169402309",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2 약수와 배수", unitId: "e5-s1-02" },
       { title: "3 대응 관계", unitId: "e5-s1-03" },
       { title: "4 약분과 통분", unitId: "e5-s1-04" },
       { title: "5 분수의 덧셈과 뺄셈", unitId: "e5-s1-05" },
       { title: "6 다각형의 둘레와 넓이", unitId: "e5-s1-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2178,15 +2305,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/192555247",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
       { title: "3. 합동과 대칭", unitId: "e5-s2-03" },
       { title: "4. 소수의 곱셈", unitId: "e5-s2-04" },
       { title: "5. 직육면체", unitId: "e5-s2-05" },
       { title: "6. 평균과 가능성", unitId: "e5-s2-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2197,15 +2321,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/169403822",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2 각기둥과 각뿔", unitId: "e6-s1-02" },
       { title: "3 소수의 나눗셈", unitId: "e6-s1-03" },
       { title: "4 비와 비율", unitId: "e6-s1-04" },
       { title: "5 여러 가지 그래프", unitId: "e6-s1-05" },
       { title: "6 직육면체의 부피와 겉넓이", unitId: "e6-s1-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2216,15 +2337,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/192555251",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
       { title: "3. 공간과 입체", unitId: "e6-s2-03" },
       { title: "4. 비례식과 비례배분", unitId: "e6-s2-04" },
       { title: "5. 원의 둘레와 넓이", unitId: "e6-s2-05" },
       { title: "6. 원기둥, 원뿔, 구", unitId: "e6-s2-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2235,14 +2353,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/160213246",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
       { title: "5. 50까지의 수", unitId: "e1-s1-05" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2253,15 +2368,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/189401182",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
       { title: "3. 모양과 시각", unitId: "e1-s2-03" },
       { title: "4. 덧셈과 뺄셈(2)", unitId: "e1-s2-04" },
       { title: "5. 규칙 찾기", unitId: "e1-s2-05" },
       { title: "6. 덧셈과 뺄셈(3)", unitId: "e1-s2-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2272,15 +2384,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/160214021",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e2-s1-03" },
       { title: "4. 길이 재기", unitId: "e2-s1-04" },
       { title: "5. 분류하기", unitId: "e2-s1-05" },
       { title: "6. 곱셈", unitId: "e2-s1-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -2291,15 +2400,12 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/189401185",
     checked: "2026-08-14",
     chapters: [
-      { title: "BOOK1 개념책", unitId: null },
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
       { title: "3. 길이 재기", unitId: "e2-s2-03" },
       { title: "4. 시각과 시간", unitId: "e2-s2-04" },
       { title: "5. 표와 그래프", unitId: "e2-s2-05" },
       { title: "6. 규칙 찾기", unitId: "e2-s2-06" },
-      { title: "BOOK2 실전책", unitId: null },
-      { title: "BOOK3 풀이책", unitId: null },
     ],
   },
   {
@@ -3257,7 +3363,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅱ. 평면도형", title: "05 원과 부채꼴", unitId: "m1-s2-03" },
       { part: "Ⅲ. 입체도형", title: "06 다면체와 회전체", unitId: "m1-s2-04" },
       { part: "Ⅲ. 입체도형", title: "07 입체도형의 겉넓이와 부피", unitId: "m1-s2-04" },
-      { part: "Ⅳ. 통계", title: "08 도수분포표와 그래프", unitId: null },
+      { part: "Ⅳ. 통계", title: "08 도수분포표와 그래프", unitId: "m1-s2-05" },
       { part: "Ⅳ. 통계", title: "09 상대도수", unitId: "m1-s2-05" },
     ],
   },
@@ -3447,7 +3553,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅲ 입체도형", title: "G 다면체", unitId: "m1-s2-04" },
       { part: "Ⅲ 입체도형", title: "H 회전체", unitId: "m1-s2-04" },
       { part: "Ⅲ 입체도형", title: "I 입체도형의 겉넓이와 부피", unitId: "m1-s2-04" },
-      { part: "Ⅳ 통계", title: "J 도수분포표", unitId: null },
+      { part: "Ⅳ 통계", title: "J 도수분포표", unitId: "m1-s2-05" },
       { part: "Ⅳ 통계", title: "K 상대도수", unitId: "m1-s2-05" },
     ],
   },
@@ -3483,7 +3589,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { part: "Ⅰ 삼각형의 성질 A 삼각형의 성질", title: "B 삼각형의 외심과 내심", unitId: "m2-s2-01" },
       { part: "Ⅱ 사각형의 성질 C 평행사변형", title: "D 여러 가지 사각형", unitId: "m2-s2-02" },
       { part: "Ⅲ 도형의 닮음", title: "E 도형의 닮음", unitId: "m2-s2-03" },
-      { part: "Ⅲ 도형의 닮음", title: "F 평행선 사이의 선분의 길이의 비", unitId: "m2-s2-03" },
+      { part: "Ⅲ 도형의 닮음", title: "F 평행선 사이의 선분의 길이의 비", unitId: "m2-s2-04" },
       { part: "Ⅲ 도형의 닮음", title: "G 삼각형의 무게중심", unitId: "m2-s2-04" },
       { part: "Ⅲ 도형의 닮음", title: "H 닮음의 활용", unitId: "m2-s2-03" },
       { part: "Ⅳ 피타고라스 정리", title: "I 피타고라스 정리", unitId: "m2-s2-05" },

@@ -177,6 +177,23 @@ export default function BooksPage() {
                         <b style={{ color: "var(--ink-strong)" }}>출판사 설명</b> {book.publisherNote}
                       </p>
                     ) : null}
+                    {book.readerNote ? (
+                      <p>
+                        <b style={{ color: "var(--ink-strong)" }}>쓰는 사람들 말</b>{" "}
+                        {book.readerNote.says}
+                        {book.readerNote.disputed ? (
+                          <>
+                            {" "}
+                            <span style={{ color: "var(--ink-faint)" }}>
+                              평이 갈립니다. {book.readerNote.disputed}
+                            </span>
+                          </>
+                        ) : null}{" "}
+                        <span className="mono" style={{ color: "var(--ink-faint)" }}>
+                          ({book.readerNote.sources}곳)
+                        </span>
+                      </p>
+                    ) : null}
                     {book.fitFor ? (
                       <p>
                         <b style={{ color: "var(--ink-strong)" }}>이럴 때</b> {book.fitFor}
@@ -233,10 +250,12 @@ export default function BooksPage() {
               </p>
             </div>
             <div className="detail-block">
-              <h3>특징은 출판사가 한 말입니다</h3>
+              <h3>출판사 말과 남의 말을 나눠 적었습니다</h3>
               <p>
-                구성과 특징은 <b>출판사가 스스로 밝힌 설명</b>만 옮겼습니다. 어느 교재가 더 좋다는
-                평가는 넣지 않았습니다. 학생에게 맞는지는 결국 앞의 진단이 알려 줍니다.
+                <b>출판사 설명</b>은 출판사가 스스로 밝힌 문장만 옮긴 것입니다. <b>쓰는 사람들 말</b>은
+                학습 커뮤니티·후기에서 <b>여러 곳이 같은 말을 할 때만</b> 옮겼고, 몇 곳에서 봤는지를
+                괄호에 적었습니다. 평이 갈리면 갈린다고 적습니다. 어느 쪽도 이 지도의 판단이
+                아닙니다. 학생에게 맞는지는 결국 앞의 진단이 알려 줍니다.
               </p>
             </div>
             <div className="detail-block">

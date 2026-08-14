@@ -114,10 +114,21 @@ function matchByKeyword(chapterTitle, units) {
   const claimedByName = new Set(
     units.filter((u) => norm(u.title).length >= 3 && c.includes(norm(u.title))).map((u) => u.id),
   );
+  // 핵심어가 '도수분포표와 히스토그램'처럼 둘을 묶은 말이면 나눠서도 본다.
+  // 교재는 '도수분포표'만 장으로 두는 일이 많다.
+  // 나눈 조각은 다섯 자는 되어야 받는다. 짧게 자르면 우연히 겹친다.
+  const pieces = (k) => {
+    const whole = norm(k);
+    const parts = k
+      .split(/\s*(?:와|과|·|,)\s*/)
+      .map(norm)
+      .filter((p) => p.length >= 5);
+    return [whole, ...parts];
+  };
   const hit = units.filter(
     (u) =>
       (claimedByName.size === 0 || claimedByName.has(u.id)) &&
-      u.keywords.some((k) => norm(k).length >= 2 && c.includes(norm(k))),
+      u.keywords.some((k) => pieces(k).some((p) => p.length >= 2 && c.includes(p))),
   );
   return hit.length === 1 ? hit[0].id : null;
 }
@@ -217,6 +228,13 @@ const NOT_A_CHAPTER = /(모의고사|정답|해설|찾아보기|부록|특별\s*
  */
 const SUB_LINE = /^\s*[①-⑳]/;
 
+/**
+ * 책 묶음 줄. 한 상품이 여러 권으로 오면 목차를 권마다 나눠 싣는다.
+ * 만점왕은 `BOOK1 개념책` / `BOOK2 실전책` / `BOOK3 풀이책` 아래 같은 목차를 세 번 싣는다.
+ * 묶음 이름은 장이 아니고, 아래 목차는 같은 제목이라 중복으로 걸러진다.
+ */
+const BUNDLE_LINE = /^(BOOK\s*\d|본책|진도책|복습책|평가책|개념책|실전책|풀이책|정답과)/i;
+
 const s = (v) => JSON.stringify(v);
 const books = [];
 const volumes = [];
@@ -248,6 +266,7 @@ for (const entry of catalog.books) {
       const line = raw.trim();
       if (!line || line === "목차") continue;
       if (NOT_A_CHAPTER.test(line)) break;
+      if (BUNDLE_LINE.test(line)) continue;
       if (PART_LINE.test(line)) {
         part = line;
         continue;
@@ -370,7 +389,11 @@ ${books
     publisher: ${s(b.publisher)},
     level: ${s(b.level)},
     role: ${s(b.role)},
-    structure: ${s(b.structure)},${b.publisherNote ? `\n    publisherNote: ${s(b.publisherNote)},` : ""}${b.fitFor ? `\n    fitFor: ${s(b.fitFor)},` : ""}
+    structure: ${s(b.structure)},${b.publisherNote ? `\n    publisherNote: ${s(b.publisherNote)},` : ""}${b.fitFor ? `\n    fitFor: ${s(b.fitFor)},` : ""}${
+      b.readerNote
+        ? `\n    readerNote: {\n      says: ${s(b.readerNote.says)},${b.readerNote.disputed ? `\n      disputed: ${s(b.readerNote.disputed)},` : ""}\n      sources: ${b.readerNote.sources},\n    },`
+        : ""
+    }
   },`,
   )
   .join("\n")}

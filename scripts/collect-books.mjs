@@ -83,6 +83,22 @@ if (cachePath && existsSync(cachePath)) {
   }
 }
 
+/**
+ * 쓰는 사람들의 평. 출판사 표와 **파일을 나눠 둔다.**
+ * 한 표에 섞어 두면 언젠가 칸을 헷갈려 출판사 말과 남의 말이 뒤바뀐다.
+ * 형식: 시리즈키 · 되풀이되는 말 · 갈리는 평 · 본 곳의 수
+ */
+const readerNotes = new Map();
+const readerPath = seriesPath.replace(/series\.tsv$/, "readers.tsv");
+if (existsSync(readerPath)) {
+  for (const [key, says, disputed, sources] of rows(readerPath)) {
+    const count = Number(sources);
+    // 셋 미만은 싣지 않는다. 한두 사람의 말은 근거가 아니다.
+    if (!says || !(count >= 3)) continue;
+    readerNotes.set(key, { says, ...(disputed ? { disputed } : {}), sources: count });
+  }
+}
+
 const seriesMeta = new Map();
 for (const [key, name, publisher, level, role, structure, note] of rows(seriesPath)) {
   seriesMeta.set(key, {
@@ -93,6 +109,7 @@ for (const [key, name, publisher, level, role, structure, note] of rows(seriesPa
     role,
     structure,
     ...(note ? { publisherNote: note } : {}),
+    ...(readerNotes.has(key) ? { readerNote: readerNotes.get(key) } : {}),
   });
 }
 

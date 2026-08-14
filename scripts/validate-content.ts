@@ -235,6 +235,21 @@ if (!onlyGrade) {
     for (const [field, value] of [["name", book.name], ["publisher", book.publisher], ["structure", book.structure]] as const) {
       if (!value?.trim()) fail(`${at}: ${field}이(가) 비었습니다.`);
     }
+    // 출판사 설명에 **다른 책과 견주는 말**이 섞이면 안 된다.
+    // 출판사는 남의 책을 평하지 않는다. 그런 문장이 있으면 남의 평을 옮겨 적은 것이다.
+    // ("쉽고 자세한 개념 설명" 같은 자기 책 이야기는 출판사가 실제로 하는 말이라 통과시킨다.)
+    // 다만 '교과서보다 자세하다'는 출판사가 실제로 쓰는 말이라 뺀다. 남의 책 평이 아니다.
+    const comparing = book.publisherNote?.replace(/교과서보다/g, "");
+    if (comparing && /(보다\s*(더|조금)?\s*(어렵|쉽|낫)|에\s*비해|만 못|수준이다)/.test(comparing)) {
+      fail(`${at}: 출판사 설명에 다른 책과 견주는 말이 섞였습니다 — "${book.publisherNote}"`);
+    }
+    // 쓰는 사람들 말은 여러 곳에서 되풀이될 때만 싣는다.
+    if (book.readerNote) {
+      if (!book.readerNote.says?.trim()) fail(`${at}: 쓰는 사람들 말이 비었습니다.`);
+      if (!(book.readerNote.sources >= 3)) {
+        fail(`${at}: 쓰는 사람들 말은 세 곳 이상에서 되풀이될 때만 싣습니다(지금 ${book.readerNote.sources}곳).`);
+      }
+    }
   }
 
   for (const volume of BOOK_VOLUMES) {
