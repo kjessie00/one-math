@@ -7,7 +7,6 @@ import {
   bookStats,
   gradeById,
   unitById,
-  unitLocation,
   volumesOfBook,
   type BookLevel,
 } from "@/content/index.ts";
