@@ -992,11 +992,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/152353596",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -1151,11 +1151,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/122946859",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -1689,11 +1689,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/153739696",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -2008,11 +2008,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/152001277",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -2224,11 +2224,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     checked: "2026-08-14",
     chapters: [
       { title: "BOOK1 개념책", unitId: null },
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
       { title: "BOOK2 실전책", unitId: null },
       { title: "BOOK3 풀이책", unitId: null },
     ],
@@ -2822,11 +2822,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/123762454",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -3013,11 +3013,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/123239993",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -3804,11 +3804,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/151758340",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -3867,7 +3867,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/148036124",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "① 1, 2, 3, 4, 5 알아보기", unitId: null },
       { title: "② 6, 7, 8, 9 알아보기", unitId: null },
       { title: "③ 순서 알아보기", unitId: null },
@@ -3893,7 +3893,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { title: "② 무게의 비교", unitId: null },
       { title: "③ 넓이의 비교", unitId: null },
       { title: "④ 담을 수 있는 양의 비교", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
       { title: "① 10 알아보기", unitId: null },
       { title: "② 십몇 알이보기", unitId: "e1-s1-05" },
       { title: "③ 11부터 19까지의 수의 모으기와 가르기", unitId: null },
@@ -3988,7 +3988,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
       { title: "② 여러 가지 단위로 길이 재기", unitId: null },
       { title: "③ 1cm", unitId: "e2-s1-04" },
       { title: "④ 자로 길이를 재는 방법", unitId: null },
-      { title: "⑤ 길이를 약 몇 cm로 나타내기", unitId: "e2-s1-04" },
+      { title: "⑤ 길이를 약 몇 cm로 나타내기", unitId: null },
       { title: "⑥ 길이 어림하기", unitId: "e2-s1-04" },
       { title: "5. 분류하기", unitId: "e2-s1-05" },
       { title: "① 분류하기", unitId: null },
@@ -4065,11 +4065,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/123875592",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
@@ -4254,11 +4254,11 @@ export const BOOK_VOLUMES: BookVolume[] = [
     source: "https://www.yes24.com/product/goods/135450797",
     checked: "2026-08-14",
     chapters: [
-      { title: "1. 9까지의 수", unitId: null },
+      { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
       { title: "3. 덧셈과 뺄셈", unitId: "e1-s1-03" },
       { title: "4. 비교하기", unitId: "e1-s1-04" },
-      { title: "5. 50까지의 수", unitId: null },
+      { title: "5. 50까지의 수", unitId: "e1-s1-05" },
     ],
   },
   {
