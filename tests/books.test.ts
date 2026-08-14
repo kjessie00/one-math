@@ -52,17 +52,36 @@ test("교재의 장은 같은 학년·학기 단원에만 이어진다", () => {
   }
 });
 
-test("한 권 안에서 같은 단원에 두 장이 겹쳐 붙지 않는다", () => {
+/**
+ * 한 단원에 여러 장이 붙는 것은 맞다. 고1은 지도의 단원 하나가 교재의 대단원 하나여서,
+ * '도형의 방정식'에 평면좌표·직선·원·이동 네 장이 함께 붙는다.
+ * 막아야 하는 것은 **같은 장이 두 번 세어지는 것**이다. 서점 목차는 뒤쪽에
+ * 모의고사·정답 색인으로 같은 목록을 한 번 더 싣는 일이 있어 장 수가 부풀려진다.
+ */
+test("한 권 안에 같은 장이 두 번 실리지 않는다", () => {
+  const norm = (t: string) => t.replace(/[\s()（）·ㆍ・]/g, "").replace(/^\d+[.．]?/, "");
   for (const volume of BOOK_VOLUMES) {
     const seen = new Set<string>();
     for (const chapter of volume.chapters) {
-      if (!chapter.unitId) continue;
+      const key = norm(chapter.title);
+      if (!key) continue;
       assert.ok(
-        !seen.has(chapter.unitId),
-        `${volume.bookId} ${volume.grade}-${volume.term}: ${chapter.unitId}에 장이 두 개 붙었습니다.`,
+        !seen.has(key),
+        `${volume.bookId} ${volume.grade}-${volume.term}: '${chapter.title}'이 두 번 실렸습니다.`,
       );
-      seen.add(chapter.unitId);
+      seen.add(key);
     }
+  }
+});
+
+test("교재의 장은 그 학기에 실제로 있는 목차다", () => {
+  // 서점이 엉뚱한 학년 목차를 실어 둔 권은 아예 들어오지 않아야 한다.
+  for (const volume of BOOK_VOLUMES) {
+    const linked = volume.chapters.filter((chapter) => chapter.unitId).length;
+    assert.ok(
+      linked > 0,
+      `${volume.bookId} ${volume.grade}-${volume.term}: 이어진 장이 하나도 없습니다. 목차가 그 학기 것이 맞는지 확인하세요.`,
+    );
   }
 });
 
@@ -72,7 +91,11 @@ test("단원에서 교재를 되찾을 수 있고 순서가 개념→유형→�
       if (!chapter.unitId) continue;
       const hits = booksForUnit(chapter.unitId);
       assert.ok(
-        hits.some((hit) => hit.book.id === volume.bookId && hit.chapter.title === chapter.title),
+        hits.some(
+          (hit) =>
+            hit.book.id === volume.bookId &&
+            hit.chapters.some((found) => found.title === chapter.title),
+        ),
         `${chapter.unitId}에서 ${volume.bookId} '${chapter.title}'을 찾지 못했습니다.`,
       );
     }

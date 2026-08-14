@@ -1,0 +1,1955 @@
+{
+ "books": [
+  {
+   "book": {
+    "id": "ssen-mid",
+    "name": "쎈 중등 수학",
+    "publisher": "좋은책신사고",
+    "level": "중등",
+    "role": "유형",
+    "structure": "A·B·C 3단계 난이도, B단계는 하·중·상으로 세분",
+    "publisherNote": "전국 중학교 학교 시험 기출을 유형별로 총정리했다고 소개합니다. 권마다 150여 개 유형에 1100~1300문제 규모입니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/161362446",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145575803",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153914550",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/172734767",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122972159",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126414647",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "ssen-high",
+    "name": "쎈 고등 공통수학",
+    "publisher": "좋은책신사고",
+    "level": "고등",
+    "role": "유형",
+    "structure": "A·B·C 3단계 난이도",
+    "publisherNote": "학교 시험 출제 유형을 유형별로 정리한 문제 기본서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/143336245",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/177284738",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "rpm-mid",
+    "name": "개념원리 RPM 중학 수학",
+    "publisher": "개념원리",
+    "level": "중등",
+    "role": "유형",
+    "structure": "교과서 문제 → 유형 익히기 → 시험에 꼭 나오는 문제 → 서술형 → 실력UP",
+    "publisherNote": "유형별 문제 학습서로, 개념원리 본교재의 해당 개념 쪽수를 표시해 두었다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122494286",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125105657",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/128928465",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/142333494",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/113812073",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/108737127",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "rpm-high",
+    "name": "개념원리 RPM 고등 공통수학",
+    "publisher": "개념원리",
+    "level": "고등",
+    "role": "유형",
+    "structure": "유형별 문제 구성",
+    "publisherNote": "개념 학습 뒤 유형을 정리하는 문제 기본서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122957065",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/124587325",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gnw-mid",
+    "name": "개념원리 중학 수학",
+    "publisher": "개념원리",
+    "level": "중등",
+    "role": "개념",
+    "structure": "개념 설명과 예제 중심",
+    "publisherNote": "개념의 원리를 설명하는 기본서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/121827017",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/124412954",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126540504",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/138748147",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/113811696",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/108737115",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gnw-high",
+    "name": "개념원리 공통수학",
+    "publisher": "개념원리",
+    "level": "고등",
+    "role": "개념",
+    "structure": "개념 설명과 예제 중심",
+    "publisherNote": "개념의 원리를 설명하는 기본서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123759748",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123054441",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "didim-basic",
+    "name": "디딤돌 초등수학 기본편",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "개념",
+    "structure": "교과 개념과 기본 유형",
+    "publisherNote": "교과서 개념을 익히고 기본 문제로 다지는 구성으로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152353824",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174321229",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152353932",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174321338",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152354045",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/177742572",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152354172",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/177743280",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152353596",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174320861",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152353736",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174321065",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "choisangwi",
+    "name": "최상위 초등수학",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "심화",
+    "structure": "심화 유형과 최상위 문제",
+    "publisherNote": "상위권을 위한 심화 학습서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/134872703",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/144444847",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/134872736",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/144444920",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/154821859",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182708065",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122946859",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125770613",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122947113",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125770656",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "checkcheck",
+    "name": "체크체크 수학",
+    "publisher": "천재교육",
+    "level": "중등",
+    "role": "내신",
+    "structure": "개념 확인과 학교 시험 대비",
+    "publisherNote": "학교 시험 대비를 겨냥한 구성으로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126540298",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/141399589",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/148031883",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/161440419",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/133338333",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/192126213",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "ilpum",
+    "name": "일품 중등 수학",
+    "publisher": "좋은책신사고",
+    "level": "중등",
+    "role": "심화",
+    "structure": "심화 유형 중심",
+    "publisherNote": "상위권을 위한 심화 문제서로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145056498",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/140472999",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/143648126",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153641657",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125028562",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123387613",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "baekbal",
+    "name": "100발 100중 개념수학",
+    "publisher": "에듀원",
+    "level": "중등",
+    "role": "개념",
+    "structure": "개념과 기본 문제",
+    "publisherNote": "개념을 짚고 기본 문제로 확인하는 구성으로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/135146798",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/135146918",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/159178413",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/169227563",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/135146880",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/135146974",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "mapl",
+    "name": "마플 교과서 공통수학",
+    "publisher": "희망에듀",
+    "level": "고등",
+    "role": "개념",
+    "structure": "교과서 개념과 예제 중심",
+    "publisherNote": "교과서 개념을 자세히 풀어 설명하는 구성으로 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/133710255",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/137429833",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "didim-principle",
+    "name": "디딤돌 초등수학 원리편",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "개념",
+    "structure": "본책(교과서 개념 → 꼭 나오는 유형 → 실수하기 쉬운 유형 → 상위권 도전 유형 → 수시 평가 대비) + 수시 평가 자료집",
+    "publisherNote": "한눈에 보고 이해하는 개념으로 쉽게 공부할 수 있는 교과서 기초 학습서. 교과서 핵심 개념을 한눈에 이해하고, 쉬운 유형을 반복 연습해 기본기를 강화한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153740363",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182413904",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153740540",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182414199",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153740811",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182414498",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153740956",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182414699",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153739696",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182412887",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153740208",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182413657",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "didim-applied",
+    "name": "디딤돌 초등수학 응용편",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "심화",
+    "structure": "진도책(교과서 개념 → 기본에서 응용으로 → 응용에서 최상위로 → 단원 평가 1·2회) + 응용탄탄북(서술형·단원 평가)",
+    "publisherNote": "기본개념부터 심화유형까지 다잡는 심화응용 기본서. 교과통합 문제와 응용탄탄북으로 심화 서술형·수시 평가에 대비한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153910921",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174321539",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153910997",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174321546",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153911045",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182416354",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153911098",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/182416552",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "woodeungsaeng",
+    "name": "우등생 해법수학",
+    "publisher": "천재교육",
+    "level": "초등",
+    "role": "내신",
+    "structure": "본책 + 평가자료집 + 꼼꼼 풀이집",
+    "publisherNote": "어떤 교과서를 쓰더라도 언제나 우등생. 검정 교과서의 모든 개념과 문제유형을 수록하고, 한 권으로 학교공부를 완성한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152001536",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809581",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152001641",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809598",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153911518",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809700",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/153911454",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809721",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152001277",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809540",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/152001416",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183809554",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "manjeomwang",
+    "name": "EBS 만점왕 수학",
+    "publisher": "EBS",
+    "level": "초등",
+    "role": "개념",
+    "structure": "BOOK1 개념책 + BOOK2 실전책 + BOOK3 풀이책",
+    "publisherNote": "예습·복습·숙제까지 한 번에 해결되는 교과서 완전 학습서. 개념책에는 학습 개념, 실전책에는 단원별 핵심정리와 확인 문제가 있고, 전 단원 무료 강의를 제공한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/160215000",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/189401279",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/160215736",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/189401281",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/169402309",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/192555247",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/169403822",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/192555251",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/160213246",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/189401182",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/160214021",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/189401185",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gaenyeom-light-elem",
+    "name": "개념+유형 라이트 초등",
+    "publisher": "비상교육",
+    "level": "초등",
+    "role": "유형",
+    "structure": "개념책 → 복습책(개념책 문제 1:1 복습) → 평가책(단원평가·서술형평가·학업 성취도평가). 문제 비율 하 30%·중 50%·상 20%",
+    "publisherNote": "개념과 유형을 한번에 잡는 학습서. 「기본 라이트」의 유형 복습 시스템으로 기본 실력을 완성한다고 소개한다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148037307",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/172574659",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148037983",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/172574980",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148038097",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/173733807",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148038153",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/174192774",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "cube-concept",
+    "name": "큐브수학 개념",
+    "publisher": "동아출판",
+    "level": "초등",
+    "role": "개념",
+    "structure": "1STEP 교과서 개념 잡기(개념 확인 문제) → 2STEP 수학익힘 문제 잡기(교과 역량 문제) → 3STEP 서술형 문제 잡기(창의형 문제) → 단원 마무리·전단원 총정리",
+    "publisherNote": "교과서 개념을 다잡는 기본서. 교과서 개념을 시각화하고, 수학익힘 유형과 5가지 수학 교과 역량 문제를 제공한다고 소개한다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/129600821",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/139582284",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/129601516",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/139582314",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148368848",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/167476263",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/148368852",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/167476332",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123762454",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125607274",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123761065",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125607328",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "choisangwi-s",
+    "name": "최상위S 초등수학",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "심화",
+    "structure": "Basic Concept → 최상위 [S] → Math Master + 특별부록 복습책(본문 대표 유형·Math Master 1:1 복습)",
+    "publisherNote": "교과서 개념뿐 아니라 심화·이후 학년 연계 개념까지 짚고, 문장+이미지로 심화 핵심을 이해시킨 뒤 경시 수준까지 풀어 상위 3%에 도전한다고 소개한다."
+   },
+   "volumes": [
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/133871344",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/143896566",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/133871422",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/143896674",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/155511249",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/183546386",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/155511528",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년",
+     "source": "https://www.yes24.com/product/goods/183546403",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123239993",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125677727",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123240023",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/125677762",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "suryeok",
+    "name": "수력충전 공통수학",
+    "publisher": "수경출판사",
+    "level": "고등",
+    "role": "개념",
+    "structure": "개념 이해 문제 + 개념 체크 문제 → 기초 유형 연산(유형별 세분) → 단원 마무리 평가",
+    "publisherNote": "쉬운 예시와 그림으로 개념·원리를 이해하고, 빈칸 채우기·단계별 완성하기 문제로 개념을 익힌다. 연산 문제를 유형별로 세분해 연산력을 키우고, 학교 시험에 적용하는 단원 마무리 평가를 수록했다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/127045367",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/135228117",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gaenyeom-high",
+    "name": "개념+유형 공통수학",
+    "publisher": "비상교육",
+    "level": "고등",
+    "role": "개념",
+    "structure": "[개념편] 한 번에 볼 분량의 개념 정리·부가 설명·확인 문제·유사 문제 / [유형편] 출제율 높은 문제를 유형별로 모아 유형 팁과 함께 제시",
+    "publisherNote": "개념편과 유형편으로 이루어진 고등수학 내신 기본서. 수능·평가원·교육청 문제를 수록했다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/123054441",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/123054465",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gojaengi",
+    "name": "고쟁이 공통수학",
+    "publisher": "이투스북",
+    "level": "고등",
+    "role": "내신",
+    "structure": "개념 정리 → STEP 1 핵심 유형(중하) → STEP 2 심화 유형(중상, 대표문항 스키마) → STEP 3 최고난도 유형",
+    "publisherNote": "최근 10년 고등학교 중간·기말고사 시험지 2,000여 개를 분석한 유형서+심화서 형태의 중상위권 교재. 교과서 수준 기본 문항부터 고난도까지 수록하고, 내신·평가원·교육청 기출을 분석했다고 한다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/126665053",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/134873501",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "ilpum-high",
+    "name": "일품 공통수학",
+    "publisher": "좋은책신사고",
+    "level": "고등",
+    "role": "심화",
+    "structure": "[개념&핵심 기출] → [1등급을 위한 고난도 문제] → [1등급을 결정하는 사고력 통합 문제] → [1등급을 굳히는 실전 마무리 문제]",
+    "publisherNote": "1등급에 도전하는 최고 수준 문제해결서. 내신 출제 가능성이 높은 최신 기출을 엄선하고, 사고력 통합 문제와 최고난도 문제를 수록했다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/143336283",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/140473815",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "lightssen-high",
+    "name": "라이트쎈 공통수학",
+    "publisher": "좋은책신사고",
+    "level": "고등",
+    "role": "유형",
+    "structure": "A단계(기본 문제) → B단계(B−·B0·B+, 유형별 문제) → 중단원 마무리",
+    "publisherNote": "학습 부담을 줄인 문제기본서. 기본-유형-마무리의 3단계 학습시스템. 전국 최신 내신 기출을 수록해 빈출·신유형에 대비한다고 한다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/148696724",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년용",
+     "source": "https://www.yes24.com/product/goods/148751918",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "jeongseok-basic",
+    "name": "수학의 정석 기본편",
+    "publisher": "성지출판",
+    "level": "고등",
+    "role": "개념",
+    "structure": "이론 + 문제 + 정답 및 해설. 기본정석 박스, 유제, 연습문제",
+    "publisherNote": "변화된 교육과정을 반영했고, 기본정석을 박스 처리해 한눈에 파악하기 쉽게 했다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/124862915",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126398828",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "jeongseok-advanced",
+    "name": "수학의 정석 실력편",
+    "publisher": "성지출판",
+    "level": "고등",
+    "role": "심화",
+    "structure": "이론 + 문제. 연습문제 수록",
+    "publisherNote": "고등학교 수학 과정의 이해를 돕는 개념서이며, 실력편은 기본편보다 설명이 압축적이라고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/124862907",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126398820",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "mapl-synergy",
+    "name": "마플시너지 공통수학",
+    "publisher": "희망에듀",
+    "level": "고등",
+    "role": "유형",
+    "structure": "유형별·단원별 문제 구성",
+    "publisherNote": "강력한 개념이 끝나면 문제 풀이라고 하며, 학교 교과서를 유형별·단원별로 정리한 학교 내신 대비서라고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/128221087",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/140398465",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "jeoldae",
+    "name": "절대등급 공통수학",
+    "publisher": "진학사",
+    "level": "고등",
+    "role": "내신",
+    "structure": "시험에 꼭 나오는 문제(1분컷) → 1등급 도전 문제(3분컷) → 절대등급 완성 문제(7분컷)",
+    "publisherNote": "내신 1등급 문제서. 출제율 높은 학교 시험 문제를 세 단계로 내고, 제한 시간 안에 푸는 연습으로 준킬러까지 해결할 수 있다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/123815212",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/124009476",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "bible",
+    "name": "바이블 공통수학",
+    "publisher": "이룸이앤비",
+    "level": "고등",
+    "role": "개념",
+    "structure": "대표 예제 → 한 번 더하기 → 표현 더하기 → 실력 더하기. 연습문제는 기본 다지기·실력 다지기",
+    "publisherNote": "모든 개념을 두괄식으로 정리하고, 유형별 풀이를 3단계·유사 문항을 4단계로 구성했으며, 풀이집을 동봉한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122543603",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/122543827",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "blacklabel-mid",
+    "name": "블랙라벨 중학 수학",
+    "publisher": "진학사",
+    "level": "중등",
+    "role": "심화",
+    "structure": "핵심개념+100점 노트 → 시험에 꼭 나오는 문제 → A등급을 위한 문제 → 종합 사고력 도전 문제 → 대단원평가",
+    "publisherNote": "변별력이 높아지는 내신시험에서 A등급을 달성하도록 돕는 단계별 명품 수학. 기존 상위권 문제집의 비율을 뒤집은 다이아몬드식 문항 구성으로 상·최상 난도 문제를 많이 실었고, 자사고·강남8학군 교사가 집필·검토했다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/129979202",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/143605394",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/154095130",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/183214734",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/73270709",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/80097249",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "blacklabel-high",
+    "name": "블랙라벨 공통수학",
+    "publisher": "진학사",
+    "level": "고등",
+    "role": "심화",
+    "structure": "단계별 학습 프로젝트. 고난도 문항 비율 50% 이상인 다이아몬드식 구성",
+    "publisherNote": "내신 변별이 중요한 상황에서 1등급을 목표로 설계된 단계별 명품 수학. 특목고·강남8학군 교강사가 집필하고 내신·교육청·평가원·수능 기출을 수록했으며, 수능형 사고력을 기르도록 구성했다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/132968066",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/143800644",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "xistory-high",
+    "name": "자이스토리 공통수학",
+    "publisher": "수경출판사",
+    "level": "고등",
+    "role": "유형",
+    "structure": "개념+개념 확인 → 촘촘한 유형(난이도순) → 서술형·단원 모의고사. 고난도는 1·2등급 킬러로 구분",
+    "publisherNote": "학교시험과 학력평가 만점 대비를 위한 유형 완벽 훈련서. 최신 학평 기출과 내신 기출 변형을 세밀히 유형 분류하고, 해결 단서·단계 풀이·입체 첨삭 해설을 단다."
+   },
+   "volumes": [
+    {
+     "grade": "h1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/163643942",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "h1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/164737751",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "xistory-mid",
+    "name": "자이스토리 중등 수학",
+    "publisher": "수경출판사",
+    "level": "중등",
+    "role": "유형",
+    "structure": "개념+개념 확인 1:1 → 촘촘한 유형 → 단계별 서술형 → 고난도 도전 문제 → 학교 시험 대비 단원별 모의고사",
+    "publisherNote": "개념과 연계된 확인 문제를 1:1로 두고, 유형을 촘촘히 쪼개어 학교 시험에 나올 수 있는 유형에 대비한다. 서술형은 제시된 단계에 따라 쓰며 풀이 방법을 익히게 한다."
+   },
+   "volumes": [
+    {
+     "grade": "m1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/127985410",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/134638680",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/148490992",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/159568734",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/77986035",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "m3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/78593109",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "didim-basic-applied",
+    "name": "디딤돌 초등수학 기본+응용",
+    "publisher": "디딤돌교육",
+    "level": "초등",
+    "role": "유형",
+    "structure": "교과서 개념이해 → 기본기 다지기 → 응용력 기르기 → 단원 평가 (별도 실력 보강 자료집)",
+    "publisherNote": "개념을 수학적 관점에서 이해할 수 있는 문제와 수학적 사고력을 기를 수 있는 문제를 담았고, 새 교육과정의 신경향 문제 유형을 반영했다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/151758340",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174192340",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/151758579",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/174192352",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "gaenyeom-basic-elem",
+    "name": "개념+유형 기본 완성 초등수학",
+    "publisher": "비상교육",
+    "level": "초등",
+    "role": "개념",
+    "structure": "개념책 → 복습책 1:1 유형 복습 → 평가책 (유형 복습 시스템)",
+    "publisherNote": "개념책의 문제를 복습책에서 1:1로 복습하는 유형 복습 시스템으로 기본 실력을 완성한다고 소개합니다. 초1~2 과정의 이름입니다."
+   },
+   "volumes": [
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/148036124",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/172574215",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/148036478",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/172574536",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "choigosujun",
+    "name": "최고수준 초등수학",
+    "publisher": "천재교육",
+    "level": "초등",
+    "role": "심화",
+    "structure": "활용 개념·상위 연계 개념 → 심화 유형 문제 → 창의 융합 문제",
+    "publisherNote": "상위권이 되기 위한 필수 심화서로, 상위권 실력을 완성하기 위한 심화 문제와 각종 교내외 경시대회 대비 문제를 폭넓게 수록했다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/123875592",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126288034",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/123875781",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/126288107",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135444822",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/144414108",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135444850",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/144414177",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/155309249",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/186939490",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/155309999",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/186939563",
+     "checked": "2026-08-14"
+    }
+   ]
+  },
+  {
+   "book": {
+    "id": "choigosujun-s",
+    "name": "최고수준S 초등수학",
+    "publisher": "천재교육",
+    "level": "초등",
+    "role": "심화",
+    "structure": "활용 개념 → 유형 변형 → 실전 적용 (별도 복습책)",
+    "publisherNote": "심화 교재를 어렵게 느끼는 학생을 위한 준심화 교재로, 대표 심화 유형 문제의 핵심 개념을 이해하고 풀이 방법을 훈련한다고 소개합니다."
+   },
+   "volumes": [
+    {
+     "grade": "e1",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135450797",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e1",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145715941",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135450998",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e2",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145716780",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135451548",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e3",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145717382",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/135451952",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e4",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/145717603",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/159176991",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e5",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/186939593",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s1",
+     "edition": "2027년판",
+     "source": "https://www.yes24.com/product/goods/159177034",
+     "checked": "2026-08-14"
+    },
+    {
+     "grade": "e6",
+     "term": "s2",
+     "edition": "2026년판",
+     "source": "https://www.yes24.com/product/goods/186939611",
+     "checked": "2026-08-14"
+    }
+   ]
+  }
+ ]
+}

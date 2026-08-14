@@ -61,13 +61,14 @@ function sliceToc(text) {
     const j = rest.search(stop);
     if (j > 40 && j < end) end = j;
   }
-  const body = rest
+  const rows = rest
     .slice(0, Math.min(end, 8000))
     .split("\n")
     .map((line) => line.trim())
-    .filter(Boolean)
-    .join("\n");
-  return body.length > 40 ? body : null;
+    .filter(Boolean);
+  // 대단원만 네댓 줄 실린 목차도 있다(자이스토리 공통수학1, 체크체크 중3-2).
+  // 글자 수로 자르면 그런 권이 통째로 빠지므로 줄 수로 본다.
+  return rows.length >= 2 ? rows.join("\n") : null;
 }
 
 // 이미 긁은 것은 다시 부르지 않는다. 서점에도 우리에게도 좋다.

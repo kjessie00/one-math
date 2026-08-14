@@ -201,11 +201,15 @@ export function searchUnits(query: string, limit = 40): Unit[] {
 
 export const bookById = new Map<string, Book>(BOOKS.map((book) => [book.id, book]));
 
-/** 한 단원을 다루는 교재들. 단원 화면에서 그대로 보여 준다. */
+/**
+ * 한 단원을 다루는 교재들. 단원 화면에서 그대로 보여 준다.
+ * 한 권이 이 단원에 여러 장을 걸치는 일이 있다(고1은 우리 단원 하나가 교재의 대단원 하나다).
+ * 그럴 때 줄을 여러 개 만들지 않고 한 줄 안에 장을 모아 둔다.
+ */
 export type BookHit = {
   book: Book;
   volume: BookVolume;
-  chapter: BookChapter;
+  chapters: BookChapter[];
 };
 
 const hitsByUnit = new Map<UnitId, BookHit[]>();
@@ -215,9 +219,13 @@ for (const volume of BOOK_VOLUMES) {
   for (const chapter of volume.chapters) {
     if (!chapter.unitId) continue;
     const list = hitsByUnit.get(chapter.unitId);
-    const hit: BookHit = { book, volume, chapter };
-    if (list) list.push(hit);
-    else hitsByUnit.set(chapter.unitId, [hit]);
+    if (!list) {
+      hitsByUnit.set(chapter.unitId, [{ book, volume, chapters: [chapter] }]);
+      continue;
+    }
+    const same = list.find((hit) => hit.volume === volume);
+    if (same) same.chapters.push(chapter);
+    else list.push({ book, volume, chapters: [chapter] });
   }
 }
 

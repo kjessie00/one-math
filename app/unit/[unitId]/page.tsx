@@ -219,9 +219,9 @@ export default async function UnitPage({ params }: Params) {
             </p>
           </div>
           <div className="unit-rows">
-            {books.map(({ book, volume, chapter }) => (
+            {books.map(({ book, volume, chapters }) => (
               <a
-                key={`${book.id}-${volume.grade}-${volume.term}-${chapter.title}`}
+                key={`${book.id}-${volume.grade}-${volume.term}`}
                 className="unit-row"
                 href={volume.source}
                 target="_blank"
@@ -230,8 +230,8 @@ export default async function UnitPage({ params }: Params) {
                 <span className="unit-row__seq">{book.role}</span>
                 <span>
                   <span className="unit-row__title">
-                    {book.name} · {chapter.part ? `${chapter.part} ` : ""}
-                    {chapter.title}
+                    {book.name} · {chapters[0].part ? `${chapters[0].part} ` : ""}
+                    {chapters.map((chapter) => chapter.title).join(" · ")}
                   </span>
                   <br />
                   <span className="unit-row__goal">
