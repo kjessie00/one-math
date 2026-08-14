@@ -59,7 +59,14 @@ test("교재의 장은 같은 학년·학기 단원에만 이어진다", () => {
  * 모의고사·정답 색인으로 같은 목록을 한 번 더 싣는 일이 있어 장 수가 부풀려진다.
  */
 test("한 권 안에 같은 장이 두 번 실리지 않는다", () => {
-  const norm = (t: string) => t.replace(/[\s()（）·ㆍ・]/g, "").replace(/^\d+[.．]?/, "");
+  // 자리를 가리키는 번호만 지운다. 내용을 가리키는 숫자는 남긴다.
+  // 앞 숫자를 다 지우면 '9까지의 수'와 '50까지의 수'가 같은 키가 되어
+  // 이 검사가 엉뚱하게 실패한다(build-books.mjs 와 같은 규칙을 쓴다).
+  const norm = (t: string) =>
+    t
+      .replace(/^\d+\s*[.．]\s*|^\d+\s+/, "")
+      .replace(/\s+\d{2,}\s*$/, "")
+      .replace(/[\s()（）·ㆍ・]/g, "");
   for (const volume of BOOK_VOLUMES) {
     const seen = new Set<string>();
     for (const chapter of volume.chapters) {

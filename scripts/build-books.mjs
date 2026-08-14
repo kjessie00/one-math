@@ -36,20 +36,36 @@ for (const line of readFileSync(tocPath, "utf8").split("\n")) {
   if (row.toc) fetched.set(row.url, row);
 }
 
-/** 제목을 견주기 좋게 다듬는다. 번호·괄호·공백·중점만 걷어 낸다. */
+/**
+ * 제목을 견주기 좋게 다듬는다.
+ *
+ * **다듬는 것은 자리를 가리키는 번호뿐이다.** 내용을 가리키는 숫자는 남긴다.
+ * 이것을 잘못하면 서로 다른 것이 같아져서, 못 잇거나 엉뚱하게 잇는다.
+ * 실제로 났던 일:
+ *  · 앞 숫자를 다 지워 '9까지의 수'와 '50까지의 수'가 둘 다 '까지의수'가 됐다
+ *  · 뒤 숫자를 다 지워 '덧셈과 뺄셈 1/2/3' 세 단원이 전부 '덧셈과뺄셈'이 됐다
+ *  · ⑴⑵⑶을 지워 '덧셈과 뺄셈⑴'과 '⑵'가 같아져 뒤엣것이 중복으로 버려졌다
+ * 그래서 원문자 번호는 지우지 않고 보통 숫자로 바꿔 **남긴다.**
+ */
+const CIRCLED = "⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽";
 function norm(text) {
-  return text
-    // 로마숫자 머리. 자이스토리처럼 점 없이 "Ⅱ 평면도형"으로 적는 목차도 있다.
-    .replace(/^(?:[IVX]+\s*[.．]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+\s*[.．]?)\s*/i, "")
-    // 장 번호. 숫자 뒤에 점이나 빈칸이 있을 때만 지운다.
-    // 그냥 숫자로 시작하는 것을 지우면 '9까지의 수'가 '까지의 수'가 되어
-    // '50까지의 수'와 구별되지 않는다(초1 단원 두 개가 실제로 그렇다).
-    .replace(/^\d+\s*[.．]\s*|^\d+\s+/, "")
-    .replace(/\s*\d+\s*$/, "")
-    .replace(/[()（）⑴⑵⑶⑷【】\[\]]/g, "")
-    .replace(/[·ㆍ・]/g, "")
-    .replace(/\s+/g, "")
-    .trim();
+  return (
+    text
+      // 로마숫자 머리. 자이스토리처럼 점 없이 "Ⅱ 평면도형"으로 적는 목차도 있다.
+      .replace(/^(?:[IVX]+\s*[.．]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+\s*[.．]?)\s*/i, "")
+      // 장 번호. 숫자 뒤에 점이나 빈칸이 있을 때만 지운다.
+      .replace(/^\d+\s*[.．]\s*|^\d+\s+/, "")
+      // 쪽 번호. 쎈처럼 "01 평면좌표 8", "11 이차함수의 그래프 ⑴ 160"으로
+      // 쪽수를 붙여 파는 목차가 있다. 두 자리 이상일 때만 지운다.
+      // '덧셈과 뺄셈 1'의 1은 쪽수가 아니라 내용의 일부다.
+      .replace(/\s+\d{2,}\s*$/, "")
+      // ⑴ → 1. 지우지 않고 남겨야 ⑴과 ⑵가 구별된다.
+      .replace(/[⑴-⑽]/g, (c) => String(CIRCLED.indexOf(c) + 1))
+      .replace(/[()（）【】\[\]]/g, "")
+      .replace(/[·ㆍ・]/g, "")
+      .replace(/\s+/g, "")
+      .trim()
+  );
 }
 
 /**
@@ -98,6 +114,14 @@ const PART_LINE = /^(?:[IVX]+\s*[.．]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+\s*[.．
 /** 단원에 이을 수 없는 줄. 부록·모의고사·정답은 어느 단원의 내용이 아니다. */
 const NOT_A_CHAPTER = /(모의고사|정답|해설|찾아보기|부록|특별\s*부록|워크북)/;
 
+/**
+ * 소단원 줄: ①②③으로 시작한다. 개념+유형처럼 장 아래를 다시 쪼개 싣는 목차가 있다.
+ * 소단원은 **바로 위 장에 속한다.** 따로 이으면 안 된다.
+ * '⑤ 10을 만들어 더하기'는 그 자체로는 '덧셈과 뺄셈 2'처럼 보이지만
+ * 실제로는 '2. 덧셈과 뺄셈(1)' 장 안의 다섯째 꼭지다.
+ */
+const SUB_LINE = /^\s*[①-⑳]/;
+
 const s = (v) => JSON.stringify(v);
 const books = [];
 const volumes = [];
@@ -114,22 +138,32 @@ for (const entry of catalog.books) {
     const units = allUnits.filter((u) => u.grade === vol.grade && u.term === vol.term);
 
     // 1단계: 줄을 읽어 대단원(part)과 장 제목을 뽑는다.
-    // 같은 제목이 다시 나오면 버린다. 서점 목차는 뒤에 모의고사·정답 색인으로
-    // 같은 목록을 한 번 더 싣는 일이 있고, 그것까지 세면 장 수가 부풀려진다.
+    //
+    // '★ 학교 시험 대비 단원별 모의고사' 같은 줄을 만나면 **거기서 끊는다.**
+    // 그 뒤는 앞 목록을 한 번 더 실은 색인이라 장이 아니다.
+    // 같은 제목 걸러 내기만으로는 모자란다. 서점이 두 줄을 한 줄로 붙여 싣는 일이 있어
+    // ("B 삼각형의 외심과 내심 C 평행사변형") 문자열이 달라져 그대로 통과했고,
+    // 마지막 대단원이 'Ⅴ 확률'이라 기하 장이 확률 단원에 붙어 화면에 나갔다.
     const lines = [];
     const seenTitle = new Set();
     let part = null;
     for (const raw of row.toc.split("\n")) {
       const line = raw.trim();
       if (!line || line === "목차") continue;
+      if (NOT_A_CHAPTER.test(line)) break;
       if (PART_LINE.test(line)) {
         part = line;
+        continue;
+      }
+      // 소단원은 바로 위 장에 딸려 둔다. 따로 잇지 않는다.
+      if (SUB_LINE.test(line) && lines.length > 0) {
+        lines[lines.length - 1].subs.push(line);
         continue;
       }
       const key = norm(line);
       if (key && seenTitle.has(key)) continue;
       if (key) seenTitle.add(key);
-      lines.push({ part, title: line });
+      lines.push({ part, title: line, subs: [] });
     }
 
     // 1.5단계: 서점이 엉뚱한 목차를 실어 둔 권을 걸러 낸다.
@@ -171,25 +205,38 @@ for (const entry of catalog.books) {
     }
 
     // 3단계: 장 제목 → 핵심어 → 대단원 순으로 내려간다.
-    // 장 제목으로 붙은 단원은 그 권에서 한 장만 갖는다(같은 자리를 두 번 세지 않는다).
-    // 대단원으로 붙는 장은 여러 개여도 된다. 그 대단원이 통째로 그 단원이기 때문이다.
+    //
+    // 이름이 꼭 맞는 장이 먼저 그 단원을 갖는다. 그래서 두 번 돈다.
+    // 한 번에 돌면 앞에 나온 느슨한 장(rank 2)이 자리를 차지해, 뒤에 오는
+    // 이름이 똑같은 장(rank 0)이 밀려난다. 고1 '이차방정식과 이차함수'가
+    // 앞의 '이차방정식' 장에 밀려 9권에서 떨어져 있었다.
+    const byTitle = lines.map((line) =>
+      NOT_A_CHAPTER.test(line.title) ? null : matchUnit(line.title, units),
+    );
+    const winner = new Map(); // 단원 → 그 단원을 가질 장의 자리
+    byTitle.forEach((hit, i) => {
+      if (!hit) return;
+      const prev = winner.get(hit.id);
+      if (prev === undefined || hit.rank < byTitle[prev].rank) winner.set(hit.id, i);
+    });
+
     const chapters = [];
     const used = new Set();
-    const claimedByTitle = new Set();
-    for (const line of lines) {
+    lines.forEach((line, i) => {
       let unitId = null;
       if (!NOT_A_CHAPTER.test(line.title)) {
-        const byTitle = matchUnit(line.title, units);
-        if (byTitle && !claimedByTitle.has(byTitle.id)) {
-          claimedByTitle.add(byTitle.id);
-          unitId = byTitle.id;
-        } else if (!byTitle) {
+        // 이름으로 이길 자리면 그 단원을 갖는다.
+        if (byTitle[i] && winner.get(byTitle[i].id) === i) {
+          unitId = byTitle[i].id;
+        } else {
+          // 진 장도 그대로 버리지 않는다. 핵심어나 대단원이 다른 단원을 가리킬 수 있다.
+          // (같은 단원을 다시 가리키면 그것도 맞는 말이므로 받는다.)
           unitId = matchByKeyword(line.title, units) ?? partHit.get(line.part)?.id ?? null;
         }
       }
       if (unitId) used.add(unitId);
       chapters.push({ part: line.part, title: line.title, unitId });
-    }
+    });
     if (chapters.length === 0) {
       report.push(`건너뜀 ${entry.book.id} ${vol.grade}-${vol.term}: 장을 못 읽음`);
       continue;
