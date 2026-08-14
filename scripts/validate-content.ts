@@ -18,6 +18,9 @@ import {
   unitById,
   unitOrder,
   unitsOfTerm,
+  BOOKS,
+  BOOK_VOLUMES,
+  bookById,
   type Grade,
   type TermId,
   type Unit,
@@ -221,7 +224,41 @@ if (h1) {
   }
 }
 
-// 8. 사용자가 명시적으로 뺀 내용이 다시 들어오지 않게
+// 8. 교재 연결
+if (!onlyGrade) {
+  const seenBooks = new Set<string>();
+  for (const book of BOOKS) {
+    const at = `교재 ${book.id}(${book.name})`;
+    if (seenBooks.has(book.id)) fail(`${at}: 교재 ID가 중복입니다.`);
+    seenBooks.add(book.id);
+    if (!/^[a-z0-9-]+$/.test(book.id)) fail(`${at}: ID는 영소문자·숫자·하이픈만 씁니다.`);
+    for (const [field, value] of [["name", book.name], ["publisher", book.publisher], ["structure", book.structure]] as const) {
+      if (!value?.trim()) fail(`${at}: ${field}이(가) 비었습니다.`);
+    }
+  }
+
+  for (const volume of BOOK_VOLUMES) {
+    const at = `${volume.bookId} ${volume.grade}-${volume.term}`;
+    if (!bookById.has(volume.bookId)) fail(`${at}: 없는 교재를 가리킵니다.`);
+    if (!/^https?:\/\//.test(volume.source)) fail(`${at}: 출처 URL이 없습니다. 목차는 출처 없이 올리지 않습니다.`);
+    if (!volume.edition?.trim()) fail(`${at}: 몇 년판인지 적어야 합니다.`);
+    if (volume.chapters.length === 0) fail(`${at}: 목차가 비었습니다.`);
+    for (const chapter of volume.chapters) {
+      if (!chapter.title?.trim()) fail(`${at}: 제목이 빈 장이 있습니다.`);
+      if (chapter.unitId && !unitById.has(chapter.unitId)) {
+        fail(`${at}: '${chapter.title}'이 없는 단원 '${chapter.unitId}'을 가리킵니다.`);
+      }
+      if (chapter.unitId) {
+        const unit = unitById.get(chapter.unitId);
+        if (unit && (unit.grade !== volume.grade || unit.term !== volume.term)) {
+          warn(`${at}: '${chapter.title}'이 다른 학기 단원(${chapter.unitId})에 이어져 있습니다.`);
+        }
+      }
+    }
+  }
+}
+
+// 9. 사용자가 명시적으로 뺀 내용이 다시 들어오지 않게
 const wholeText = JSON.stringify(scopedGrades);
 for (const banned of ["90분", "3-station", "3 스테이션", "스테이션 운영"]) {
   if (wholeText.includes(banned)) {
@@ -243,6 +280,11 @@ const counts = {
 };
 console.log(`검사 대상 — 학년 ${counts.학년}개 · 단원 ${counts.단원}개 · 연결 ${counts.연결}개`);
 console.log(`확인 필요 ${counts.확인필요}건 · 발행사 안내 ${counts.발행사안내}건`);
+if (!onlyGrade) {
+  const linked = BOOK_VOLUMES.reduce((sum, v) => sum + v.chapters.filter((c) => c.unitId).length, 0);
+  const total = BOOK_VOLUMES.reduce((sum, v) => sum + v.chapters.length, 0);
+  console.log(`교재 ${BOOKS.length}종 · ${BOOK_VOLUMES.length}권 · 장 ${total}개 중 ${linked}개가 단원에 이어짐`);
+}
 
 if (warnings.length) {
   console.log(`\n주의 ${warnings.length}건`);

@@ -29,6 +29,7 @@ export default function SiteHeader() {
 
         <nav className="site-nav" aria-label="주요 메뉴">
           <Link href="/">전체 지도</Link>
+          <Link href="/books">교재</Link>
           <Link href="/guide">사용법과 근거</Link>
         </nav>
 

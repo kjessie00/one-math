@@ -19,6 +19,8 @@ import {
   type UnitId,
 } from "./schema.ts";
 
+import { BOOKS, BOOK_VOLUMES, type Book, type BookChapter, type BookVolume } from "./books.ts";
+
 import e1 from "./grades/e1.ts";
 import e2 from "./grades/e2.ts";
 import e3 from "./grades/e3.ts";
@@ -31,6 +33,7 @@ import m3 from "./grades/m3.ts";
 import h1 from "./grades/h1.ts";
 
 export * from "./schema.ts";
+export * from "./books.ts";
 export { STRANDS, STRAND_BY_ID, TERM_LABEL, GRADE_ORDER };
 
 export const grades: Grade[] = [e1, e2, e3, e4, e5, e6, m1, m2, m3, h1];
@@ -192,6 +195,59 @@ export function searchUnits(query: string, limit = 40): Unit[] {
   });
   return hits.slice(0, limit).map((entry) => entry.unit);
 }
+
+/* ── 시중 교재 연결 ──────────────────────────────────────────────────────
+   막힌 단원을 찾은 다음 "그럼 어느 교재 몇 단원을 펴야 하나"까지 이어 준다. */
+
+export const bookById = new Map<string, Book>(BOOKS.map((book) => [book.id, book]));
+
+/** 한 단원을 다루는 교재들. 단원 화면에서 그대로 보여 준다. */
+export type BookHit = {
+  book: Book;
+  volume: BookVolume;
+  chapter: BookChapter;
+};
+
+const hitsByUnit = new Map<UnitId, BookHit[]>();
+for (const volume of BOOK_VOLUMES) {
+  const book = bookById.get(volume.bookId);
+  if (!book) continue;
+  for (const chapter of volume.chapters) {
+    if (!chapter.unitId) continue;
+    const list = hitsByUnit.get(chapter.unitId);
+    const hit: BookHit = { book, volume, chapter };
+    if (list) list.push(hit);
+    else hitsByUnit.set(chapter.unitId, [hit]);
+  }
+}
+
+const ROLE_ORDER: Record<Book["role"], number> = { 개념: 0, 유형: 1, 내신: 2, 심화: 3 };
+
+export function booksForUnit(id: UnitId): BookHit[] {
+  return (hitsByUnit.get(id) ?? [])
+    .slice()
+    .sort((a, b) => ROLE_ORDER[a.book.role] - ROLE_ORDER[b.book.role]);
+}
+
+/** 한 교재가 다루는 학기 목록. 교재 화면에서 쓴다. */
+export function volumesOfBook(bookId: string): BookVolume[] {
+  return BOOK_VOLUMES.filter((volume) => volume.bookId === bookId).sort(
+    (a, b) =>
+      GRADE_ORDER.indexOf(a.grade) - GRADE_ORDER.indexOf(b.grade) || a.term.localeCompare(b.term),
+  );
+}
+
+export const bookStats = {
+  bookCount: BOOKS.length,
+  volumeCount: BOOK_VOLUMES.length,
+  chapterCount: BOOK_VOLUMES.reduce((sum, volume) => sum + volume.chapters.length, 0),
+  linkedChapterCount: BOOK_VOLUMES.reduce(
+    (sum, volume) => sum + volume.chapters.filter((chapter) => chapter.unitId).length,
+    0,
+  ),
+  /** 교재가 하나라도 붙은 단원 수 */
+  coveredUnitCount: hitsByUnit.size,
+};
 
 export const stats = {
   gradeCount: grades.length,

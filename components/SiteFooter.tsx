@@ -48,6 +48,9 @@ export default function SiteFooter() {
           <h2>안내</h2>
           <ul>
             <li>
+              <Link href="/books">교재와 단원 연결</Link>
+            </li>
+            <li>
               <Link href="/guide">사용법 · 교육과정 근거</Link>
             </li>
             <li>2026학년도 기준 · 초1~중2·고1 2022 개정, 중3 2015 개정</li>

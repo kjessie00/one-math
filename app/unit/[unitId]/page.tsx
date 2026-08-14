@@ -7,6 +7,7 @@ import {
   STRAND_BY_ID,
   TERM_LABEL,
   allUnits,
+  booksForUnit,
   gradeOf,
   leadsToOf,
   traceBack,
@@ -40,6 +41,7 @@ export default async function UnitPage({ params }: Params) {
   const termPlan = grade.terms[unit.term];
   const ladder = traceBack(unit.id);
   const opensUp = leadsToOf(unit.id);
+  const books = booksForUnit(unit.id);
   const style = strandStyle(unit.strand);
 
   return (
@@ -203,6 +205,47 @@ export default async function UnitPage({ params }: Params) {
           </details>
         </div>
       </section>
+
+      {books.length > 0 ? (
+        <section>
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">교재</p>
+              <h2>이 단원을 다루는 교재</h2>
+            </div>
+            <p>
+              돌아갈 자리를 찾았으면 그다음은 문제입니다. 아래는 이 단원을 담고 있는 시중 교재의 해당
+              장입니다. <Link href="/books">교재별 특징 보기</Link>
+            </p>
+          </div>
+          <div className="unit-rows">
+            {books.map(({ book, volume, chapter }) => (
+              <a
+                key={`${book.id}-${volume.grade}-${volume.term}-${chapter.title}`}
+                className="unit-row"
+                href={volume.source}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <span className="unit-row__seq">{book.role}</span>
+                <span>
+                  <span className="unit-row__title">
+                    {book.name} · {chapter.part ? `${chapter.part} ` : ""}
+                    {chapter.title}
+                  </span>
+                  <br />
+                  <span className="unit-row__goal">
+                    {book.publisher} · {volume.edition} · {book.structure}
+                  </span>
+                </span>
+                <span className="unit-row__go" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {opensUp.length > 0 ? (
         <section>
