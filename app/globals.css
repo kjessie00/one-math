@@ -1393,3 +1393,55 @@ code {
     text-decoration: none;
   }
 }
+
+/* ── 교재 격자 ────────────────────────────────────────────────────────── */
+
+.book-grid {
+  display: grid;
+  grid-template-columns: 11rem repeat(20, minmax(2.6rem, 1fr));
+  min-width: calc(11rem + 20 * 2.6rem);
+}
+
+.book-grid__lane b {
+  font-size: 0.8125rem;
+}
+
+.book-grid__lane small {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--ink-faint);
+  line-height: 1.4;
+}
+
+.book-cell {
+  border-top: 1px solid var(--rule-soft);
+  padding: 0.4rem 0.25rem;
+  text-align: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  color: var(--ink-faint);
+  display: grid;
+  place-items: center;
+  min-height: 2.5rem;
+}
+
+/* 덮는 학기만 색을 준다. 빈 칸은 조용히 둔다. */
+.book-cell--has {
+  background: var(--rule-soft);
+  color: var(--ink-strong);
+  font-weight: 500;
+}
+
+.book-cell a {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 1.75rem;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.book-cell a:hover {
+  background: var(--paper-raised);
+  outline: 1px solid var(--rule);
+}

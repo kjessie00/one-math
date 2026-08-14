@@ -237,6 +237,35 @@ export function volumesOfBook(bookId: string): BookVolume[] {
   );
 }
 
+/** 교재 × 학기 격자. 어느 교재가 어느 학기를 덮는지 한눈에 보여 준다. */
+export type BookCoverageCell = {
+  grade: Grade;
+  term: TermId;
+  volume?: BookVolume;
+  linked: number;
+  total: number;
+};
+
+export const bookColumns: { grade: Grade; term: TermId }[] = grades.flatMap((grade) =>
+  TERM_ORDER.map((term) => ({ grade, term })),
+);
+
+export function coverageOf(bookId: string): BookCoverageCell[] {
+  const volumes = new Map(
+    volumesOfBook(bookId).map((volume) => [`${volume.grade}-${volume.term}`, volume]),
+  );
+  return bookColumns.map(({ grade, term }) => {
+    const volume = volumes.get(`${grade.id}-${term}`);
+    return {
+      grade,
+      term,
+      volume,
+      linked: volume ? volume.chapters.filter((chapter) => chapter.unitId).length : 0,
+      total: volume ? volume.chapters.length : 0,
+    };
+  });
+}
+
 export const bookStats = {
   bookCount: BOOKS.length,
   volumeCount: BOOK_VOLUMES.length,

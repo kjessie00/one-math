@@ -4,11 +4,14 @@ import Link from "next/link";
 import {
   BOOKS,
   TERM_LABEL,
+  bookColumns,
   bookStats,
+  coverageOf,
   gradeById,
   unitById,
   volumesOfBook,
   type BookLevel,
+  type BookRole,
 } from "@/content/index.ts";
 
 export const metadata: Metadata = {
@@ -18,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 const LEVELS: BookLevel[] = ["초등", "중등", "고등"];
+const ROLES: BookRole[] = ["개념", "유형", "내신", "심화"];
 
 export default function BooksPage() {
   const hasBooks = BOOKS.length > 0;
@@ -58,6 +62,88 @@ export default function BooksPage() {
         ) : null}
       </header>
 
+      {hasBooks ? (
+        <section className="map" style={{ paddingBottom: 0 }}>
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">한눈에</p>
+              <h2>어느 교재가 어느 학기를 덮는가</h2>
+            </div>
+            <p>
+              칸의 숫자는 그 권에서 <b>단원에 이어진 장 수 / 전체 장 수</b>입니다. 눌러 보면 그 학기
+              첫 단원으로 갑니다.
+            </p>
+          </div>
+
+          <div className="map__scroll">
+            <div className="book-grid" role="grid" aria-label="교재별 학기 덮는 범위">
+              <div className="contents" role="row">
+                <div className="map__corner" role="columnheader">
+                  <span>교재 ＼ 학기</span>
+                </div>
+                {bookColumns.map(({ grade, term }, index) => (
+                  <div
+                    key={`${grade.id}-${term}`}
+                    role="columnheader"
+                    className={`map__gradehead${
+                      index > 0 && grade.school !== bookColumns[index - 1].grade.school
+                        ? " map__gradehead--school-start"
+                        : ""
+                    }`}
+                  >
+                    <b>{grade.label}</b>
+                    <small className="mono">{term === "s1" ? "1학기" : "2학기"}</small>
+                  </div>
+                ))}
+              </div>
+
+              {LEVELS.flatMap((level) =>
+                ROLES.flatMap((role) =>
+                  BOOKS.filter((book) => book.level === level && book.role === role).map((book) => (
+                    <div className="contents" role="row" key={book.id}>
+                      <div className="map__lane book-grid__lane" role="rowheader">
+                        <b>{book.name}</b>
+                        <small>
+                          {book.publisher} · {book.role}
+                        </small>
+                      </div>
+                      {coverageOf(book.id).map((cell) => {
+                        const first = cell.volume?.chapters.find((chapter) => chapter.unitId);
+                        const inner = cell.volume ? (
+                          <>
+                            {cell.linked}/{cell.total}
+                          </>
+                        ) : null;
+                        return (
+                          <div
+                            key={`${book.id}-${cell.grade.id}-${cell.term}`}
+                            role="gridcell"
+                            className={`book-cell${cell.volume ? " book-cell--has" : ""}`}
+                          >
+                            {cell.volume && first?.unitId ? (
+                              <Link
+                                href={`/unit/${first.unitId}`}
+                                title={`${book.name} ${cell.grade.label} ${
+                                  cell.term === "s1" ? "1학기" : "2학기"
+                                } · ${cell.volume.edition}`}
+                              >
+                                {inner}
+                              </Link>
+                            ) : (
+                              <span aria-hidden={!cell.volume}>{inner}</span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )),
+                ),
+              )}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {!hasBooks ? (
         <p className="note">
           <b>아직 준비 중입니다.</b> 교재 목차를 서점·출판사 공개 페이지에서 모으고 있습니다. 확인한
@@ -77,7 +163,7 @@ export default function BooksPage() {
               </div>
             </div>
             <div className="grid-cards">
-              {books.map((book) => {
+              {ROLES.flatMap((role) => books.filter((book) => book.role === role)).map((book) => {
                 const volumes = volumesOfBook(book.id);
                 return (
                   <article className="card" key={book.id}>
