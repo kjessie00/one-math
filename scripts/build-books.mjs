@@ -133,28 +133,70 @@ function looseNorm(text) {
   return norm(text).replace(/의/g, "");
 }
 
-/** 한 글자만 다른가. 서점 목차의 오타를 견디기 위한 것이다. */
-function offByOne(a, b) {
-  if (a.length !== b.length || a.length < 5) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i += 1) if (a[i] !== b[i] && (diff += 1) > 1) return false;
-  return diff === 1;
+/**
+ * 장 제목과 단원 이름이 긴 앞머리를 함께 쓰는가.
+ *
+ * 대단원보다 먼저 본다. 교재가 우리 단원 둘을 한 대단원으로 묶는 일이 있어서다.
+ * 쎈·일품 중3-1은 '근호를 포함한 식의 곱셈과 나눗셈'을 대단원 '제곱근과 실수' 아래
+ * 두는데, 그 장은 우리 단원 '근호를 포함한 식의 계산'의 것이다. 대단원이 이기면
+ * 그 단원에서 두 책이 통째로 사라진다.
+ *
+ * 여덟 자 넘게 겹칠 때만, 그리고 한 단원만 걸릴 때만 받는다.
+ */
+function matchByPrefix(chapterTitle, units) {
+  const c = norm(chapterTitle);
+  const shared = (a, b) => {
+    let i = 0;
+    while (i < a.length && i < b.length && a[i] === b[i]) i += 1;
+    return i;
+  };
+  const hit = units.filter((u) => shared(c, norm(u.title)) >= 8);
+  return hit.length === 1 ? hit[0].id : null;
 }
 
 /**
- * 위 두 가지를 마지막에 한 번 더 견준다. 이름·핵심어·대단원이 다 실패한 뒤에만 부른다.
- * 조사 차이('평행선 사이의 선분의 길이의 비')와 서점 오타('복수수'·'길이와 사긴'·
- * '도형의 닯음')를 여기서 건진다. 한 단원만 걸릴 때만 돌려준다.
+ * 조사 차이를 마지막에 한 번 더 견준다. 이름·핵심어·대단원이 다 실패한 뒤에만 부른다.
+ * 한 단원만 걸릴 때만 돌려준다.
  */
 function matchLoosely(chapterTitle, units) {
   const c = looseNorm(chapterTitle);
   if (c.length < 5) return null;
   const hit = units.filter((u) => {
     const t = looseNorm(u.title);
-    return t.length >= 5 && (c.includes(t) || t.includes(c) || offByOne(c, t));
+    return t.length >= 5 && (c.includes(t) || t.includes(c));
   });
   return hit.length === 1 ? hit[0].id : null;
 }
+
+/**
+ * 서점 목차가 틀렸을 때 손으로 잇는 표.
+ *
+ * 오타를 자동으로 고치지 않는다. '복수수'를 '복소수'로 읽는 것은 사람의 판단이고,
+ * 규칙으로 만들면 언젠가 진짜 다른 단원을 잘못 고친다. 그래서 **한 줄씩 손으로 적고
+ * 왜 그렇게 읽었는지를 남긴다.** 그 줄이 실제로 그 권에 있는지도 아래에서 확인한다.
+ *
+ * 키: `시리즈키 학년-학기 :: 목차에 적힌 그대로의 장 제목`
+ */
+const MANUAL_LINKS = {
+  // 예스24 목차의 오타. 앞뒤 장(제곱근의 뜻과 성질 → 무리수와 실수)과 학기 범위로 보아
+  // '시간'이 맞다. 같은 학기 11권 중 10권이 '5. 길이와 시간'이다.
+  "choisangwi-s e3-s1 :: 5. 길이와 사긴": { id: "e3-s1-05", why: "예스24 오타 '사긴' → 시간" },
+  // 대단원이 'Ⅱ. 방정식'이고 다음 장이 '04 이차방정식'이다. 공통수학1에 복소수는 필수다.
+  "ilpum-high h1-s1 :: 03 복수수": { id: "h1-s1-02", why: "예스24 오타 '복수수' → 복소수" },
+  // 다음 장이 '06 평행선 사이의 선분의 길이의 비'다.
+  "ssen-mid m2-s2 :: 05 도형의 닯음": { id: "m2-s2-03", why: "예스24 오타 '닯음' → 닮음" },
+  // 초3-2 6단원. 같은 학기 11권의 6단원 이름이 '그림그래프'(3권)·'자료와 그림그래프'(3권)·
+  // '자료의 정리'(5권)로 갈릴 뿐 1~5단원은 전부 같다. 곧 같은 단원의 다른 표기다.
+  "didim-basic e3-s2 :: 6. 자료의 정리": { id: "e3-s2-06", why: "교과서 6단원의 발행사별 표기" },
+  "didim-principle e3-s2 :: 6. 자료의 정리": { id: "e3-s2-06", why: "위와 같음" },
+  "didim-applied e3-s2 :: 6. 자료의 정리": { id: "e3-s2-06", why: "위와 같음" },
+  "choisangwi e3-s2 :: 6. 자료의 정리": { id: "e3-s2-06", why: "위와 같음" },
+  "choisangwi-s e3-s2 :: 6. 자료의 정리": { id: "e3-s2-06", why: "위와 같음" },
+  // 중2-1 1단원. 우리 단원 이름은 '유리수와 순환소수'인데 이 두 책은 '유리수와 소수'로 적는다.
+  // 같은 학기 8권 중 6권이 순환소수로 적고, 이 단원의 내용이 순환소수다.
+  "ssen-mid m2-s1 :: 01 유리수와 소수": { id: "m2-s1-01", why: "교재 표기 '유리수와 소수' = 순환소수 단원" },
+  "ilpum m2-s1 :: 01. 유리수와 소수": { id: "m2-s1-01", why: "위와 같음" },
+};
 
 /**
  * 대단원 줄: 로마숫자로 시작한다.
@@ -179,6 +221,8 @@ const s = (v) => JSON.stringify(v);
 const books = [];
 const volumes = [];
 const report = [];
+/** 손으로 적은 표 중 실제로 쓰인 것. 안 쓰인 줄은 낡은 것이므로 끝에 알린다. */
+const usedManual = new Set();
 
 for (const entry of catalog.books) {
   books.push(entry.book);
@@ -289,11 +333,17 @@ for (const entry of catalog.books) {
         } else {
           // 진 장도 그대로 버리지 않는다. 핵심어나 대단원이 다른 단원을 가리킬 수 있다.
           // (같은 단원을 다시 가리키면 그것도 맞는 말이므로 받는다.)
-          // 다 실패하면 조사·오타를 견디는 마지막 견주기를 한 번 더 한다.
+          // 다 실패하면 조사 차이를 견디는 견주기, 마지막으로 손으로 적은 표를 본다.
+          const manual = MANUAL_LINKS[`${entry.book.id} ${vol.grade}-${vol.term} :: ${line.title}`];
+          if (manual) usedManual.add(`${entry.book.id} ${vol.grade}-${vol.term} :: ${line.title}`);
+          // 긴 앞머리가 두 글자 핵심어보다 강한 근거다. 그래서 핵심어보다 먼저 본다.
           unitId =
+            matchByPrefix(line.title, units) ??
             matchByKeyword(line.title, units) ??
             partHit.get(line.part)?.id ??
-            matchLoosely(line.title, units);
+            matchLoosely(line.title, units) ??
+            manual?.id ??
+            null;
         }
       }
       if (unitId) used.add(unitId);
@@ -352,4 +402,10 @@ ${v.chapters
 
 writeFileSync(path.join(ROOT, "content/books.ts"), file, "utf8");
 console.log(report.join("\n"));
+
+const staleManual = Object.keys(MANUAL_LINKS).filter((key) => !usedManual.has(key));
+if (staleManual.length > 0) {
+  console.log(`\n손으로 적은 표에서 쓰이지 않은 줄 ${staleManual.length}개 — 목차가 바뀌었는지 확인하세요`);
+  for (const key of staleManual) console.log(`  · ${key}`);
+}
 console.log(`\n교재 ${books.length}종 · ${volumes.length}권`);

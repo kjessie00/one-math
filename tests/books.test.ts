@@ -7,7 +7,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { BOOKS, BOOK_VOLUMES, bookById, booksForUnit, unitById, volumesOfBook } from "../content/index.ts";
+import {
+  BOOKS,
+  BOOK_VOLUMES,
+  allUnits,
+  bookById,
+  booksForUnit,
+  unitById,
+  volumesOfBook,
+} from "../content/index.ts";
 
 test("교재 ID가 겹치지 않고 주소로 쓸 수 있는 모양이다", () => {
   const seen = new Set<string>();
@@ -78,6 +86,71 @@ test("한 권 안에 같은 장이 두 번 실리지 않는다", () => {
       );
       seen.add(key);
     }
+  }
+});
+
+/**
+ * 실제로 났던 결함을 잡는 검사들.
+ *
+ * 앞의 검사들은 구조(ID 중복·출처 URL·같은 학기)만 지킨다. 그런데 두 차례 검토에서
+ * 나온 결함은 전부 **같은 학기 안에서 엉뚱한 자리에 붙거나, 붙어야 하는데 안 붙는 것**이었다.
+ * 구조 검사는 그것을 하나도 못 잡았다. 그래서 아래를 더한다.
+ */
+
+test("한 책만 어떤 단원을 통째로 안 다루는 일이 없다", () => {
+  // 같은 학기를 다루는 책이 여럿인데 한두 권만 그 단원이 비어 있다면,
+  // 그 책이 정말 안 다루는 것이 아니라 우리가 못 이은 것일 가능성이 크다.
+  // 실제로 소단원 오인·조사 차이·서점 오타가 전부 이 모양으로 드러났다.
+  //
+  // 아래는 확인 결과 **교재가 실제로 그 장을 두지 않는** 자리다.
+  // (체크체크·일품·블랙라벨 중2-2는 '평행선 사이의 선분의 길이의 비'를 독립 장으로 두지 않고
+  //  '닮음의 응용/활용' 안에서 다룬다. 예스24 목차로 확인했다.)
+  const KNOWN: Record<string, string[]> = {
+    "m2-s2-04": ["checkcheck", "ilpum", "blacklabel-mid"],
+  };
+  for (const unit of allUnits) {
+    const volumes = BOOK_VOLUMES.filter((v) => v.grade === unit.grade && v.term === unit.term);
+    if (volumes.length < 3) continue;
+    const missing = volumes
+      .filter((v) => !v.chapters.some((c) => c.unitId === unit.id))
+      .map((v) => v.bookId)
+      .filter((id) => !(KNOWN[unit.id] ?? []).includes(id));
+    // 절반 넘게 비면 그 단원을 정말 안 다루는 학기일 수 있으니 넘긴다.
+    if (missing.length === 0 || missing.length > volumes.length / 2) continue;
+    assert.fail(
+      `${unit.id} ${unit.title}: ${volumes.length}권 중 ${missing.length}권만 이 단원이 비었습니다 ` +
+        `(${missing.join(", ")}). 못 이은 것인지 확인하세요.`,
+    );
+  }
+});
+
+test("소단원과 색인 줄이 장으로 들어오지 않는다", () => {
+  for (const volume of BOOK_VOLUMES) {
+    for (const chapter of volume.chapters) {
+      const at = `${volume.bookId} ${volume.grade}-${volume.term}`;
+      assert.ok(
+        !/^\s*[①-⑳]/.test(chapter.title),
+        `${at}: '${chapter.title}'은 소단원입니다. 위 장에 딸려야 합니다.`,
+      );
+      assert.ok(
+        !/(모의고사|정답과 해설|찾아보기|워크북)/.test(chapter.title),
+        `${at}: '${chapter.title}'은 색인·부록이라 장이 아닙니다.`,
+      );
+    }
+  }
+});
+
+test("한 권의 장 수가 같은 학기 다른 책과 크게 어긋나지 않는다", () => {
+  // 정규화가 무너져 장이 서로 같아지면 장이 조용히 사라진다(⑴⑵ 사건).
+  // 초·중등은 한 학기 단원 수가 정해져 있으므로, 단원 수보다 적으면 의심스럽다.
+  for (const volume of BOOK_VOLUMES) {
+    if (volume.grade === "h1") continue; // 고등은 대단원 크기가 제각각이다
+    const units = allUnits.filter((u) => u.grade === volume.grade && u.term === volume.term).length;
+    assert.ok(
+      volume.chapters.length >= units,
+      `${volume.bookId} ${volume.grade}-${volume.term}: 장이 ${volume.chapters.length}개인데 ` +
+        `단원은 ${units}개입니다. 목차가 잘렸는지 확인하세요.`,
+    );
   }
 });
 
