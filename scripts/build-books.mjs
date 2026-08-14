@@ -72,7 +72,7 @@ function norm(text) {
  * 한 학기 단원 중 장 제목과 맞는 것을 고른다. 확실할 때만 돌려준다.
  * 얼마나 확실한지(0=같은 이름, 1=단원 이름을 품음, 2=단원 이름 안에 들어감)도 함께 준다.
  */
-function matchUnit(chapterTitle, units, minLength = 3) {
+function matchUnit(chapterTitle, units, minLength = 2) {
   const c = norm(chapterTitle);
   if (!c) return null;
   // 1) 완전히 같은 이름
@@ -82,6 +82,9 @@ function matchUnit(chapterTitle, units, minLength = 3) {
   const contains = units.filter((u) => c.includes(norm(u.title)) && norm(u.title).length >= 2);
   if (contains.length === 1) return { id: contains[0].id, rank: 1 };
   // 3) 장 제목이 단원 이름에 통째로 들어 있다 (예: "Ⅲ. 함수" ⊂ "함수와 그래프")
+  // 두 글자짜리도 받는다. '5. 집합'·'06 명제'·'9. 함수'·'09 순열'·'10 조합'·'7 확률'은
+  // 두 글자지만 그 학기에 걸리는 단원이 하나뿐이라 헷갈릴 여지가 없다.
+  // 걸리는 단원이 둘 이상이면 아래에서 어차피 버려진다.
   const inside = units.filter((u) => norm(u.title).includes(c) && c.length >= minLength);
   if (inside.length === 1) return { id: inside[0].id, rank: 2 };
   return null;
@@ -206,16 +209,21 @@ for (const entry of catalog.books) {
 
     // 3단계: 장 제목 → 핵심어 → 대단원 순으로 내려간다.
     //
-    // 이름이 꼭 맞는 장이 먼저 그 단원을 갖는다. 그래서 두 번 돈다.
-    // 한 번에 돌면 앞에 나온 느슨한 장(rank 2)이 자리를 차지해, 뒤에 오는
-    // 이름이 똑같은 장(rank 0)이 밀려난다. 고1 '이차방정식과 이차함수'가
-    // 앞의 '이차방정식' 장에 밀려 9권에서 떨어져 있었다.
+    // 장 제목이 단원 **이름 그대로**일 때(rank 0·1)는 그 장 하나가 그 단원이다.
+    // 그런 장이 여럿이면 이름이 가장 정확한 하나만 갖는다. 그래서 두 번 돈다.
+    // 한 번에 돌면 앞에 나온 느슨한 장이 자리를 차지해, 뒤에 오는 이름이 똑같은
+    // 장이 밀려난다. 고1 '이차방정식과 이차함수'가 앞의 '이차방정식' 장에 밀려
+    // 9권에서 떨어져 있었다.
+    //
+    // 반대로 장 제목이 단원 이름 **안에 들어가는** 것(rank 2)은 그 장이 단원의
+    // 일부라는 뜻이다. '09 순열'과 '10 조합'은 둘 다 '경우의 수와 순열·조합'이다.
+    // 이때는 여럿이 함께 붙어도 된다. 대단원으로 붙는 것과 같은 이치다.
     const byTitle = lines.map((line) =>
       NOT_A_CHAPTER.test(line.title) ? null : matchUnit(line.title, units),
     );
-    const winner = new Map(); // 단원 → 그 단원을 가질 장의 자리
+    const winner = new Map(); // 단원 → 그 단원 이름을 통째로 가질 장의 자리
     byTitle.forEach((hit, i) => {
-      if (!hit) return;
+      if (!hit || hit.rank === 2) return;
       const prev = winner.get(hit.id);
       if (prev === undefined || hit.rank < byTitle[prev].rank) winner.set(hit.id, i);
     });
@@ -225,8 +233,8 @@ for (const entry of catalog.books) {
     lines.forEach((line, i) => {
       let unitId = null;
       if (!NOT_A_CHAPTER.test(line.title)) {
-        // 이름으로 이길 자리면 그 단원을 갖는다.
-        if (byTitle[i] && winner.get(byTitle[i].id) === i) {
+        // 이름으로 이길 자리이거나, 단원의 일부를 가리키는 장이면 그 단원을 갖는다.
+        if (byTitle[i] && (byTitle[i].rank === 2 || winner.get(byTitle[i].id) === i)) {
           unitId = byTitle[i].id;
         } else {
           // 진 장도 그대로 버리지 않는다. 핵심어나 대단원이 다른 단원을 가리킬 수 있다.
