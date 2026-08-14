@@ -17,6 +17,20 @@ import {
 
 type Params = { params: Promise<{ unitId: string }> };
 
+/**
+ * 한 권에서 이 단원에 붙은 장들을 대단원별로 묶는다.
+ * 목차에 나온 차례를 지키므로, 같은 대단원이 떨어져 나오면 따로 묶인다.
+ */
+function groupByPart(chapters: { part?: string; title: string }[]) {
+  const groups: { part?: string; titles: string[] }[] = [];
+  for (const chapter of chapters) {
+    const last = groups.at(-1);
+    if (last && last.part === chapter.part) last.titles.push(chapter.title);
+    else groups.push({ part: chapter.part, titles: [chapter.title] });
+  }
+  return groups;
+}
+
 export function generateStaticParams() {
   return allUnits.map((unit) => ({ unitId: unit.id }));
 }
@@ -230,8 +244,18 @@ export default async function UnitPage({ params }: Params) {
                 <span className="unit-row__seq">{book.role}</span>
                 <span>
                   <span className="unit-row__title">
-                    {book.name} · {chapters[0].part ? `${chapters[0].part} ` : ""}
-                    {chapters.map((chapter) => chapter.title).join(" · ")}
+                    {book.name}
+                    {/* 대단원이 갈리면 장마다 따로 적는다.
+                        첫 장의 대단원만 앞에 세우면, 다른 대단원에 있는 장까지
+                        그 아래 있는 것처럼 보인다. 고1 '여러 가지 방정식과 부등식'은
+                        교재에서 방정식 대단원과 부등식 대단원에 걸쳐 있다. */}
+                    {groupByPart(chapters).map((group) => (
+                      <span key={group.part ?? "-"}>
+                        {" · "}
+                        {group.part ? `${group.part} ` : ""}
+                        {group.titles.join(" · ")}
+                      </span>
+                    ))}
                   </span>
                   <br />
                   <span className="unit-row__goal">

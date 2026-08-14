@@ -94,15 +94,65 @@ function matchUnit(chapterTitle, units, minLength = 2) {
  * 장 제목이 우리가 그 단원에 적어 둔 핵심어를 통째로 품을 때 잇는다.
  * 핵심어는 우리가 직접 써 둔 그 단원의 범위다. 그래서 '유리함수의 그래프'라는 장은
  * '함수와 그래프' 단원 안이라고 말할 수 있다.
- * 짧은 핵심어(두 글자)는 우연히 겹치므로 받지 않고, 두 단원이 함께 걸리면 버린다.
- * (수학의 정석처럼 대단원 표시가 아예 없는 목차를 위한 수단이다.)
+ *
+ * 두 글자 핵심어도 받는다. '순열'·'조합'을 받아야 '09 순열과 조합' 장이 붙는다.
+ *
+ * 다만 **옆 단원이 그 장을 이름으로 주장하고 있으면 뺏지 않는다.**
+ * 중3 '근호'(제곱근과 실수의 핵심어)가 '근호를 포함한 식의 곱셈과 나눗셈' 장에 걸렸는데,
+ * 그 장은 옆 단원 '근호를 포함한 식의 계산'의 것이다. 핵심어는 이름보다 약한 근거라
+ * 이름이 먼저다. 그래서 옆 단원 이름이 이 장과 겹치면 핵심어로 잇지 않는다.
+ * (핵심어가 옆 단원 이름에 들어 있는지만 보면 너무 넓다. 중2 '일차함수'는 옆 단원
+ *  '일차함수와 일차방정식의 관계'에 들어 있지만, 장 '일차함수와 그래프'를
+ *  그 옆 단원이 주장하지는 않는다.)
+ *
+ * 두 단원이 함께 걸려도 버린다.
  */
 function matchByKeyword(chapterTitle, units) {
   const c = norm(chapterTitle);
   if (c.length < 3) return null;
-  const hit = units.filter((u) =>
-    u.keywords.some((k) => norm(k).length >= 2 && c.includes(norm(k))),
+  // 이 장을 이름으로 주장하는 단원이 있으면, 그 단원 말고는 핵심어로 못 가져간다.
+  const claimedByName = new Set(
+    units.filter((u) => norm(u.title).length >= 3 && c.includes(norm(u.title))).map((u) => u.id),
   );
+  const hit = units.filter(
+    (u) =>
+      (claimedByName.size === 0 || claimedByName.has(u.id)) &&
+      u.keywords.some((k) => norm(k).length >= 2 && c.includes(norm(k))),
+  );
+  return hit.length === 1 ? hit[0].id : null;
+}
+
+/**
+ * 조사 '의'를 뺀 모양. 마지막 수단으로만 쓴다.
+ *
+ * 우리 단원은 '평행선 사이 선분 길이의 비'인데 교재는 모두
+ * '평행선 사이의 선분의 길이의 비'로 적는다. 같은 것을 가리키는 같은 말인데
+ * 조사 하나 때문에 어느 쪽도 상대를 품지 못해, 다섯 권에서 이 단원이 사라졌다.
+ */
+function looseNorm(text) {
+  return norm(text).replace(/의/g, "");
+}
+
+/** 한 글자만 다른가. 서점 목차의 오타를 견디기 위한 것이다. */
+function offByOne(a, b) {
+  if (a.length !== b.length || a.length < 5) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i += 1) if (a[i] !== b[i] && (diff += 1) > 1) return false;
+  return diff === 1;
+}
+
+/**
+ * 위 두 가지를 마지막에 한 번 더 견준다. 이름·핵심어·대단원이 다 실패한 뒤에만 부른다.
+ * 조사 차이('평행선 사이의 선분의 길이의 비')와 서점 오타('복수수'·'길이와 사긴'·
+ * '도형의 닯음')를 여기서 건진다. 한 단원만 걸릴 때만 돌려준다.
+ */
+function matchLoosely(chapterTitle, units) {
+  const c = looseNorm(chapterTitle);
+  if (c.length < 5) return null;
+  const hit = units.filter((u) => {
+    const t = looseNorm(u.title);
+    return t.length >= 5 && (c.includes(t) || t.includes(c) || offByOne(c, t));
+  });
   return hit.length === 1 ? hit[0].id : null;
 }
 
@@ -239,7 +289,11 @@ for (const entry of catalog.books) {
         } else {
           // 진 장도 그대로 버리지 않는다. 핵심어나 대단원이 다른 단원을 가리킬 수 있다.
           // (같은 단원을 다시 가리키면 그것도 맞는 말이므로 받는다.)
-          unitId = matchByKeyword(line.title, units) ?? partHit.get(line.part)?.id ?? null;
+          // 다 실패하면 조사·오타를 견디는 마지막 견주기를 한 번 더 한다.
+          unitId =
+            matchByKeyword(line.title, units) ??
+            partHit.get(line.part)?.id ??
+            matchLoosely(line.title, units);
         }
       }
       if (unitId) used.add(unitId);
