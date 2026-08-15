@@ -229,7 +229,8 @@ export default async function UnitPage({ params }: Params) {
             </div>
             <p>
               돌아갈 자리를 찾았으면 그다음은 문제입니다. 아래는 이 단원을 담고 있는 시중 교재의 해당
-              장입니다. <Link href="/books">교재별 특징 보기</Link>
+              장입니다. <b>쓰는 사람들</b>은 출판사가 아니라 여러 곳에서 되풀이되는 평이고, 괄호는
+              그 말을 본 곳의 수입니다. <Link href="/books">교재별 특징 보기</Link>
             </p>
           </div>
           <div className="unit-rows">
@@ -261,6 +262,19 @@ export default async function UnitPage({ params }: Params) {
                   <span className="unit-row__goal">
                     {book.publisher} · {volume.edition} · {book.structure}
                   </span>
+                  {/* 쓰는 사람들 말. 여기서는 첫 문장만 싣는다.
+                      이 화면의 질문은 "이 중 어느 것을 펴야 하나"이고, 거기에는 첫 문장이
+                      답한다. 갈리는 평까지 넣으면 열여섯 줄이 다 길어져 고르기가 되레 어렵다.
+                      전문은 교재 화면에 있다. */}
+                  {book.readerNote ? (
+                    <>
+                      <br />
+                      <span className="unit-row__readers">
+                        <b>쓰는 사람들</b> {book.readerNote.says.split(". ")[0]}.{" "}
+                        <span className="mono">({book.readerNote.sources}곳)</span>
+                      </span>
+                    </>
+                  ) : null}
                 </span>
                 <span className="unit-row__go" aria-hidden="true">
                   ↗

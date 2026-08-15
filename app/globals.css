@@ -1226,6 +1226,20 @@ details.reveal[open] > summary::before {
   color: var(--ink-muted);
 }
 
+/* 쓰는 사람들 말. 출판사 설명(unit-row__goal) 바로 아래 오므로,
+   같은 크기로 두면 어느 쪽이 누구 말인지 흐려진다. 한 톤 낮춰 구분한다. */
+.unit-row__readers {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+.unit-row__readers b {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
 .unit-row__go {
   color: var(--ink-faint);
 }
