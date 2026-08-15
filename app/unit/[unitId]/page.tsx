@@ -9,6 +9,7 @@ import {
   allUnits,
   booksForUnit,
   gradeOf,
+  shortReaderNote,
   leadsToOf,
   traceBack,
   unitById,
@@ -270,7 +271,7 @@ export default async function UnitPage({ params }: Params) {
                     <>
                       <br />
                       <span className="unit-row__readers">
-                        <b>쓰는 사람들</b> {book.readerNote.says.split(". ")[0]}.{" "}
+                        <b>쓰는 사람들</b> {shortReaderNote(book.readerNote.says)}{" "}
                         <span className="mono">({book.readerNote.sources}곳)</span>
                       </span>
                     </>

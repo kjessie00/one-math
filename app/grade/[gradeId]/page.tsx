@@ -6,8 +6,10 @@ import { strandStyle } from "@/components/strand-style";
 import {
   STRAND_BY_ID,
   TERM_LABEL,
+  booksForGrade,
   gradeById,
   grades,
+  shortReaderNote,
   unitsOfTerm,
   type TermId,
   type TermPlan,
@@ -133,6 +135,7 @@ export default async function GradePage({ params }: Params) {
   const index = grades.findIndex((item) => item.id === grade.id);
   const previous = grades[index - 1];
   const next = grades[index + 1];
+  const gradeBooks = booksForGrade(grade.id);
 
   return (
     <div className="shell page">
@@ -154,6 +157,48 @@ export default async function GradePage({ params }: Params) {
       {TERMS.map((term) => (
         <TermBlock key={term} grade={grade} term={term} plan={grade.terms[term]} />
       ))}
+
+      {gradeBooks.length > 0 ? (
+        <section>
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">교재</p>
+              <h2>이 학년을 덮는 교재</h2>
+            </div>
+            <p>
+              개념 → 유형 → 내신 → 심화 순입니다. <b>쓰는 사람들</b>은 출판사가 아니라 여러 곳에서
+              되풀이되는 평이고, 괄호는 그 말을 본 곳의 수입니다.{" "}
+              <Link href="/books">교재별 특징 보기</Link>
+            </p>
+          </div>
+          <div className="unit-rows">
+            {gradeBooks.map(({ book, terms }) => (
+              <Link className="unit-row" key={book.id} href="/books">
+                <span className="unit-row__seq">{book.role}</span>
+                <span>
+                  <span className="unit-row__title">{book.name}</span>{" "}
+                  <span className="unit-row__goal">
+                    {book.publisher} ·{" "}
+                    {terms.map((term) => grade.terms[term].book ?? TERM_LABEL[term]).join(" · ")}
+                  </span>
+                  {book.readerNote ? (
+                    <>
+                      <br />
+                      <span className="unit-row__readers">
+                        <b>쓰는 사람들</b> {shortReaderNote(book.readerNote.says)}{" "}
+                        <span className="mono">({book.readerNote.sources}곳)</span>
+                      </span>
+                    </>
+                  ) : null}
+                </span>
+                <span className="unit-row__go" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section>
         <div className="section-head">

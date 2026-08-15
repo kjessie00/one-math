@@ -245,6 +245,42 @@ export function volumesOfBook(bookId: string): BookVolume[] {
   );
 }
 
+/**
+ * 한 학년을 덮는 교재. 학년 화면에서 "이 학년은 무엇으로 공부하나"에 답한다.
+ * 역할(개념→유형→내신→심화) 순으로 주고, 각 교재가 그 학년의 몇 학기를 덮는지 함께 준다.
+ */
+export type GradeBook = { book: Book; terms: TermId[] };
+
+/**
+ * 쓰는 사람들 말을 한 줄로 줄인다. 단원·학년 화면처럼 여러 교재가 늘어설 때 쓴다.
+ *
+ * 첫 문장만 자르면 "개념서."처럼 아무 말도 못 하는 줄이 생긴다.
+ * 그래서 스무 자가 안 되면 다음 문장까지 붙인다.
+ */
+export function shortReaderNote(says: string): string {
+  const sentences = says.split(/(?<=\.)\s+/);
+  let out = sentences[0] ?? says;
+  for (let i = 1; i < sentences.length && out.length < 20; i += 1) out += ` ${sentences[i]}`;
+  return out;
+}
+
+export function booksForGrade(gradeId: GradeId): GradeBook[] {
+  const byBook = new Map<string, Set<TermId>>();
+  for (const volume of BOOK_VOLUMES) {
+    if (volume.grade !== gradeId) continue;
+    const terms = byBook.get(volume.bookId) ?? new Set<TermId>();
+    terms.add(volume.term);
+    byBook.set(volume.bookId, terms);
+  }
+  return [...byBook.entries()]
+    .map(([bookId, terms]) => ({
+      book: bookById.get(bookId)!,
+      terms: TERM_ORDER.filter((term) => terms.has(term)),
+    }))
+    .filter((entry) => entry.book)
+    .sort((a, b) => ROLE_ORDER[a.book.role] - ROLE_ORDER[b.book.role]);
+}
+
 /** 교재 × 학기 격자. 어느 교재가 어느 학기를 덮는지 한눈에 보여 준다. */
 export type BookCoverageCell = {
   grade: Grade;

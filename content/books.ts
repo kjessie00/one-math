@@ -273,6 +273,11 @@ export const BOOKS: Book[] = [
     role: "내신",
     structure: "본책 + 평가자료집 + 꼼꼼 풀이집",
     publisherNote: "어떤 교과서로 공부하더라도 우등생 한 권이면 학교공부를 완성한다고 소개합니다.",
+    readerNote: {
+      says: "교과서·익힘책·단원평가 중심. 어느 교과서로 배우든 한 권으로 학교 시험을 맞추려는 집에서 씁니다. 만점왕보다 조금 위로 봅니다.",
+      disputed: "오래 써 온 내신서라는 인식은 그대로지만, 최근 난이도표에서는 디딤돌 기본+응용이나 개념+유형을 유형 대표로 올리는 집이 많습니다.",
+      sources: 4,
+    },
   },
   {
     id: "manjeomwang",
@@ -295,6 +300,11 @@ export const BOOKS: Book[] = [
     role: "유형",
     structure: "개념책 → 복습책(개념책 문제 1:1 복습) → 평가책(단원평가·서술형평가·학업 성취도평가). 문제 비율 하 30%·중 50%·상 20%",
     publisherNote: "개념과 유형을 한번에 잡는 학습서. 「기본 라이트」의 유형 복습 시스템으로 기본 실력을 완성한다고 소개한다.",
+    readerNote: {
+      says: "기본~유형 단계. 진도책 문제를 복습책에서 1:1로 다시 푸는 구조가 반복 학습에 좋다는 말이 반복됩니다. 초1~2는 '기본 완성', 초3~6은 '기본 라이트'로 이름만 갈릴 뿐 같은 단계입니다.",
+      disputed: "양이 적당하다는 칭찬과, 유형을 많이 돌리려면 한 권으로 부족하다는 말이 함께 있습니다.",
+      sources: 4,
+    },
   },
   {
     id: "cube-concept",
@@ -304,6 +314,11 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "1STEP 교과서 개념 잡기(개념 확인 문제) → 2STEP 수학익힘 문제 잡기(교과 역량 문제) → 3STEP 서술형 문제 잡기(창의형 문제) → 단원 마무리·전단원 총정리",
     publisherNote: "교과서 개념을 다잡는 기본서. 교과서 개념을 시각화하고, 수학익힘 유형과 5가지 수학 교과 역량 문제를 제공한다고 소개한다.",
+    readerNote: {
+      says: "교과서·익힘책 수준의 기본 개념서. 디딤돌 기본·만점왕과 같은 층으로 봅니다. QR 개념·풀이 강의가 있어 혼자 돌리기 좋다는 칭찬이 반복됩니다.",
+      disputed: "'큐브 개념'과 '큐브 유형'을 같은 책으로 아는 후기가 많은데, 유형 편이 한 단계 위입니다.",
+      sources: 4,
+    },
   },
   {
     id: "choisangwi-s",
@@ -393,6 +408,11 @@ export const BOOKS: Book[] = [
     level: "고등",
     role: "개념",
     structure: "이론 + 문제. 연습문제 수록",
+    readerNote: {
+      says: "이름은 기본편이지만 개념원리보다 어렵다는 말이 많습니다. 개념 설명과 증명이 상세한 대신 그림이 적고 예제에서 연습문제로 넘어가는 폭이 커서, 혼자 시작하기에는 불친절하다는 평이 반복됩니다.",
+      disputed: "쉬운 개념서로 보는 쪽과 개념원리보다 어렵다고 보는 쪽이 갈립니다. 독학이 되는지도 갈립니다.",
+      sources: 3,
+    },
   },
   {
     id: "jeongseok-advanced",
@@ -465,6 +485,11 @@ export const BOOKS: Book[] = [
     role: "심화",
     structure: "단계별 학습 프로젝트. 고난도 문항 비율 50% 이상인 다이아몬드식 구성",
     publisherNote: "내신 변별이 중요한 상황에서 1등급을 목표로 설계된 단계별 명품 수학. 특목고·강남8학군 교강사가 집필하고 내신·교육청·평가원·수능 기출을 수록했으며, 수능형 사고력을 기르도록 구성했다.",
+    readerNote: {
+      says: "고등 심화서의 대표. 유형서를 끝낸 상위권이 씁니다. 얇아서 시험 전 고난도만 돌리기 좋다는 칭찬과, 해설이 단계를 건너뛴다는 불만이 함께 나옵니다. 첫 단계에서 다섯 개 넘게 막히면 이르다는 조언이 반복됩니다.",
+      disputed: "마지막 단계까지 꼭 풀어야 하는지에서 갈립니다.",
+      sources: 4,
+    },
   },
   {
     id: "xistory-high",
@@ -511,6 +536,10 @@ export const BOOKS: Book[] = [
     role: "개념",
     structure: "개념책 → 복습책 1:1 유형 복습 → 평가책 (유형 복습 시스템)",
     publisherNote: "개념책의 문제를 복습책에서 1:1로 복습하는 유형 복습 시스템으로 기본 실력을 완성한다고 소개합니다.",
+    readerNote: {
+      says: "기본~유형 단계. 진도책 문제를 복습책에서 1:1로 다시 푸는 구조가 반복 학습에 좋다는 말이 반복됩니다. 초1~2의 이름이고, 초3~6의 '기본 라이트'와 같은 단계입니다.",
+      sources: 4,
+    },
   },
   {
     id: "choigosujun",
@@ -539,7 +568,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/161362446",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 소인수분해", title: "01 소인수분해", unitId: "m1-s1-01" },
       { part: "I. 소인수분해", title: "02 최대공약수와 최소공배수", unitId: "m1-s1-01" },
@@ -558,7 +587,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145575803",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 기본 도형", title: "01 기본 도형", unitId: "m1-s2-01" },
       { part: "Ⅰ. 기본 도형", title: "02 위치 관계", unitId: "m1-s2-01" },
@@ -579,7 +608,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153914550",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 수와 식", title: "01 유리수와 소수", unitId: "m2-s1-01" },
       { part: "I. 수와 식", title: "02 단항식의 계산", unitId: "m2-s1-02" },
@@ -600,7 +629,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/172734767",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각형의 성질", title: "01 삼각형의 성질 (1)", unitId: "m2-s2-01" },
       { part: "Ⅰ. 삼각형의 성질", title: "02 삼각형의 성질 (2)", unitId: "m2-s2-01" },
@@ -621,7 +650,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122972159",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 제곱근과 실수", title: "01 제곱근의 뜻과 성질 8", unitId: "m3-s1-01" },
       { part: "I. 제곱근과 실수", title: "02 무리수와 실수 28", unitId: "m3-s1-01" },
@@ -643,7 +672,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126414647",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 삼각비", title: "01 삼각비", unitId: "m3-s2-01" },
       { part: "I. 삼각비", title: "02 삼각비의 활용", unitId: "m3-s2-01" },
@@ -660,7 +689,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/143336245",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01 다항식의 연산 8", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02 나머지 정리와 인수분해 24", unitId: "h1-s1-01" },
@@ -680,7 +709,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/177284738",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01 평면좌표 8", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02 직선의 방정식 22", unitId: "h1-s2-01" },
@@ -700,7 +729,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122494286",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 소인수분해", title: "1. 소인수분해", unitId: "m1-s1-01" },
       { part: "Ⅰ. 소인수분해", title: "2. 최대공약수와 최소공배수", unitId: "m1-s1-01" },
@@ -719,7 +748,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125105657",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 기본 도형", title: "1. 기본 도형", unitId: "m1-s2-01" },
       { part: "I. 기본 도형", title: "2. 위치 관계", unitId: "m1-s2-01" },
@@ -738,7 +767,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/128928465",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 유리수와 순환소수", title: "1. 유리수와 순환소수", unitId: "m2-s1-01" },
       { part: "Ⅱ. 식의 계산", title: "1. 단항식의 계산", unitId: "m2-s1-02" },
@@ -757,7 +786,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/142333494",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각형의 성질", title: "1. 삼각형의 성질", unitId: "m2-s2-01" },
       { part: "Ⅰ. 삼각형의 성질", title: "2. 삼각형의 외심과 내심", unitId: "m2-s2-01" },
@@ -777,7 +806,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/113812073",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 실수와 그 연산", title: "1. 제곱근과 실수", unitId: "m3-s1-01" },
       { part: "I. 실수와 그 연산", title: "2. 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -795,7 +824,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/108737127",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 삼각비", title: "01 삼각비", unitId: "m3-s2-01" },
       { part: "I. 삼각비", title: "02 삼각비의 활용", unitId: "m3-s2-01" },
@@ -812,7 +841,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122957065",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "1. 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "2. 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -833,7 +862,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/124587325",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 도형의 방정식", title: "1 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ 도형의 방정식", title: "2 직선의 방정식", unitId: "h1-s2-01" },
@@ -853,7 +882,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/121827017",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 소인수분해", title: "1. 소인수분해", unitId: "m1-s1-01" },
       { part: "Ⅰ. 소인수분해", title: "2. 최대공약수와 최소공배수", unitId: "m1-s1-01" },
@@ -872,7 +901,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/124412954",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 기본 도형", title: "1. 기본 도형", unitId: "m1-s2-01" },
       { part: "I. 기본 도형", title: "2. 위치 관계", unitId: "m1-s2-01" },
@@ -891,7 +920,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126540504",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 유리수와 순환소수", title: "1. 유리수와 순환소수", unitId: "m2-s1-01" },
       { part: "Ⅱ. 식의 계산", title: "1. 단항식의 계산", unitId: "m2-s1-02" },
@@ -910,7 +939,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/138748147",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각형의 성질", title: "1. 이등변삼각형", unitId: "m2-s2-01" },
       { part: "Ⅰ. 삼각형의 성질", title: "2. 삼각형의 외심과 내심", unitId: "m2-s2-01" },
@@ -930,7 +959,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/113811696",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 실수와 그 연산", title: "1. 제곱근과 실수", unitId: "m3-s1-01" },
       { part: "I. 실수와 그 연산", title: "2. 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -948,7 +977,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/108737115",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 삼각비", title: "1. 삼각비", unitId: "m3-s2-01" },
       { part: "I. 삼각비", title: "2. 삼각비의 활용", unitId: "m3-s2-01" },
@@ -964,7 +993,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123759748",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 도형의 방정식", title: "1 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ 도형의 방정식", title: "2 직선의 방정식", unitId: "h1-s2-01" },
@@ -984,7 +1013,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152353824",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -1000,7 +1029,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174321229",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -1016,7 +1045,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152353932",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -1032,7 +1061,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174321338",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -1048,7 +1077,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152354045",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -1064,7 +1093,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/177742572",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -1080,7 +1109,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152354172",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -1096,7 +1125,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/177743280",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -1112,7 +1141,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152353596",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -1127,7 +1156,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174320861",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -1143,7 +1172,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152353736",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -1159,7 +1188,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174321065",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -1175,7 +1204,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/134872703",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -1191,7 +1220,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/144444847",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -1207,7 +1236,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/134872736",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -1223,7 +1252,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/144444920",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -1239,7 +1268,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/154821859",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -1255,7 +1284,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182708065",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -1271,7 +1300,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122946859",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -1286,7 +1315,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125770613",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈（1）", unitId: "e1-s2-02" },
@@ -1302,7 +1331,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122947113",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -1318,7 +1347,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125770656",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -1334,7 +1363,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/154821882",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -1350,7 +1379,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182708066",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -1366,7 +1395,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126540298",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 소인수분해", unitId: "m1-s1-01" },
       { title: "2 정수와 유리수", unitId: "m1-s1-02" },
@@ -1381,7 +1410,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/141399589",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 기본도형", unitId: "m1-s2-01" },
       { title: "2 작도와 합동", unitId: "m1-s2-02" },
@@ -1396,7 +1425,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/148031883",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 유리수와 순환소수", unitId: "m2-s1-01" },
       { title: "2 식의 계산", unitId: "m2-s1-02" },
@@ -1413,7 +1442,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/161440419",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 삼각형의 성질", unitId: "m2-s2-01" },
       { title: "2 사각형의 성질", unitId: "m2-s2-02" },
@@ -1430,7 +1459,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/133338333",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 제곱근과 무리수", unitId: "m3-s1-01" },
       { title: "2 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -1447,7 +1476,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145137321",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 삼각비", unitId: "m3-s2-01" },
       { title: "2 삼각비의 활용", unitId: "m3-s2-01" },
@@ -1462,7 +1491,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145056498",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 수와 연산", title: "01. 소인수분해", unitId: "m1-s1-01" },
       { part: "Ⅰ. 수와 연산", title: "02. 정수와 유리수", unitId: "m1-s1-02" },
@@ -1479,7 +1508,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/140472999",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 기본 도형", title: "01. 기본 도형", unitId: "m1-s2-01" },
       { part: "Ⅰ. 기본 도형", title: "02. 위치 관계", unitId: "m1-s2-01" },
@@ -1498,7 +1527,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/143648126",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 수와 식", title: "01. 유리수와 소수", unitId: "m2-s1-01" },
       { part: "Ⅰ. 수와 식", title: "02. 단항식의 계산", unitId: "m2-s1-02" },
@@ -1517,7 +1546,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153641657",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 성질", title: "01. 삼각형의 성질", unitId: "m2-s2-01" },
       { part: "Ⅰ. 도형의 성질", title: "02. 평행사변형의 성질", unitId: "m2-s2-02" },
@@ -1536,7 +1565,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125028562",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 제곱근과 실수", title: "1. 제곱근과 실수", unitId: "m3-s1-01" },
       { part: "Ⅰ. 제곱근과 실수", title: "2. 근호를 포함한 식의 곱셈과 나눗셈", unitId: "m3-s1-02" },
@@ -1554,7 +1583,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123387613",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각비", title: "1. 삼각비", unitId: "m3-s2-01" },
       { part: "Ⅰ. 삼각비", title: "2. 삼각비의 활용", unitId: "m3-s2-01" },
@@ -1570,7 +1599,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/135146798",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 수와 연산", title: "1. 소인수분해", unitId: "m1-s1-01" },
       { part: "Ⅰ. 수와 연산", title: "2. 정수와 유리수", unitId: "m1-s1-02" },
@@ -1585,7 +1614,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/135146918",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 기본 도형", title: "1. 기본 도형", unitId: "m1-s2-01" },
       { part: "Ⅰ. 기본 도형", title: "2. 작도와 합동", unitId: "m1-s2-02" },
@@ -1602,7 +1631,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/159178413",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 수와 식의 계산", title: "1. 유리수와 순환소수", unitId: "m2-s1-01" },
       { part: "Ⅰ. 수와 식의 계산", title: "2. 식의 계산", unitId: "m2-s1-02" },
@@ -1618,7 +1647,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/169227563",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 성질", title: "1. 삼각형의 성질", unitId: "m2-s2-01" },
       { part: "Ⅰ. 도형의 성질", title: "2. 사각형의 성질", unitId: "m2-s2-02" },
@@ -1635,7 +1664,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/135146880",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 실수와 그 계산", title: "1. 제곱근과 실수", unitId: "m3-s1-01" },
       { part: "Ⅰ. 실수와 그 계산", title: "2. 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -1653,7 +1682,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/135146974",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각비", title: "1. 삼각비", unitId: "m3-s2-01" },
       { part: "Ⅰ. 삼각비", title: "2. 삼각비의 활용", unitId: "m3-s2-01" },
@@ -1669,7 +1698,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/133710255",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 다항식", title: "01 다항식의 연산", unitId: "h1-s1-01" },
       { part: "I. 다항식", title: "02 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -1692,7 +1721,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/137429833",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 도형의 방정식", title: "01 평면좌표", unitId: "h1-s2-01" },
       { part: "I. 도형의 방정식", title: "02 직선의 방정식", unitId: "h1-s2-01" },
@@ -1713,7 +1742,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153740363",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -1729,7 +1758,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182413904",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -1745,7 +1774,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153740540",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -1761,7 +1790,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182414199",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -1777,7 +1806,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153740811",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -1793,7 +1822,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182414498",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -1809,7 +1838,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153740956",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -1825,7 +1854,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182414699",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -1841,7 +1870,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153739696",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -1856,7 +1885,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182412887",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -1872,7 +1901,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153740208",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -1888,7 +1917,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182413657",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -1904,7 +1933,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153910921",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -1920,7 +1949,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174321539",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -1936,7 +1965,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153910997",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -1952,7 +1981,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174321546",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -1968,7 +1997,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153911045",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -1984,7 +2013,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182416354",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2000,7 +2029,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153911098",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2016,7 +2045,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/182416552",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2032,7 +2061,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152001536",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -2048,7 +2077,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809581",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -2064,7 +2093,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152001641",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -2080,7 +2109,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809598",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -2096,7 +2125,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153911518",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -2112,7 +2141,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809700",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2128,7 +2157,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/153911454",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2144,7 +2173,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809721",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2160,7 +2189,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152001277",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -2175,7 +2204,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809540",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -2191,7 +2220,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/152001416",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -2207,7 +2236,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183809554",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -2223,7 +2252,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/160215000",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -2239,7 +2268,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/189401279",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -2255,7 +2284,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/160215736",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -2271,7 +2300,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/189401281",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -2287,7 +2316,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/169402309",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2 약수와 배수", unitId: "e5-s1-02" },
@@ -2303,7 +2332,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/192555247",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2319,7 +2348,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/169403822",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2335,7 +2364,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/192555251",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2351,7 +2380,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/160213246",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -2366,7 +2395,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/189401182",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -2382,7 +2411,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/160214021",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -2398,7 +2427,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/189401185",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -2414,7 +2443,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148037307",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -2430,7 +2459,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/172574659",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -2446,7 +2475,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148037983",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -2462,7 +2491,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/172574980",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -2478,7 +2507,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148038097",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -2494,7 +2523,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/173733807",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2510,7 +2539,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148038153",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2526,7 +2555,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/174192774",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2542,7 +2571,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/129600821",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -2558,7 +2587,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/139582284",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -2574,7 +2603,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/139582314",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -2590,7 +2619,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148368848",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -2606,7 +2635,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/167476263",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 올림, 버림, 반올림", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2622,7 +2651,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/148368852",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2638,7 +2667,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/167476332",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2654,7 +2683,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123762454",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -2669,7 +2698,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125607274",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -2685,7 +2714,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123761065",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -2701,7 +2730,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125607328",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -2717,7 +2746,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/133871344",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -2733,7 +2762,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/143896566",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -2749,7 +2778,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/133871422",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -2765,7 +2794,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/143896674",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -2781,7 +2810,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/155511249",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -2797,7 +2826,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/183546386",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -2813,7 +2842,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/155511528",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -2829,7 +2858,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년",
     source: "https://www.yes24.com/product/goods/183546403",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -2845,7 +2874,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123239993",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -2860,7 +2889,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125677727",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -2876,7 +2905,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123240023",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -2892,7 +2921,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/125677762",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -2908,7 +2937,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/127045367",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ다항식", title: "1. 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ다항식", title: "2. 나머지정리", unitId: "h1-s1-01" },
@@ -2930,7 +2959,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/135228117",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ도형의 방정식", title: "1.평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ도형의 방정식", title: "2.직선의 방정식", unitId: "h1-s2-01" },
@@ -2952,7 +2981,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/123054441",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "1. 다항식", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "2. 나머지 정리와 인수분해", unitId: "h1-s1-01" },
@@ -2970,7 +2999,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/123054465",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "1. 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "2. 직선의 방정식", unitId: "h1-s2-01" },
@@ -2988,7 +3017,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/126665053",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01. 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02. 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -3008,7 +3037,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/134873501",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01. 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02. 직선의 방정식", unitId: "h1-s2-01" },
@@ -3026,7 +3055,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/143336283",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02 나머지 정리와 인수분해", unitId: "h1-s1-01" },
@@ -3046,7 +3075,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/140473815",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01 평면좌표와 직선의 방정식", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02 원의 방정식", unitId: "h1-s2-01" },
@@ -3065,7 +3094,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/148696724",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 다항식", title: "01 다항식의 연산", unitId: "h1-s1-01" },
       { part: "I. 다항식", title: "02 나머지정리와 인수분해", unitId: "h1-s1-01" },
@@ -3086,7 +3115,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년용",
     source: "https://www.yes24.com/product/goods/148751918",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02 직선의 방정식", unitId: "h1-s2-01" },
@@ -3106,7 +3135,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/124862915",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 다항식의 연산", unitId: "h1-s1-01" },
       { title: "2. 인수분해", unitId: null },
@@ -3135,7 +3164,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126398828",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 평면좌표", unitId: null },
       { title: "2. 직선의 방정식", unitId: "h1-s2-01" },
@@ -3158,7 +3187,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/124862907",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 다항식의 연산", unitId: "h1-s1-01" },
       { title: "2. 인수분해", unitId: null },
@@ -3187,7 +3216,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126398820",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 평면좌표", unitId: null },
       { title: "2. 직선의 방정식", unitId: "h1-s2-01" },
@@ -3210,7 +3239,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/128221087",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 다항식", title: "01 다항식의 연산", unitId: "h1-s1-01" },
       { part: "I. 다항식", title: "02 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -3233,7 +3262,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/140398465",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 도형의 방정식", title: "01 평면좌표", unitId: "h1-s2-01" },
       { part: "I. 도형의 방정식", title: "02 직선의 방정식", unitId: "h1-s2-01" },
@@ -3255,7 +3284,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/123815212",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01. 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02. 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -3275,7 +3304,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/124009476",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01. 점과 직선", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02. 원의 방정식", unitId: "h1-s2-01" },
@@ -3293,7 +3322,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122543603",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01. 다항식의 계산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02. 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -3315,7 +3344,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/122543827",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "01. 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "02. 직선의 방정식", unitId: "h1-s2-01" },
@@ -3335,7 +3364,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/129979202",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 소인수분해", title: "01 소인수분해", unitId: "m1-s1-01" },
       { part: "Ⅰ. 소인수분해", title: "02 최대공약수와 최소공배수", unitId: "m1-s1-01" },
@@ -3354,7 +3383,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/143605394",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 기본 도형", title: "01 기본 도형", unitId: "m1-s2-01" },
       { part: "Ⅰ. 기본 도형", title: "02 위치 관계", unitId: "m1-s2-01" },
@@ -3373,7 +3402,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/154095130",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 수와 식", title: "01 유리수와 순환소수", unitId: "m2-s1-01" },
       { part: "Ⅰ. 수와 식", title: "02 단항식의 계산", unitId: "m2-s1-02" },
@@ -3391,7 +3420,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/183214734",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 삼각형의 성질", title: "01 삼각형의 성질", unitId: "m2-s2-01" },
       { part: "Ⅰ. 삼각형의 성질", title: "02 삼각형의 외심과 내심", unitId: "m2-s2-01" },
@@ -3410,7 +3439,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/73270709",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 실수와 그 계산", title: "01 제곱근과 실수", unitId: "m3-s1-01" },
       { part: "I. 실수와 그 계산", title: "02 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -3428,7 +3457,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/80097249",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "I. 삼각비", title: "01 삼각비", unitId: "m3-s2-01" },
       { part: "I. 삼각비", title: "02 삼각비의 활용", unitId: "m3-s2-01" },
@@ -3445,7 +3474,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/132968066",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "01 다항식의 연산과 나머지정리", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "02 인수분해", unitId: "h1-s1-01" },
@@ -3464,7 +3493,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/143800644",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 도형의 방정식", title: "01 점과 직선", unitId: "h1-s2-01" },
       { part: "Ⅰ 도형의 방정식", title: "02 원의 방정식", unitId: "h1-s2-01" },
@@ -3482,7 +3511,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/166852141",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 다항식", title: "A 다항식의 연산", unitId: "h1-s1-01" },
       { part: "Ⅰ. 다항식", title: "B 항등식과 나머지정리", unitId: "h1-s1-01" },
@@ -3504,7 +3533,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/164737751",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 도형의 방정식", title: "A 평면좌표", unitId: "h1-s2-01" },
       { part: "Ⅰ. 도형의 방정식", title: "B 직선의 방정식", unitId: "h1-s2-01" },
@@ -3524,7 +3553,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/127985410",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 소인수분해 A 소인수분해", title: "B 최대공약수와 최소공배수", unitId: "m1-s1-01" },
       { part: "Ⅱ 정수와 유리수", title: "C 정수와 유리수", unitId: "m1-s1-02" },
@@ -3542,7 +3571,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/134638680",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 기본 도형", title: "A 기본 도형", unitId: "m1-s2-01" },
       { part: "Ⅰ 기본 도형", title: "B 위치 관계", unitId: "m1-s2-01" },
@@ -3563,7 +3592,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/148490992",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 수와 연산", title: "A 유리수와 순환소수", unitId: "m2-s1-01" },
       { part: "Ⅱ 식의 계산", title: "B 단항식의 계산", unitId: "m2-s1-02" },
@@ -3584,7 +3613,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/159568734",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ 삼각형의 성질 A 삼각형의 성질", title: "B 삼각형의 외심과 내심", unitId: "m2-s2-01" },
       { part: "Ⅱ 사각형의 성질 C 평행사변형", title: "D 여러 가지 사각형", unitId: "m2-s2-02" },
@@ -3603,7 +3632,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/77986035",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅰ. 제곱근과 실수", title: "A 제곱근과 무리수", unitId: "m3-s1-01" },
       { part: "Ⅰ. 제곱근과 실수", title: "B 근호를 포함한 식의 계산", unitId: "m3-s1-02" },
@@ -3622,7 +3651,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/78593109",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { part: "Ⅴ. 삼각비", title: "J 삼각비", unitId: "m3-s2-01" },
       { part: "Ⅴ. 삼각비", title: "K 삼각비의 활용질", unitId: "m3-s2-01" },
@@ -3638,7 +3667,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/151758340",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -3653,7 +3682,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174192340",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -3669,7 +3698,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/151758579",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -3685,7 +3714,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/174192352",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -3701,7 +3730,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/148036124",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -3716,7 +3745,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/172574215",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -3732,7 +3761,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/148036478",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -3748,7 +3777,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/172574536",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -3764,7 +3793,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/123875592",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -3779,7 +3808,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126288034",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈⑴", unitId: "e1-s2-02" },
@@ -3795,7 +3824,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/123875781",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -3811,7 +3840,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/126288107",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -3827,7 +3856,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135444822",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -3843,7 +3872,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/144414108",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -3859,7 +3888,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135444850",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -3875,7 +3904,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/144414177",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -3891,7 +3920,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/155309249",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -3907,7 +3936,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/186939490",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -3923,7 +3952,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/155309999",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -3939,7 +3968,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/186939563",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
@@ -3955,7 +3984,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135450797",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 9까지의 수", unitId: "e1-s1-01" },
       { title: "2. 여러 가지 모양", unitId: "e1-s1-02" },
@@ -3970,7 +3999,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145715941",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 100까지의 수", unitId: "e1-s2-01" },
       { title: "2. 덧셈과 뺄셈(1)", unitId: "e1-s2-02" },
@@ -3986,7 +4015,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135450998",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 세 자리 수", unitId: "e2-s1-01" },
       { title: "2. 여러 가지 도형", unitId: "e2-s1-02" },
@@ -4002,7 +4031,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145716780",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 네 자리 수", unitId: "e2-s2-01" },
       { title: "2. 곱셈구구", unitId: "e2-s2-02" },
@@ -4018,7 +4047,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135451548",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 덧셈과 뺄셈", unitId: "e3-s1-01" },
       { title: "2. 평면도형", unitId: "e3-s1-02" },
@@ -4034,7 +4063,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145717382",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 곱셈", unitId: "e3-s2-01" },
       { title: "2. 나눗셈", unitId: "e3-s2-02" },
@@ -4050,7 +4079,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/135451952",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 큰 수", unitId: "e4-s1-01" },
       { title: "2. 각도", unitId: "e4-s1-02" },
@@ -4066,7 +4095,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/145717603",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 덧셈과 뺄셈", unitId: "e4-s2-01" },
       { title: "2. 삼각형", unitId: "e4-s2-02" },
@@ -4082,7 +4111,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/159176991",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 자연수의 혼합 계산", unitId: "e5-s1-01" },
       { title: "2. 약수와 배수", unitId: "e5-s1-02" },
@@ -4098,7 +4127,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/186939593",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 수의 범위와 어림하기", unitId: "e5-s2-01" },
       { title: "2. 분수의 곱셈", unitId: "e5-s2-02" },
@@ -4114,7 +4143,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s1",
     edition: "2027년판",
     source: "https://www.yes24.com/product/goods/159177034",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s1-01" },
       { title: "2. 각기둥과 각뿔", unitId: "e6-s1-02" },
@@ -4130,7 +4159,7 @@ export const BOOK_VOLUMES: BookVolume[] = [
     term: "s2",
     edition: "2026년판",
     source: "https://www.yes24.com/product/goods/186939611",
-    checked: "2026-08-14",
+    checked: "2026-08-15",
     chapters: [
       { title: "1. 분수의 나눗셈", unitId: "e6-s2-01" },
       { title: "2. 소수의 나눗셈", unitId: "e6-s2-02" },
