@@ -130,7 +130,11 @@ f.addEventListener('submit', async e=>{
     const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(SALT),iterations:ITER,hash:'SHA-256'},
       k,{name:'AES-GCM',length:256},false,['decrypt']);
     const out=await crypto.subtle.decrypt({name:'AES-GCM',iv:b(IV)},key,b(DATA));
-    document.open(); document.write(new TextDecoder().decode(out)); document.close();
+    // document.write 로 갈아끼우면 모바일에서 뷰포트·스크립트 실행이 불안정하다
+    // (검색창만 보이고 목록이 안 그려지는 증상). Blob URL 로 **온전한 새 문서**를 연다.
+    const html=new TextDecoder().decode(out);
+    const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));
+    location.replace(url);
   }catch(err){
     msg.className='msg bad'; msg.textContent='암호가 맞지 않습니다.';
     go.disabled=false; pw.select();
