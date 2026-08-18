@@ -26,13 +26,29 @@ if (!inPath || !outPath) {
   console.error("쓰는 법: ROSTER_PASSWORD='암호' node --experimental-strip-types scripts/roster/lock.ts <입력.html> <출력.html>");
   process.exit(1);
 }
-if (!password || password.length < 8) {
-  console.error("ROSTER_PASSWORD 환경변수에 8자 이상의 암호를 주세요.");
+if (!password) {
+  console.error("ROSTER_PASSWORD 환경변수에 암호를 주세요.");
   console.error("예: ROSTER_PASSWORD='...' node --experimental-strip-types scripts/roster/lock.ts a.html b.html");
   process.exit(1);
 }
 
-const ITERATIONS = 600_000;
+/**
+ * 암호가 짧으면 반복을 크게 올린다.
+ *
+ * 네 자리 숫자는 경우의 수가 1만 개뿐이다. 기본값(60만 회)에서는 한 번 시도가 60ms라
+ * 전수 대입에 10분밖에 안 걸린다. 2천만 회로 올리면 한 번이 1.8초가 되어 전수에 5시간이 든다.
+ *
+ * **이것은 시간을 버는 것이지 안전하게 만드는 것이 아니다.**
+ * 짧은 암호는 여전히 약하고, 작정한 사람은 하룻밤이면 연다.
+ * 링크와 암호를 같은 채널로 보내지 않는 것이 훨씬 중요하다.
+ */
+const SHORT = password.length < 8;
+const ITERATIONS = SHORT ? 20_000_000 : 600_000;
+if (SHORT) {
+  console.warn(`⚠ 암호가 ${password.length}자입니다. 짧은 암호는 대입으로 뚫립니다.`);
+  console.warn(`  반복을 ${ITERATIONS.toLocaleString()}회로 올렸습니다(여는 데 1~2초).`);
+  console.warn("  전수 대입에 5시간쯤 걸리는 수준이지, 안전해진 것은 아닙니다.");
+}
 const plain = readFileSync(inPath, "utf8");
 
 const enc = new TextEncoder();
@@ -108,7 +124,7 @@ const f=document.getElementById('f'), pw=document.getElementById('pw'),
 f.addEventListener('submit', async e=>{
   e.preventDefault();
   if(!pw.value){pw.focus();return}
-  go.disabled=true; msg.className='msg'; msg.textContent='여는 중…';
+  go.disabled=true; msg.className='msg'; msg.textContent='여는 중… 잠시 걸립니다';
   try{
     const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw.value),'PBKDF2',false,['deriveKey']);
     const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(SALT),iterations:ITER,hash:'SHA-256'},
